@@ -12,6 +12,7 @@ suggest new entries!
 
 **How do I get a copy of the tool?**
 
+	This is a test it is a very quick test.
 	The source code can be downloaded from `HabitatFramework/HLUTool <https://github.com/HabitatFramework/HLUTool>`_ and the latest installer setups for ArcGIS/MapInfo and MapInfo only can be downloaded from `HabitatFramework/HLUTool/Releases <https://github.com/HabitatFramework/HLUTool/releases>`_.
 
 **Do I have to use IHS with the tool?**
