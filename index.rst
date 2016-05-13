@@ -34,10 +34,10 @@ Contents
    concepts/concepts
    FAQ <faq/faq>
    appendix/appendix
-<<<<<<< HEAD
    test/test
+
 =======
->>>>>>> origin/master
+
 
 
 .. only:: html
