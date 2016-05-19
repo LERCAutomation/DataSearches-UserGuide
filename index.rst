@@ -31,9 +31,9 @@ Contents
 
    preface/preface
    introduction/introduction
-   Anatomy of a data search <anatomy/anatomy>
-   Setting up the tool <setup/setup>
-   Running the tool <execute/execute>
+   anatomy/anatomy
+   setup/setup
+   execute/execute
    FAQ <faq/faq>
    appendix/appendix
 
