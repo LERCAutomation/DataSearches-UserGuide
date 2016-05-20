@@ -34,7 +34,7 @@ Contents
    anatomy/anatomy
    setup/setup
    execute/execute
-   FAQ <faq/faq>
+   FAQs <faq/faq>
    appendix/appendix
 
 

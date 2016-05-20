@@ -4,6 +4,9 @@ Preface
 
 The most up to date version of this documentation can be found in **HTML** and **PDF** form on `ReadTheDocs <https://readthedocs.org/projects/datasearches-userguide/>`_.
 
+.. index::
+	single: Recommended User Knowledge
+
 Recommended User Knowledge
 ==========================
 
@@ -27,6 +30,8 @@ It is recommended that a person within each organisation is designated as the to
 * Have qualifications, certified training or equivalent experience in managing databases using that system.
 * Have certified training or equivalent experience in advanced features of the relevant GIS software.
 
+.. index::
+	single: Reading Guide
 
 Reading Guide
 =============
@@ -87,6 +92,9 @@ Many thanks are due to all the LRCs in the south-east of England and their staff
 .. raw:: latex
 
 	\newpage
+
+.. index::
+	single: Conventions used in this user guide
 
 Conventions used in this user guide
 ===================================
