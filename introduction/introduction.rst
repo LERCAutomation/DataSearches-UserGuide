@@ -27,7 +27,7 @@ The Data Searches Tool presents a simple user interface, while being configurabl
 
 	the Data Searches Tool menu
 
-When running a search, the tool uses an existing GIS layer in the interface to find the geographical location of the  search request reference, and a linked Microsoft Access database to obtain some information about the search reference. It then queries pre-loaded data layers to establish which have features within the specified radius of the location, and exports this information in a format requested by the user. The output data is tabular and an option exists to export the associated GIS data at the same time. The tool creates a log file for each search which details the steps that were taken during the process. The process is discussed in this document in the section on :doc:`using the tool <../execute/execute>`_.
+When running a search, the tool uses an existing GIS layer in the interface to find the geographical location of the  search request reference, and a linked Microsoft Access database to obtain some information about the search reference. It then queries pre-loaded data layers to establish which have features within the specified radius of the location, and exports this information in a format requested by the user. The output data is tabular and an option exists to export the associated GIS data at the same time. The tool creates a log file for each search which details the steps that were taken during the process. The process is discussed in this document in the section on :doc:`using the tool <../execute/execute>`.
 
 Defining the way that searches should be carried out, the output that they generate, and the layers that can potentially be included in a search is done via a configuration document written in XML. Using this document the user can configure all the parts of the search, for example:
 * The name of the geographic layer containing the search references, and its key columns
@@ -38,7 +38,7 @@ Defining the way that searches should be carried out, the output that they gener
 * For each data layer, a detailed definition of what information should be returned from it
 * Details on the display and labelling of output from individual data layers.
 
-Using this configuration file, each individual LERC can tailor the Data Searches Tool to its individual requirements in great detail. Examples of the XML file are included in the :doc:`Appendix <../appendix/appendix>`_, and the process of setting up this file is discussed in the section on :doc:`setting up the tool <../setup/setup>`_. 
+Using this configuration file, each individual LERC can tailor the Data Searches Tool to its individual requirements in great detail. Examples of the XML file are included in the :doc:`../appendix/appendix`, and the process of setting up this file is discussed in the section on :doc:`setting up the tool <../setup/setup>`. 
 
 .. index::
 	single: Benefits
