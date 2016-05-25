@@ -12,28 +12,23 @@ Detailed process description
 
 The process of a typical data search can be broken down into a number of distinct steps that are described here. In the next section the way that the Data Searches Tool carries out these steps is explained.
 
-Entering a search location
---------------------------
+1. Entering a search location
 
 Before any search can be carried out, the point, line or polygon describing the location that the search is centred on has to be entered into the GIS system. Typically this would be held in a single data layer, with some associated attributes such as the search reference or the name of the search site.
 
-Buffering the search site
--------------------------
+2. Buffering the search site
 
 Once the search location is entered into the GIS system, it can be used as input into a buffering tool. The user chooses the radius within which the search will be carried out, and buffers the search location using this search radius. The output from this operation is saved as a new GIS data layer.
 
-Selecting the relevant data layers
-----------------------------------
+3. Selecting the relevant data layers
 
 Using the buffer layer created in the previous step, each of the data layers describing the presence of protected sites and/or species is selected one by one.
 
-Exporting the results
----------------------
+4. Exporting the results
 
 The selected features are exported in the format required by the user. This can include both GIS data layers to allow mapping and visualisation, and tabular data for reporting purposes. Labels may be added to the GIS data at this point to aid in the identification of individual sites on any maps that are created. Other columns may need to be added or removed from the tabular data at this point to create the exact output the user requires. If a summary table of the results is needed for the search report, the user has to create this by hand from the exported tables using a spreadsheet or word processing package.
 
-Repeating the process
----------------------
+5. Repeating the process
 
 For statutory reasons the search radius may vary between (for example) protected sites and protected species. In this case the search needs to be repeated with a new buffer layer.
 
@@ -44,6 +39,7 @@ The Data Searches Tool
 ======================
 
 There are four parts to the Data Searches Tool that work together to automate the process described above:
+
 1. An Access database that contains details about search requests, including a unique search reference number.
 #. One or more GIS layers that describe the locations of the searches, using the same unique search reference number to identify each search request.
 #. An XML file that specifies how the searches are set up and what data should be exported for each data layer
@@ -62,6 +58,7 @@ Tool workflow
 -------------
 
 The Data Searches Tool requires minimum user input in order to carry out its processes once it is configured. The workflow is as follows (see :ref:`figUIAnn`):
+
 1. The user enters the unique search reference. At this point, the tool retrieves the site name for this search from the Access database.
 #. If no name was found, the user may enter the site name.
 #. The user specifies which data layers to search. Only layers that are loaded in the GIS are made available at this point.
@@ -80,6 +77,7 @@ The Data Searches Tool requires minimum user input in order to carry out its pro
 
 
 In essence, the process that the tool follows is identical to the manual search described above. 
+
 1. Firstly the search reference is located in the the data layer(s) containing the search location.
 #. The location is buffered using the specified radius, resulting in a new data layer that is saved in the output folder.
 #. Selections are made on all data layers specified by the user using this buffer layer.
