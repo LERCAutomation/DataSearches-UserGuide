@@ -45,7 +45,7 @@ There are four parts to the Data Searches Tool that work together to automate th
 #. An XML file that specifies how the searches are set up and what data should be exported for each data layer
 #. The Data Searches Tool interface.
 
-The Data Searches Tool is used within a GIS environment and requires all the required data layers to be preloaded in the GIS (see :ref:`figArcGISUI`). 
+The Data Searches Tool is used within a GIS environment and requires all the required data layers to be preloaded in the GIS (see :numref:`figArcGISUI`). 
 
 .. _figArcGISUI:
 
@@ -123,7 +123,7 @@ Tabular output is produced in a text based format and can include the distance o
 
 	example of tabular output from the Data Searches Tool
 
-The combined sites table (see :ref:`figCombinedSites`) contains a summary of the sites that are found. Again, this output is highly customisable and it is easy to exclude or include layers in this table as required, and any summary statistics can be included.
+The combined sites table (see :ref:`figCombinedSites`) contains a summary of the sites that are found. Again, this output is highly customisable and it is easy to exclude or include layers in this table as required. Any summary statistics can be included.
 
 .. _figCombinedSites:
 
