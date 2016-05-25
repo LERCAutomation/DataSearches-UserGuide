@@ -31,12 +31,12 @@ When running a search, the tool uses an existing GIS layer in the interface to f
 
 Defining the way that searches should be carried out, the output that they generate, and the layers that can potentially be included in a search is done via a configuration document written in XML. Using this document the user can configure all the parts of the search, for example:
 
-* The name of the geographic layer containing the search references, and its key columns
-* The location of the Access database and its name
-* The location of the output folder
-* Naming conventions for output files and folders, e.g. how the search reference or site name should be included
-* Defaults for buffer sizes and buffer units
-* For each data layer, a detailed definition of what information should be returned from it
+* The name of the geographic layer containing the search references, and its key columns.
+* The location of the Access database and its name.
+* The location of the output folder.
+* Naming conventions for output files and folders, e.g. how the search reference or site name should be included.
+* Defaults for buffer sizes and buffer units.
+* For each data layer, a detailed definition of what information should be returned from it.
 * Details on the display and labelling of output from individual data layers.
 
 Using this configuration file, each individual LERC can tailor the Data Searches Tool to its individual requirements in great detail. Examples of the XML file are included in the :doc:`../appendix/appendix`, and the process of setting up this file is discussed in the section on :doc:`setting up the tool <../setup/setup>`. 
@@ -48,8 +48,9 @@ Benefits
 ========
 
 There are a number of clear benefits to using the Data Searches Tool for carrying out routine data searches. 
+
 1. The tool, by encapsulating and automating the process, saves considerable time over carrying out these searches manually.
-#. Both the process and the outputs of the search are standardised, therefore minimising the risk of user error that is present in a manual search.
-#. Using the tool makes exploration easy, as it allows for the rapid evaluation of 'what if' scenarios (e.g. by varying the search radius, or exploring a number of possible locations).
-#. By specifying the outputs of the tool centrally through the configuration file, the output for each search is consistent with all other searches, regardless of the individual carrying out the search. This leads to comparability of results and a predictable experience for the users of a data search service.
-#. The searches are repeatable and, through the inclusion of the log file, automatically documented.
+2. Both the process and the outputs of the search are standardised, therefore minimising the risk of user error that is present in a manual search.
+3. Using the tool makes exploration easy, as it allows for the rapid evaluation of 'what if' scenarios (e.g. by varying the search radius, or exploring a number of possible locations).
+4. By specifying the outputs of the tool centrally through the configuration file, the output for each search is consistent with all other searches, regardless of the individual carrying out the search. This leads to comparability of results and a predictable experience for the users of a data search service.
+5. The searches are repeatable and, through the inclusion of the log file, automatically documented.
