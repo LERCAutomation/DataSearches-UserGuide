@@ -30,6 +30,7 @@ The Data Searches Tool presents a simple user interface, while being configurabl
 When running a search, the tool uses an existing GIS layer in the interface to find the geographical location of the  search request reference, and a linked Microsoft Access database to obtain some information about the search reference. It then queries pre-loaded data layers to establish which have features within the specified radius of the location, and exports this information in a format requested by the user. The output data is tabular and an option exists to export the associated GIS data at the same time. The tool creates a log file for each search which details the steps that were taken during the process. The process is discussed in this document in the section on :doc:`using the tool <../execute/execute>`.
 
 Defining the way that searches should be carried out, the output that they generate, and the layers that can potentially be included in a search is done via a configuration document written in XML. Using this document the user can configure all the parts of the search, for example:
+
 * The name of the geographic layer containing the search references, and its key columns
 * The location of the Access database and its name
 * The location of the output folder
