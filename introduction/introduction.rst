@@ -18,7 +18,7 @@ The Data Searches Tool was originally developed for Greenspace Information for G
 Tool overview
 =============
 
-The Data Searches Tool presents a simple user interface, while being configurable in a highly flexible way according to the requirements of the LERC or individual user. It is integrated into the user interface of the GIS system and presented there as a button or menu item. The tool itself has a simple interface (:ref:`figUI`), requiring a minimum of input (a reference to a search request, the data layers to be included in the search, and the radius to be used in the search are the only required items). 
+The Data Searches Tool presents a simple user interface, while being configurable in a highly flexible way according to the requirements of the LERC or individual user. It is integrated into the user interface of the GIS system and presented there as a button or menu item. The tool itself has a simple interface (:numref:`figUI`), requiring a minimum of input (a reference to a search request, the data layers to be included in the search, and the radius to be used in the search are the only required items). 
 
 .. _figUI:
 

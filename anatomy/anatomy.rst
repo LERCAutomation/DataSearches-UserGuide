@@ -52,12 +52,12 @@ The Data Searches Tool is used within a GIS environment and requires all the req
 .. figure:: figures/InterfaceArcGISAnnotated.png
 	:align: center
 
-	the ArcGIS user interface configured for using the Data Searches Tool
+	The ArcGIS user interface configured for using the Data Searches Tool
 
 Tool workflow
 -------------
 
-The Data Searches Tool requires minimum user input in order to carry out its processes once it is configured. The simple workflow is as follows (see :ref:`figUIAnn`):
+The Data Searches Tool requires minimum user input in order to carry out its processes once it is configured. The simple workflow is as follows (see :numref:`figUIAnn`):
 
 1. The user enters the unique search reference. At this point, the tool retrieves the site name for this search from the Access database.
 #. If no name was found, the user may enter the site name.
@@ -73,7 +73,7 @@ The Data Searches Tool requires minimum user input in order to carry out its pro
 .. figure:: figures/MenuExampleAnnotated.png
 	:align: center
 
-	the Data Searches Tool menu workflow
+	The Data Searches Tool menu workflow
 
 
 In essence, the process that the tool follows is identical to the manual search described above. 
@@ -93,9 +93,9 @@ In essence, the process that the tool follows is identical to the manual search 
 Tool Outputs
 ============
 
-Below is a selection of outputs generated from the example data search given in figures :ref:`figArcGISUI` and :ref:`figUIAnn`. These examples were generated using the ArcGIS tool, and the GIS output from the MapInfo tool has a slightly different format. The tabular data, however, is the same for both implementations of the tool [Andy you might want to include the visuals from the MapInfo implementation].
+Below is a selection of outputs generated from the example data search given in figures :numref:`figArcGISUI` and :numref:`figUIAnn`. These examples were generated using the ArcGIS tool, and the GIS output from the MapInfo tool has a slightly different format. The tabular data, however, is the same for both implementations of the tool [Andy you might want to include the visuals from the MapInfo implementation].
 
-When the process finishes, the GIS output is presented within the GIS interface (:ref:`figArcOutputAnn`). Note the output layers are presented in a logical format and their names refer back to the search reference number. The symbology of the layers is customised, as is the labelling applied to each output layer. The buffer that was used for the analysis is also included in the output. Only layers for which a feature was found within the search radius will be included in the output.
+When the process finishes, the GIS output is presented within the GIS interface (:numref:`figArcOutputAnn`). Note the output layers are presented in a logical format and their names refer back to the search reference number. The symbology of the layers is customised, as is the labelling applied to each output layer. The buffer that was used for the analysis is also included in the output. Only layers for which a feature was found within the search radius will be included in the output.
 
 .. _figArcOutputAnn:
 
@@ -104,7 +104,7 @@ When the process finishes, the GIS output is presented within the GIS interface 
 
 	GIS output from the Data Searches Tool (ArcGIS implementation)
 
-The GIS output is stored, together with all other outputs from the tool, in a user defined folder (:ref:`figOutputFolder`). These outputs may include a combination of GIS layers, the buffer layer that was used, tabular layers in different formats, a combined sites table, and the log file.  
+The GIS output is stored, together with all other outputs from the tool, in a user defined folder (:numref:`figOutputFolder`). These outputs may include a combination of GIS layers, the buffer layer that was used, tabular layers in different formats, a combined sites table, and the log file.  
 
 .. _figOutputFolder:
 
@@ -113,7 +113,7 @@ The GIS output is stored, together with all other outputs from the tool, in a us
 
 	Data Searches Tool output folder
 
-Tabular output is produced in a text based format and can include the distance of each feature to the search feature (:ref:`figTabularOutput`). It is possible to create summary statistics for any column during the process, which will be included in the tabular output.
+Tabular output is produced in a text based format and can include the distance of each feature to the search feature (:numref:`figTabularOutput`). It is possible to create summary statistics for any column during the process, which will be included in the tabular output.
 
 
 .. _figTabularOutput:
@@ -121,25 +121,25 @@ Tabular output is produced in a text based format and can include the distance o
 .. figure:: figures/ExampleTabularOutput.png
 	:align: center
 
-	example of tabular output from the Data Searches Tool
+	Example of tabular output from the Data Searches Tool
 
-The combined sites table (see :ref:`figCombinedSites`) contains a summary of the sites that are found. Again, this output is highly customisable and it is easy to exclude or include layers in this table as required. Any summary statistics can be included.
+The combined sites table (see :numref:`figCombinedSites`) contains a summary of the sites that are found. Again, this output is highly customisable and it is easy to exclude or include layers in this table as required. Any summary statistics can be included.
 
 .. _figCombinedSites:
 
 .. figure:: figures/CombinedSitesTableExample.png
 	:align: center
 
-	example of a combined sites table
+	Example of a combined sites table
 
-Finally, the log file details each step that was taken during the process, and gives some feedback about the outcomes of the steps. This includes reporting on the input for the search, the number of features that were selected in each data layer, and which data layers did not return any features (see :ref:`figLogFile`).
+Finally, the log file details each step that was taken during the process, and gives some feedback about the outcomes of the steps. This includes reporting on the input for the search, the number of features that were selected in each data layer, and which data layers did not return any features (see :numref:`figLogFile`).
 
 .. _figLogFile:
 
 .. figure:: figures/LogFileExample.png
 	:align: center
 
-	example of a Data Searches Tool log file
+	Example of a Data Searches Tool log file
 
 
 The following chapters, :doc:`setting up the tool <../setup/setup>` and :doc:`using the tool <../execute/execute>`, will guide you through setting up and operating the tool in such a way that these tool outputs meet the exact requirements of data searches within your organisation.
