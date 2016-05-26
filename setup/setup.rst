@@ -115,8 +115,8 @@ The first section of the configuration file deals with a series of general attri
 +------------------------+----------------------------------------------------------+
 
 
-	database 	The path to the Access database that contains the details of all search requests. This must be the 
-				full path including the ``.mdb`` extension.
+database 	The path to the Access database that contains the details of all search requests. This must be the 
+			full path including the ``.mdb`` extension.
 
 
 
