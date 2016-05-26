@@ -28,7 +28,7 @@ Setup for ArcGIS
 
 **General attributes**
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches Tool. These general nodes specify where files are kept, how output files should be named, and other overall settings. Details on these attributes and their expected values are shown in :numref:`tabArcGISGenAtt`.
+The first section of the configuration file deals with a series of general attributes for the Data Searches Tool. These general nodes specify where files are kept, how output files should be named, and other overall settings. Details on these attributes and their expected values are shown in :numref:`tabArcGISGenAtt`. The table follows the order within which the attributes are found in the configuration file.
 
 ..note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -41,16 +41,18 @@ The first section of the configuration file deals with a series of general attri
 
 .. table:: General attributes in the ArcGIS configuration file.
 
++------------------------+-----------------------------------------------------------+
+| Attribute              |Description                                                |            
++========================+===========================================================+
+| Database               ||The path to the Access database that contains the details |
+|                        ||of all search requests. This must be the full path        |
+|                        ||including the ``.mdb`` extension.                         |
++------------------------+-----------------------------------------------------------+
+| RefColumn              ||The name of the column, in the Enquiries table within the |
+|                        ||Access database, that contains the search reference.      |
++------------------------+-----------------------------------------------------------+
+
 +------------------------+----------------------------------------------------------+
-| Attribute              |Description                                               |            
-+========================+==========================================================+
-| Database               |The path to the Access database that contains the details |
-|                        |of all search requests. This must be the full path        |
-|                        |including the ``.mdb`` extension.                         |
-+------------------------+----------------------------------------------------------+
-| RefColumn              |The name of the column, in the Enquiries table within the |
-|                        |Access database, that contains the search reference.      |
-+------------------------+----------------------------------------------------------|
 | SiteColumn             |The name of the column, in the Enquiries table within the |
 |                        |Access database, that contains the site name.             |
 +------------------------+----------------------------------------------------------+
