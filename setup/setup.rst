@@ -41,6 +41,8 @@ The first section of the configuration file deals with a series of general attri
 
 .. table:: General attributes in the ArcGIS configuration file.
 
+database 	The path to the Access database that contains the details of all search requests. This must be the full 			path including the ``.mdb`` extension.
+
 +------------------------+------------------------------------------------------------+
 | Attribute              |Description                                                 |            
 +========================+============================================================+
