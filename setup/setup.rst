@@ -30,18 +30,19 @@ Setup for ArcGIS
 
 The first section of the configuration file deals with a series of general attributes for the Data Searches Tool. These general nodes specify where files are kept, how output files should be named, and other overall settings. Details on these attributes and their expected values are shown in :numref:`tabArcGISGenAtt`. The table follows the order within which the attributes are found in the configuration file.
 
-..note::
+.. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
 	``%ref%`` uses the full enquiry reference.
 	``%shortref%`` uses the numeric part of the reference (e.g. '2016/001').
 	``%subref%`` uses the Enquiry Number (e.g. '001').
 	``%sitename%`` uses the name of the site (e.g. 'Example site').
 
+
 .. _tabArcGISGenAtt:
 
 .. table:: General attributes in the ArcGIS configuration file.
 
-database 	The path to the Access database that contains the details of all search requests. This must be the full 			path including the ``.mdb`` extension.
+
 
 +------------------------+------------------------------------------------------------+
 | Attribute              |Description                                                 |            
@@ -112,6 +113,12 @@ database 	The path to the Access database that contains the details of all searc
 |                        | ``SearchLayer`` name. See :numref:`figArcGISUI` for an   |
 |                        |example.                                                  |
 +------------------------+----------------------------------------------------------+
+
+
+	database 	The path to the Access database that contains the details of all search requests. This must be the 
+				full path including the ``.mdb`` extension.
+
+
 
 
 Setup for MapInfo
