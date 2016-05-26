@@ -41,16 +41,16 @@ The first section of the configuration file deals with a series of general attri
 
 .. table:: General attributes in the ArcGIS configuration file.
 
-+------------------------+-----------------------------------------------------------+
-| Attribute              |Description                                                |            
-+========================+===========================================================+
-| Database               ||The path to the Access database that contains the details |
-|                        ||of all search requests. This must be the full path        |
-|                        ||including the ``.mdb`` extension.                         |
-+------------------------+-----------------------------------------------------------+
-| RefColumn              ||The name of the column, in the Enquiries table within the |
-|                        ||Access database, that contains the search reference.      |
-+------------------------+-----------------------------------------------------------+
++------------------------+------------------------------------------------------------+
+| Attribute              |Description                                                 |            
++========================+============================================================+
+| Database               || The path to the Access database that contains the details |
+|                        || of all search requests. This must be the full path        |
+|                        || including the ``.mdb`` extension.                         |
++------------------------+------------------------------------------------------------+
+| RefColumn              || The name of the column, in the Enquiries table within the |
+|                        || Access database, that contains the search reference.      |
++------------------------+------------------------------------------------------------+
 
 +------------------------+----------------------------------------------------------+
 | SiteColumn             |The name of the column, in the Enquiries table within the |
