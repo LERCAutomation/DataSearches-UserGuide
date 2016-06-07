@@ -29,6 +29,7 @@ It is recommended that a person within each organisation is designated as the to
 * Be an expert user of Microsoft Access.
 * Have qualifications, certified training or equivalent experience in managing databases using that system.
 * Have certified training or equivalent experience in advanced features of the relevant GIS software.
+* Have a good understanding of XML.
 
 .. index::
 	single: Reading Guide
