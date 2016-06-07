@@ -35,6 +35,7 @@ The first section of the configuration file deals with a series of general attri
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
+	
 	``%ref%`` uses the full enquiry reference.
 	``%shortref%`` uses the numeric part of the reference (e.g. '2016/001').
 	``%subref%`` uses the Enquiry Number (e.g. '001').
