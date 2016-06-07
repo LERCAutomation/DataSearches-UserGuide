@@ -215,7 +215,7 @@ CombinedSitesOrderByColumns
 
 .. note::
 
-	It is important to note that all entries in the configuration file are **case sensitive**. Most common errors in the setting up of the tool are caused by using the incorrect case for entries.
+	All entries in the configuration file are **case sensitive**. Most common errors in the setting up of the tool are caused by using the incorrect case for entries.
 
 Setup for MapInfo
 -----------------
@@ -227,12 +227,17 @@ Installing the tool (split MapInfo / ArcGIS)
 ArcGIS
 ------
 
-Installing the tool is straightforward. There are a few different ways it can be installed:
+Installing the tool in ArcGIS is straightforward. There are a few different ways it can be installed:
 
 1. The simplest way is to open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`). Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`). Once it is installed, it will become available to add to the ArcGIS interface as a button.
 
 .. note::
 	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
+
+2. Another way to install the tool is from within ArcMap: 
+	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`). 
+	- If the Data Searches Tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
+	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
 
 .. _figInstallTool:
 
@@ -247,11 +252,6 @@ Installing the tool is straightforward. There are a few different ways it can be
 	:align: center
 
 	Installation begins after clicking 'Install Add-in'. 
-
-2. Another way to install the tool is from within ArcGIS. 
-	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`). 
-	- If the Data Searches Tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
-	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
 
 .. _figOpenAddInManager:
 
