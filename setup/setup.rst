@@ -116,14 +116,14 @@ CombinedSitesTable
 	Columns
 		A comma-delimited list of the column headings that the combined sites table should have.
 	Suffix
-		An entry of what the suffix of the file name should be. The start of the combined sites table name is given by ``%subref%`` + the suffix + ``.`` the format.
+		An entry of what the suffix of the file name should be. The start of the combined sites table name is given by ``subref_Suffix.Format``, e.g. ``001_sites.csv`` where the suffix is ``sites`` and the format is ``csv``.
 	Format
 		The format that the combined sites table should have. Choose from ``csv`` or ``txt``.
 
 
 **Map layer attributes**
 
-All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new subnode is created that has the name of the layer (e.g. ``<SSSIs>``). This name should be the name of the layer as it will be shown in the tool menu, and can be different from the layer name on screen (which will be set in a subsequent subnode). A simple example with limited attributes is shown in :numref:`figArcGISUI`). 
+All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new subnode is created that has the name of the layer (e.g. ``<SSSIs>``). This name should be the name of the layer as it will be shown in the tool menu, and can be different from the layer name on screen (which will be set in a subsequent subnode). A simple example with limited attributes is shown in :numref:`figArcGISUI`. 
 
 .. note::
 	If you wish to display spaces in any layer names in the tool menu use an underscore (``_``) for each space in the node name for the layer. XML does not allow spaces in node names, but the tool will translate these underscores into spaces when starting up.
@@ -142,24 +142,27 @@ LayerName
 	The name of the layer as it is shown in the GIS interface. Characters that cannot be included in the layer name are ``/`` and ``&`` as they will cause the tool to fail. The characters ``-``, ``_``, ``+`` and ``\`` are permitted.
 
 Prefix
-	The prefix will be used to start the name of any GIS layer that is exported from this data layer during the search. 
+	The prefix will be used to start the name of any GIS layer that is exported from this data layer during the search. The naming followed for exported GIS layer is ``Prefix_subref``, e.g. ``SSSIs_001.shp``.
 
 Suffix
-	The suffix will be used to finish the name of any tabular file that is exported from this data layer during the search.
+	The suffix will be used to finish the name of any tabular file that is exported from this data layer during the search. The naming followed for exported tabular data is ``subref_Suffix.Format``, e.g. ``0001_SSSIs.csv``.
 
 Columns
 	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
 
 	- Column names are up to 10 characters long and are case sensitive.
-	- Statistics column names are made up of the statistic requested (e.g. COUNT, SUM, MEAN, FIRST, etc.), the underscore character (``_``), and the name of the column to which the statistic applies. Names longer than 10 characters are abbreviated. 
-	- If, due to abbreviation, two output columns would be given the same name, ArcGIS will automatically replace the last two characters of the second column with ``_1``. 
-	- Numbering for any subsequent columns with the same name will follow this format adding one to each column number until this number reaches 9. Any subsequent columns will be numbered ``_10``, ``_11`` etc, so replacing the last three rather than two characters of the column name. 
+	- Statistics column names are made up of the statistic requested (e.g. COUNT, SUM, MEAN, FIRST, etc.), the underscore character (``_``), and the name of the column to which the statistic applies (e.g. ``COUNT_Year``). Names longer than 10 characters are abbreviated. 
+	- If, due to abbreviation, two output columns would be given the same name, ArcGIS will automatically add a count of ``_1`` to the column name. Where the column name is nine or ten characters long, it will replace the last one or two characters of the second column with ``_1``, always ensuring the length of the column name does not exceed ten characters. 
+	- Numbering for any subsequent columns with the same name will follow this format adding one to each column number until this number reaches 9. Any subsequent columns will be numbered ``_10``, ``_11`` etc, so adding or replacing up to three rather than two characters in the column name. Again in all cases the new column name will be ten characters long or less.
+
+	.. tip::
+	If you are unsure what the output column names will be from an aggregation operation, run the Dissolve tool (this resides in the ArcGIS toolbox, under Data Management Tools => Generalisation) on a sample of your data, and include the statistics columns with the relevant statistic types as you intend to use them in the Data Searches tool in the analysis. The output will contain the column names as they will be generated by the Data Searches tool as it uses the same process).
 
 GroupColumns
 	A comma-separated list of the name(s) of any column(s) that should be used for grouping the outputs from the search on this layer. The column names are case sensitive and should match the column names in the source layer.
 
 StatisticsColumns
-	If ``GroupColumns`` are specified, statistics may be requested from any columns in the input layer. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;Statistic``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the ``Columns`` list as described above.
+	If ``GroupColumns`` are specified, statistics may be requested from any columns in the input layer. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;STATISTIC``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the ``Columns`` list as described above.
 
 OrderColumns
 	A comma-separated list of columns by which the results should be ordered in the tabular output for this layer. The order of this list overrides any order in the ``GroupColumns`` attribute.
@@ -168,10 +171,10 @@ Criteria
 	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include AND and OR statements and similar. String values should be enclosed in single quotes. An example might be ``Name = 'myName' AND Year > 2010``. Only records that match the criteria will be exported. 
 
 IncludeDistance
-	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The output column will be called 'Distance' and must be included in the ``Columns`` attribute to be exported to be included [HESTER TO CHECK THIS].
+	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The output column will be called 'Distance' and must be included in the ``Columns`` attribute to be included [HESTER TO CHECK THIS].
 
 KeyColumn
-	The name of the column containing the unique identifier of this data layer.
+	The name of the column containing the unique identifier for this data layer.
 
 Format
 	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
@@ -187,10 +190,10 @@ OverwriteLabels
 	A Yes/No attribute that specifies whether the labels in this data layer can be overwritten for any GIS output. If the attribute is set to ``no``, labels will not be overwritten even if requested by the user through the interface.
 
 LabelColumn
-	The name of the column in this data layer that contains the labels. If this entry has a column name that does not exist in the data layer, the tool will create its own label column when necessary even if ``OverwriteLabels`` is set to ``no``. If this is left blank, no labels will be created for this layer even when requested by the user. [Hester to check] 
+	The name of the column in this data layer that contains the labels. If this entry has a column name that does not exist in the data layer, the tool will create its own label column when necessary even if ``OverwriteLabels`` is set to ``no``. In this case, the features will be automatically numbered and numbering will follow the rule that is selected by the user in the interface. If this attribute is left blank, no labels will be created or displayed for this layer even when requested by the user. [Hester to check] 
 
 LabelClause
-	An ArcGIS clause that defines the format, font type, font type and colour of the labels for this layer. The format of this clause is as follows: ``Font:FontName$Size:FontSize$Red:PercentRed$Green:PercentGreen$Blue:PercentBlue$Type:PlacementType``, where the ``Type`` is the ArcGIS label placement type with the following options:  NoRestrictions, OnePerName, OnePerPart or OnePerShape. An example would be ``Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions``. If no clause is filled in the above settings are applied (Arial, size 10, black, each polygon in a multi-part polygon is labelled).
+	An ArcGIS clause that defines the format, font type, font size and colour of the labels for this layer. The format of this clause is as follows: ``Font:FontName$Size:FontSize$Red:PercentRed$Green:PercentGreen$Blue:PercentBlue$Type:PlacementType``, where the ``Type`` is the ArcGIS label placement type with the following options:  NoRestrictions, OnePerName, OnePerPart or OnePerShape. An example would be ``Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions``. If no clause is filled in the above settings are applied (Arial, size 10, black, each polygon in a multi-part polygon is labelled).
 
 CombinedSitesColumns
 	A comma-separated list of column names to be included in the combined sites table. If this entry is left blank the data layer will not be included in the combined sites table. A number of special cases apply to this attribute:
