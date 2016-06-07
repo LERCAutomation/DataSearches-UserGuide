@@ -229,7 +229,10 @@ ArcGIS
 
 Installing the tool in ArcGIS is straightforward. There are a few different ways it can be installed:
 
-1. The simplest way is to open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`). Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`). Once it is installed, it will become available to add to the ArcGIS interface as a button.
+1. Installation through Windows Explorer.
+	- Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`). 
+	- Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`). 
+	- Once it is installed, it will become available to add to the ArcGIS interface as a button.
 
 .. note::
 	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
