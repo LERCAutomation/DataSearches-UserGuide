@@ -176,7 +176,7 @@ OrderColumns
 Criteria
 	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include AND and OR statements and similar. String values should be enclosed in single quotes. An example might be ``Name = 'myName' AND Year > 2010``. Only records that match the criteria will be exported. 
 
-**`Test`_**
+`**Test**`_
 
 IncludeDistance
 	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The output column will be called 'Distance' and must be included in the ``Columns`` attribute to be included [HESTER TO CHECK THIS].
