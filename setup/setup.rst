@@ -46,10 +46,10 @@ The first section of the configuration file deals with a series of general attri
 
 
 _`Database` 	
-	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension.
+	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension. The database must have a table called 'Enquiries' that contains, at the very least, the search reference and the site name.
 
 _`RefColumn`
-	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets.
+	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets. The search reference must follow the format 'LERCName/Year/EnquiryNumber'.
 
 _`SiteColumn`
 	The name of the column in the Enquiries table within the Access database, that contains the site name. The name must ge given without any brackets.
@@ -247,11 +247,6 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 .. note::
 	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
 
-2. Another way to install the tool is from within ArcMap: 
-	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`). 
-	- If the Data Searches Tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
-	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
-
 .. _figInstallTool:
 
 .. figure:: figures/AddInInstall.png
@@ -265,6 +260,11 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 	:align: center
 
 	Installation begins after clicking 'Install Add-in'. 
+
+2. Another way to install the tool is from within ArcMap: 
+	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`). 
+	- If the Data Searches Tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
+	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
 
 .. _figOpenAddInManager:
 
@@ -294,7 +294,6 @@ In order to add the Data Searches Tool to the user interface, it needs to be add
 
 Customising toolbars is done through the Customize dialog, which can be started either through the Add-In Manager (by clicking 'Customize', see :numref:`figAddInManager`), or through choosing the 'Customize Mode...' option in the Customize Menu (:numref:`figCustomizeMode`). Once this dialog is open, ensure that the check box 'Create new toolbars and menus in the document' is checked in the Options tab (:numref:`figCustomizeOptions`).
 
-It is recommended that the button for the Data Searches Tool is added to a new toolbar. Toolbars are created through the Toolbars tab in the Customize dialog, as shown in figures :numref:`figCustomizeToolbars` and :numref:`figNameToolbar`. Once a new toolbar is created and named, it is automatically added to the ArcMap interface as well as to the Customize dialog (:numref:`figNewToolbar`. In this case the toolbar was named 'TestToolbar'). 
 
 .. _figCustomizeMode:
 
@@ -310,6 +309,9 @@ It is recommended that the button for the Data Searches Tool is added to a new t
 	:align: center
 
 	Customising the document in ArcGIS.
+
+
+It is recommended that the button for the Data Searches Tool is added to a new toolbar. Toolbars are created through the Toolbars tab in the Customize dialog, as shown in figures :numref:`figCustomizeToolbars` and :numref:`figNameToolbar`. Once a new toolbar is created and named, it is automatically added to the ArcMap interface as well as to the Customize dialog (:numref:`figNewToolbar`. In this case the toolbar was named 'TestToolbar'). 
 
 .. _figCustomizeToolbars:
 
