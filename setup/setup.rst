@@ -10,7 +10,7 @@ Before the Data Searches Tool will function, it needs to be installed and config
 Configuring the tool
 ====================
 
-The configuration is stored in an XML file called 'DataSearches.xml', and there are some differences in the contents of this file between the MapInfo and the ArcGIS implementations of the tool. Please ensure that you are using the correct XML file, examples of both of which can be found in the :doc:`appendix <../appendix/appendix>`. Settings are presented as nodes (beginning with a start node, e.g. ``<example>``, and finishing with an end note, e.g. ``<\example>``), with the value for the setting held between the ``<value>`` and ``<\value>`` tag. 
+The configuration is stored in an XML file called 'DataSearches.xml', and there are some differences in the contents of this file between the MapInfo and the ArcGIS implementations of the tool. Please ensure that you are using the correct XML file, examples of both of which can be found in the :doc:`appendix <../appendix/appendix>`. Attributes and settings are presented as nodes (beginning with a start node, e.g. ``<example>``, and finishing with an end note, e.g. ``<\example>``), with the value for the setting held between the ``<value>`` and ``<\value>`` tag. 
 
 .. note:: 
 	The name of the configuration file must be 'DataSearches.xml'. The tool will not load if a different name is used.
@@ -34,7 +34,7 @@ Setup for ArcGIS
 
 **General attributes**
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches Tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.1 of the Data Searches Tool.
+The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.1 of the Data Searches Tool.
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -341,7 +341,7 @@ As a final step the Data Searches tool is added to the toolbar. This is done fro
 
 .. _figAddInCommands:
 
-.. figure:: figures/AddIncommandsAnnotated.png
+.. figure:: figures/AddInCommandsAnnotated.png
 	:align: center
 
 	Finding the Data Searches tool in the add-in commands.

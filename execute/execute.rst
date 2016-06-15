@@ -6,13 +6,13 @@ The operation of the Data Searches tool is explained in this section. While the 
 
 As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Data Searches tool is operated from a GIS project file within which the data required to run the tool is already loaded. It also relies on an Access database with details about the searches, and a configuration document. Therefore, before running the tool, ensure the following conditions are met:
 
-- A GIS document has been created which contains both the search layer(s) and the data layers describing protected sites and species that will be queried, as required. 
+- A GIS document has been created which contains both the search sites layer(s) and the data layers describing protected sites and species that will be queried, as required. 
 - An Access database exists that contains the relevant information about the searches, in the correct tables and formats.
-- The search layer(s) have a column that contains the unique reference for each search, and this reference has the correct format.
+- The search sites layer(s) have a column that contains the unique reference for each search, and this reference has the correct format.
 - The XML configuration document has been set up correctly, both for general settings and for each individual layer that will be queried. It is named correctly.
 - The Data Searches tool has been installed and set up.
 
-Please refer to the :doc:`setup` <../setup/setup>` section for further information about any of these requirements.
+Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
 
 
 
