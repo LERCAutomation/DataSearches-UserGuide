@@ -168,7 +168,7 @@ StatisticsColumns
 	If ``GroupColumns`` are specified, statistics may be requested from any columns in the input layer. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;STATISTIC``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the ``Columns`` list as described above.
 
 OrderColumns
-	A comma-separated list of columns by which the results should be ordered in the tabular output for this layer. The order of this list overrides any order in the ```GroupColumns```_ attribute.
+	A comma-separated list of columns by which the results should be ordered in the tabular output for this layer. The order of this list overrides any order in the ```GroupColumns`` <GroupColumns>`_ attribute.
 
 Criteria
 	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include AND and OR statements and similar. String values should be enclosed in single quotes. An example might be ``Name = 'myName' AND Year > 2010``. Only records that match the criteria will be exported. 
