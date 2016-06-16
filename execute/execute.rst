@@ -14,8 +14,36 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 
 Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
 
+Opening the form
+----------------
+
+To open the Data Searches tool, click on the Data Searches tool button (ArcGIS; see :numref:`figLaunchArcGIS`), or open the tool in the Tools menu (MapInfo). 
 
 
+.. _figLaunchArcGIS:
+
+.. figure:: figures/LaunchSearchesTool.png
+	:align: center
+
+	Launching the Data Searches tool (ArcGIS).
+
+
+If there are any structural issues with the XML document, the tool will display a message with the error it has encountered and not load any further. If any of the map layers that are listed in the configuration document are not present, a warning will be shown (:numref:`figLaunchWarning`). The layers that are missing will not be loaded into the form and so cannot be included in the analysis. Provided that the XML document is otherwise correct, the form will display (:numref:`figDisplayForm`).
+
+
+.. _figLaunchWarning:
+
+.. figure:: figures/LaunchWarningArcGIS.png
+	:align: center
+
+	A warning is displayed for any data layers not loaded in the GIS project.
+
+.. _figDisplayform:
+
+.. figure:: figures/DisplayFormArcGIS.png
+	:align: center
+
+	The form is displayed with the available data layers shown.
 
 
 - Slight differences for MI / AG
