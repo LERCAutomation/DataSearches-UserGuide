@@ -48,6 +48,9 @@ If there are any structural issues with the XML document, the tool will display 
 Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnown`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknown`).
 
 
+Filling in the form
+-------------------
+
 .. _figSearchRefKnown:
 
 .. figure:: figures/SearchReferenceKnown.png
@@ -64,7 +67,7 @@ Enter the search reference in the Search Reference box. If the search reference 
 
 
 
-Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers are shown in blue, layers that will not be included remain white (:numref:`figSelectLayers`).
+Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers are shown highlighted, layers that will not be included remain white (:numref:`figSelectLayers`).
 
 
 
@@ -74,6 +77,16 @@ Now select the data layers you wish to search in the 'Layers to Search' box. Use
 	:align: center
 
 	Select the layers you wish to search.
+
+Next, select the buffer size and units in the Buffer Size and Buffer Units boxes (:numref:`figBufferSettings`). The buffer size box accepts decimal points. A buffer size of zero (0) is acceptable, however in ArcGIS the tool will create a buffer polygon of 0.01 metres if a zero buffer size is specified, in order for the buffer layer to be symbolised correctly.
+
+
+.. _figBufferSettings:
+
+.. figure:: figure/BufferSettings.png
+	:align: center
+
+	Select the buffer size and units you wish the search to use.
 
 
 
