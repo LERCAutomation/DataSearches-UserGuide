@@ -57,7 +57,7 @@ Enter the search reference in the Search Reference box. If the search reference 
 
 .. _figsearchRefUnknown:
 
-.. figure:: figures/SearchReferenceUknown.png
+.. figure:: figures/SearchReferenceUnknown.png
 	:align: center
 
 	Site name can be filled in by hand if the search reference is not found in the Access database.
