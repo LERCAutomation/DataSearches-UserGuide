@@ -45,6 +45,37 @@ If there are any structural issues with the XML document, the tool will display 
 
 	The form is displayed with the available data layers shown.
 
+Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnown`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknown`).
+
+
+.. _figSearchRefKnown:
+
+.. figure:: figures/SearchReferenceKnown.png
+	:align: center
+
+	Site name displays automatically if the search reference is found in the Access database.
+
+.. _figsearchRefUnknown:
+
+.. figure:: figures/SearchReferenceUknown.png
+	:align: center
+
+	Site name can be filled in by hand if the search reference is not found in the Access database.
+
+
+
+Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers are shown in blue, layers that will not be included remain white (:numref:`figSelectLayers`).
+
+
+
+.. _figSelectLayers:
+
+.. figure:: figures/SelectLayers.png
+	:align: center
+
+	Select the layers you wish to search.
+
+
 
 - Slight differences for MI / AG
 - Worked example(s)
