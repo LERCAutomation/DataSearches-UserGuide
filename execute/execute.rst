@@ -158,7 +158,9 @@ When the analysis is finished, a message box will appear (:numref:`figFinished`)
 
 In the map interface, the results of the analysis are added as requested. 
 
-In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar`_ given in the XML document. Where requested in the configuration (using the `LayerFile`_ attribute), symbology is applied to each result layer using layer files. An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note that only results for those layers for which features were found within the search radius were added.
+In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar`_ given in the XML document. Where requested in the configuration (using the `LayerFile`_ attribute), symbology is applied to each result layer using layer files. Unless the buffer radius specified is zero, the system will zoom to the extent of the buffer that has been created during the search. 
+
+An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note that only results for those layers for which features were found within the search radius were added.
 
 .. _figResultsArcGIS:
 
