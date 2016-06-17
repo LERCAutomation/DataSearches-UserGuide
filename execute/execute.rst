@@ -80,7 +80,6 @@ Now select the data layers you wish to search in the 'Layers to Search' box. Use
 
 Next, select the buffer size and units in the Buffer Size and Buffer Units boxes (:numref:`figBufferSettings`). The buffer size box accepts decimal points. A buffer size of zero (0) is acceptable, however in ArcGIS the tool will create a buffer polygon of 0.01 metres if a zero buffer size is specified, in order for the buffer layer to be symbolised correctly.
 
-
 .. _figBufferSettings:
 
 .. figure:: figures/BufferSettings.png
@@ -99,7 +98,7 @@ When either of the 'Yes' options is selected, layers will be added to the map in
 .. note:: 
 	If the `KeepLayer`_ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the dropdown list.
 
-If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. There are three options: 
+If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. [Andy I can disable this dropdown box in ArcGIS in this instance. I assume MapInfo won't support that?] There are three options: 
 
 - No. Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist. In this case the labels will be numbered from 1 and increase incrementally for each feature. This counter will increment continuously for any other layers for which the given map label column does not exist (i.e. the counter will not reset to zero for each new layer).
 - Yes -  Reset Counter. 
@@ -137,12 +136,48 @@ Finally, select whether a combined sites table should be created by checking or 
 
 	Select options for the combined sites table and log file.
 
-	
+
+While the data searches tool is running the analysis, the map interface will become inactive. In ArcGIS, the screen will show 'Paused'. Once the analysis is finished the interface will reactivate.
+
+When the analysis is finished, a message box will appear (:numref:`figFinished`). If you would like to rerun the analysis (for example, for different data layers, or for a different buffer size), choose to keep the form open and it will retain the information as it was entered for the current analysis. Once you have made your choice, the log file will be shown using Notepad (:numref:`figLogFile`). Using this you can review whether the search was carried out as expected. When you are finished, close the log file. It has already been saved in the analysis folder for future reference.
 
 
-- Slight differences for MI / AG
-- Worked example(s)
-- Creating a project with pre-loaded layers
-- Note: overwrite of outputs
-- Why is this happening (reporting tool – only likely to be the combined sites table unless using same layer at different buffer distances)
-- What to do about it (e.g. split the search into two; save into different subdirectories)
+.. _figFinished:
+
+.. figure:: figures/Finished.png
+	:align: center
+
+	Once the process finishes a message box is shown.
+
+.. _figLogFile:
+
+.. figure:: figures/LogFile.png
+	:align: center
+
+	The log file is shown for review.
+
+In the map interface, the results of the analysis are added as requested. 
+
+In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar`_ given in the XML document. Where requested in the configuration (using the `LayerFile`_ attribute), symbology is applied to each result layer using layer files. An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note that only results for those layers for which features were found within the search radius were added.
+
+.. _figResultsArcGIS:
+
+.. figure:: figures/ResultsArcGIS.png
+	:align: center
+
+	The results are added to the map (ArcGIS).
+
+
+
+[MapInfo version here]
+
+
+Now you can repeat the analysis as required. 
+
+.. warning:: 
+	When you rerun the analysis using the **same search reference**, for example with a different buffer size, it is likely that certain outputs are overwritten:
+
+	- The combined sites table will be overwritten for every repeat of a search using the same reference.
+	- Output tables and GIS output will be overwritten if the same map layer is included in a second search.
+
+	The reason for this is that the Reporting tool [Andy do you have a reference?], which can be run on the results of the data search, has certain requirements. The easiest way to resolve this issue is by moving the results of the first search to a different folder, e.g. one containing the buffer size in the name. At this version it is not possible to do this automatically. [Andy, we can change this easily by allowing people to use the keyword %buffersize% in the savefolder name. Let me know if you want to implement this].
