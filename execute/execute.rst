@@ -67,7 +67,7 @@ Filling in the form
 
 
 
-Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers are shown highlighted, layers that will not be included remain white (:numref:`figSelectLayers`).
+Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers will appear highlighted, layers that will not be included remain white (:numref:`figSelectLayers`).
 
 
 
@@ -83,11 +83,61 @@ Next, select the buffer size and units in the Buffer Size and Buffer Units boxes
 
 .. _figBufferSettings:
 
-.. figure:: figure/BufferSettings.png
+.. figure:: figures/BufferSettings.png
 	:align: center
 
 	Select the buffer size and units you wish the search to use.
 
+Decide whether you wish to add the results of the search to the screen and select the relevant option in the Add Selected Layers to Map dropdown box. There are three options (:numref:`figLayerSettings`):
+
+- No. Layers will not be added to the map.
+- Yes - Without labels. Layers will be added to the map but will not be labelled.
+- Yes - With labels. Layers will be added to the map and will be labelled.
+
+When either of the 'Yes' options is selected, layers will be added to the map in accordance with the settings that are given for each map layer in the configuration document. 
+
+.. note:: 
+	If the `KeepLayer`_ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the dropdown list.
+
+If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. There are three options: 
+
+- No. Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist. In this case the labels will be numbered from 1 and increase incrementally for each feature. This counter will increment continuously for any other layers for which the given map label column does not exist (i.e. the counter will not reset to zero for each new layer).
+- Yes -  Reset Counter. 
+- Yes - Increment Counter
+
+.. note::
+	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
+
+	- If no `LabelColumn`_ is given in the configuration file, the map layer will not be labelled in any circumstance.
+	- If the `OverwriteLabels`_ attribute is set to ``no``, the labels for this map layer will not be overwritten even if requested by the user.
+
+
+.. _figLayerSettings:
+
+.. figure:: figures/AddLayerSettings.png
+	:align: center
+
+	Select how results should be added to the map, if at all.
+
+
+.. _figLabelSettings:
+
+.. figure:: figures/LabelSettings.png
+	:align: center
+
+	Select how labels should be added to the map, if at all.
+
+
+Finally, select whether a combined sites table should be created by checking or unchecking the 'Create Combined Sites Table' checkbox, and whether the log file should be cleared before the analysis by checking or unchecking the 'Clear Log File' checkbox (:numref:`figCheckBoxes`). Click 'OK' for the analysis to start.
+
+.. _figCheckBoxes:
+
+.. figure:: figures/Checkboxes.png
+	:align: center
+
+	Select options for the combined sites table and log file.
+
+	
 
 
 - Slight differences for MI / AG
