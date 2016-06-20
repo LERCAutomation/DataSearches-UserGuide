@@ -102,7 +102,7 @@ Decide whether you wish to add the results of the search to the screen and selec
 When either of the 'Yes' options is selected, layers will be added to the map in accordance with the settings that are given for each map layer in the configuration document. 
 
 .. note:: 
-	If the `KeepLayer`_ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the dropdown list.
+	If the `KeepLayer <setup.rst#Keeplayer>`_ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the dropdown list.
 
 If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. [Andy I can disable this dropdown box in ArcGIS in this instance. I assume MapInfo won't support that?] There are three options: 
 
