@@ -15,7 +15,7 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 - The XML configuration document has been set up correctly, both for general settings and for each individual layer that will be queried. It is named correctly.
 - The Data Searches tool has been installed and set up.
 
-Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
+Please refer to the :doc:`setup <../setup/setup#format>` section for further information about any of these requirements.
 
 .. index::
 	single: Opening the form
@@ -113,8 +113,8 @@ If you have selected 'Yes - With labels', select how labels should be added in t
 .. note::
 	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
 
-	- If no `LabelColumn`_ is given in the configuration file, the map layer will not be labelled in any circumstance.
-	- If the `OverwriteLabels`_ attribute is set to ``no``, the labels for this map layer will not be overwritten even if requested by the user.
+	- If no `LabelColumn <../setup/setup.html#labelcolumn>`__ is given in the configuration file, the map layer will not be labelled in any circumstance.
+	- If the `OverwriteLabels <../setup/setup.html#overwritelabels>`__ attribute is set to ``no``, the labels for this map layer will not be overwritten even if requested by the user.
 
 
 .. _figLayerSettings:
@@ -171,7 +171,7 @@ When the analysis is finished, a message box will appear (:numref:`figFinished`)
 
 In the map interface, the results of the analysis are added as requested. 
 
-In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar`_ given in the XML document. Where requested in the configuration (using the `LayerFile`_ attribute), symbology is applied to each result layer using layer files. Unless the buffer radius specified is zero, the system will zoom to the extent of the buffer that has been created during the search. 
+In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar <../setup/setup.html#repchar>`__ given in the XML document. Where requested in the configuration (using the `LayerFile <../setup/setup.html#layerfile>`__ attribute), symbology is applied to each result layer using layer files. Unless the buffer radius specified is zero, the system will zoom to the extent of the buffer that has been created during the search. 
 
 An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note that only results for those layers for which features were found within the search radius were added.
 
@@ -185,7 +185,7 @@ An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note th
 
 [MapInfo version here]
 
-All exported data tables, GIS layers and the log file are kept in the `GISFolder`_ as specified in the XML document. 
+All exported data tables, GIS layers and the log file are kept in the `GISFolder <../setup/setup.html#gisfolder>`__ as specified in the XML document. 
 
 
 Now you can repeat the analysis as required. 
