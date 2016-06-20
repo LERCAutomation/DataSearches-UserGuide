@@ -191,7 +191,6 @@ _`KeyColumn`
 _`Format`
 	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
 
-.. _KeepLayer:
 _`KeepLayer`
 	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``no`` is entered all geographical data generated for this data layer during the process will be deleted. If ``yes`` is entered, a data layer will be created that follows the naming convention ``Prefix_subref.shp``. The use of the ``subref`` keyword in this case is predefined and cannot be changed. 
 
