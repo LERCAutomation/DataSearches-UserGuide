@@ -32,6 +32,10 @@ Once editing has been completed and the edits have been saved, it is recommended
 Setup for ArcGIS
 ----------------
 
+.. index::
+	single: General attributes for ArcGIS
+
+
 **General attributes**
 
 The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.1 of the Data Searches Tool.
@@ -125,6 +129,10 @@ _`CombinedSitesTable`
 		The format that the combined sites table should have. Choose from ``csv`` or ``txt``.
 
 
+.. index::
+	single: Map layer attributes for ArcGIS
+
+
 **Map layer attributes**
 
 All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new child node is created that has the name of the layer (e.g. ``<SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is shown in the ArcGIS table of contents (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figArcGISUI`. 
@@ -183,6 +191,7 @@ _`KeyColumn`
 _`Format`
 	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
 
+.. _KeepLayer:
 _`KeepLayer`
 	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``no`` is entered all geographical data generated for this data layer during the process will be deleted. If ``yes`` is entered, a data layer will be created that follows the naming convention ``Prefix_subref.shp``. The use of the ``subref`` keyword in this case is predefined and cannot be changed. 
 
@@ -227,12 +236,23 @@ _`CombinedSitesOrderByColumns`
 	All entries in the configuration file are **case sensitive**. Most common errors in the setting up of the tool are caused by using the incorrect case for entries.
 
 
+.. index::
+	single: Setup for MapInfo
+
+
 Setup for MapInfo
 -----------------
+
+.. index::
+	single: Installing the tool
 
 
 Installing the tool
 ===================
+
+.. index::
+	single: Installing the tool in ArcGIS
+
 
 ArcGIS
 ------
@@ -362,6 +382,9 @@ In order to function, the tool needs to know the location of the XML configurati
 	:align: center
 
 	Locating the configuration file folder.
+
+.. index::
+	single: Installing the tool in MapInfo
 
 MapInfo
 -------

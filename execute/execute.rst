@@ -1,3 +1,6 @@
+.. index::
+	single: Running the tool
+
 ****************
 Running the tool
 ****************
@@ -13,6 +16,9 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 - The Data Searches tool has been installed and set up.
 
 Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
+
+.. index::
+	single: Opening the form
 
 Opening the form
 ----------------
@@ -47,6 +53,8 @@ If there are any structural issues with the XML document, the tool will display 
 
 Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnown`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknown`).
 
+.. index::
+	single: Filling in the form
 
 Filling in the form
 -------------------
@@ -68,8 +76,6 @@ Filling in the form
 
 
 Now select the data layers you wish to search in the 'Layers to Search' box. Use <ctrl> to select individual layers, or <shift> to select a range of layers. Selected layers will appear highlighted, layers that will not be included remain white (:numref:`figSelectLayers`).
-
-
 
 .. _figSelectLayers:
 
@@ -137,6 +143,13 @@ Finally, select whether a combined sites table should be created by checking or 
 	Select options for the combined sites table and log file.
 
 
+.. index::
+	single: Analysis results
+
+
+Analysis Results
+----------------
+
 While the data searches tool is running the analysis, the map interface will become inactive. In ArcGIS, the screen will show 'Paused'. Once the analysis is finished the interface will reactivate.
 
 When the analysis is finished, a message box will appear (:numref:`figFinished`). If you would like to rerun the analysis (for example, for different data layers, or for a different buffer size), choose to keep the form open and it will retain the information as it was entered for the current analysis. Once you have made your choice, the log file will be shown using Notepad (:numref:`figLogFile`). Using this you can review whether the search was carried out as expected. When you are finished, close the log file. It has already been saved in the analysis folder for future reference.
@@ -170,8 +183,9 @@ An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note th
 	The results are added to the map (ArcGIS).
 
 
-
 [MapInfo version here]
+
+All exported data tables, GIS layers and the log file are kept in the `GISFolder`_ as specified in the XML document. 
 
 
 Now you can repeat the analysis as required. 
