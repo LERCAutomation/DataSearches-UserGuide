@@ -33,7 +33,7 @@ The selected features are exported in the format required by the user. This can 
 For statutory reasons the search radius may vary between (for example) protected sites and protected species. In this case the search needs to be repeated with a new buffer layer.
 
 .. index::
-	single: The Data Searches Tool
+	single: Tool overview
 
 The Data Searches Tool
 ======================

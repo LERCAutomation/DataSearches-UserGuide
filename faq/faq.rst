@@ -9,48 +9,46 @@ Frequently Asked Questions
 This is a list of Frequently Asked Questions about the HLU Tool. Feel free to
 suggest new entries!
 
+General questions
+=================
 
 **How do I get a copy of the tool?**
 
-	This is a test it is a very quick test.
-	The source code can be downloaded from `HabitatFramework/HLUTool <https://github.com/HabitatFramework/HLUTool>`_ and the latest installer setups for ArcGIS/MapInfo and MapInfo only can be downloaded from `HabitatFramework/HLUTool/Releases <https://github.com/HabitatFramework/HLUTool/releases>`_.
-
-**Do I have to use IHS with the tool?**
-
-	Yes, IHS is an integral part of the tool and data structure. It is likely that your existing habitat data can be translated into IHS and, once in IHS, it can easily be exported as IHS habitats, Broad habitats or Priority habitats.
-
-**Why does the tool title bar show [READ ONLY]?**
-
-	This shows that the data cannot currently be edited. This is either because your userid has not been added to the database or has been added incorrectly (see 'Lookup Tables' in the `HLUTool-TechnicalGuide <https://readthedocs.org/projects/hlutool-technicalguide/>`_ for details), or the active GIS layer is not in an active edit state. Once both of these conditions have been met click on the main window and the [READ ONLY] status should disappear.
-
-**Can I use data that isn't snapped to OS MasterMap?**
-
-	Technically you could but only by providing dummy, unique TOID values to every feature in your data. This is because the tool is designed to use the TOID to determine when a physical split or merge is to be performed and to manage the TOID_Fragment_IDs. Without dummy, unique TOIDs the tool would assume all the features in you data are fragments of the same 'blank' TOID which would heavily impact on performance. However, integrating habitat data with OS MasterMap also brings other benefits such as providing spatial accuracy to your data and providing a framework within which more recent or comprehensive habitat and land use data can be applied. See :ref:`habitat_framework` for more details.
-
-**How do I convert my existing data into the required format?**
-
-	The conversion of one or more existing habitat layers into a state that can be used with the HLU Tool is not simple, but the process brings all the benefits of having an OS MasterMap framework, and once completed the benefits of using the HLU Tool. There are up to 4 steps required to convert existing habitat layer(s) so that it can be used by the HLU Tool:
-
-		1. Translate the habitat code(s) to IHS.
-		2. Create an OS MasterMap framework for your regional extent and load with the IHS habitat data.
-		3. Assign the OS MasterMap framework the required attributes to format them to match the required standards.
-		4. Load the attribute data into the target relational database and save the spatial and minimum attribute data in a valid HLU GIS layer format.
-
-	It is recommended that the conversion is performed by someone familiar with IHS and the OS MasterMap framework, expert in the configuration of the HLU Tool, experienced in advanced GIS geospatial processing, and ideally expert in SQL Server and developing data conversion routines. Enquiries can be made via the `ALERC forum <http://forum.lrcs.org.uk/viewforum.php?id=24>`_.
-
-**Can I hide IHS habitats that don't occur in my region from the drop-down lists?**
-
-	You can currently hide IHS habitats from the `Habitat` list on the IHS tab in the main window (see 'Lookup Tables' in the `HLUTool-TechnicalGuide <https://readthedocs.org/projects/hlutool-technicalguide/>`_ for details). There is also a planned change request to enable non-local IHS Habitats to be hidden from the `Habitat Type` list on the `Sources` tab in the main window.	
+	The source code as well as the installer setups can be downloaded from GitHub (`MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases>`_ or `ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases>`_). Please ensure that you use the correct configuration file, copies of which are included in the `Appendix <../appendix/appendix>`_. An example file is also included with the release.
 
 **Can several people use the tool at the same time?**
 
-	Any number of users can use the tool for read-only access if they have a copy of the tool installed on their PC. Multiple users can also use the tool in edit mode but only within the limits of the database system and GIS application used by the tool. So the GIS layer and database would also have to be configured to support multiple users.
+	Any number of users can use the tool if they have a copy of the tool installed on their PC. The tool uses all layers that are loaded in the interface in a read-only fashion, and so there is no limit to the number of users of the tool. Where all outputs are written to a central (network) location, it is important to ensure that no two users are running a search on the same search reference at the same time as this can lead to unexpected results. [Andy, again we could safeguard against this by allowing for tagging output folders with a %user% tag. That may also help a little with traceability?]
 
 **Does the tool work with QGIS?**
 
-	Currently only ArcGIS and MapInfo are supported with the tool. However, if funding was available the tool could be adapted to also support QGIS.
+	Currently only ArcGIS and MapInfo implementations of the tool exist. However, if funding was available the tool could be adapted to also support QGIS.
+
+Operating the tool
+==================
+
+**One of the data layers I want to use isn't showing in the form. How do I get it to show up?**
+
+	This issue can arise in several ways:
+
+	- The layer isn't loaded in your GIS document. In this case, a `message will pop up <../execute/execute.html#figLaunchWarning>`__ before the form is shown telling you the layer isn't loaded. Add the layer to the GIS and the problem should be resolved.
+	- The layer isn't listed in the XML configuration document. Please refer to the :doc:`setup <../setup/setup>`_ section and add it as a map layer.
+	- The map layer is listed in the configuration document, but the `LayerName <../setup/setup.html#LayerName>`_ is spelled incorrectly. Note that the name is case sensitive and must follow the exact format of the name of the layer in the GIS document.
+
+**I ran a data search twice with different radius settings. The combined sites table only has one set of results**
+
+	When the same search reference is used twice, the combined sites table is overwritten in the second search. Please see the `warning <../execute/execute.html#OverwriteWarning>`_  in the 'Running the Tool' section for details. To avoid this situation occurring, move the results from the first search to a different folder before carrying out the second search.
+
+**I ran a data search twice with different radius settings and included the same data layers. There is only one set of results**
+
+	When the same search reference is used twice, the output from any layers that were included in the first search will be overwritten. Please see the `warning <../execute/execute.html#OverwriteWarning>`_  in the 'Running the Tool' section for details. To avoid this situation occurring, move the results from the first search to a different folder before carrying out the second search.
+
+
+Tool issues
+===========
 
 **How do I report a new bug or propose a change in the tool?**
 
-	Please check the existing known issues and change requests on `HabitatFramework/HLUTool/Issues <https://github.com/HabitatFramework/HLUTool/issues>`_ before reporting/proposing new issues or changes. New issues or proposed changes can be posted on the `ALERC forum <http://forum.lrcs.org.uk/viewforum.php?id=24>`_
+	Please check the existing known issues and change requests on the LERCAutomation pages on GitHub (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/issues>`_, `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) before reporting/proposing new issues or changes. If you have a new issue or request you can submit it there and it will be picked up by the developers. Alternatively, you can email suggestions to `Hester <mailto:Hester@HesterLyonsConsulting.co.uk>`_ or `Andy <mailto:Andy@AndyFoyConsulting.co.uk>`_. 
+
 

@@ -137,7 +137,7 @@ Finally, select whether a combined sites table should be created by checking or 
 
 .. _figCheckBoxes:
 
-.. figure:: figures/Checkboxes.png
+.. figure:: figures/CheckBoxes.png
 	:align: center
 
 	Select options for the combined sites table and log file.
