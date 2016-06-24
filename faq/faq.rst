@@ -14,7 +14,7 @@ General questions
 
 **How do I get a copy of the tool?**
 
-	The source code as well as the installer setups can be downloaded from GitHub (`MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases>`_ or `ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases>`_). Please ensure that you use the correct configuration file, copies of which are included in the `Appendix <../appendix/appendix>`_. An example file is also included with the release.
+	The source code as well as the installer setups can be downloaded from GitHub (`MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases>`_ or `ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases>`_). Please ensure that you use the correct configuration file, copies of which are included in the :doc:`Appendix <../appendix/appendix>`_. An example file is also included with the release.
 
 **Can several people use the tool at the same time?**
 
@@ -32,7 +32,7 @@ Operating the tool
 	This issue can arise in several ways:
 
 	- The layer isn't loaded in your GIS document. In this case, a `message will pop up <../execute/execute.html#figlaunchwarning>`__ before the form is shown telling you the layer isn't loaded. Add the layer to the GIS and the problem should be resolved.
-	- The layer isn't listed in the XML configuration document. Please refer to the `setup <../setup/setup>`_ section and add it as a map layer.
+	- The layer isn't listed in the XML configuration document. Please refer to the :doc:`setup <../setup/setup>`_ section and add it as a map layer.
 	- The map layer is listed in the configuration document, but the `LayerName <../setup/setup.html#layername>`_ is spelled incorrectly. Note that the name is case sensitive and must follow the exact format of the name of the layer in the GIS document.
 
 **I ran a data search twice with different radius settings. The combined sites table only has one set of results**
