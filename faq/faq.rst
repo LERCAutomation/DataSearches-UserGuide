@@ -18,7 +18,7 @@ General questions
 
 **Can several people use the tool at the same time?**
 
-	Any number of users can use the tool if they have a copy of the tool installed on their PC. The tool uses all layers that are loaded in the interface in a read-only fashion, and so there is no limit to the number of users of the tool. Where all outputs are written to a central (network) location, it is important to ensure that no two users are running a search on the same search reference at the same time as this can lead to unexpected results. [Andy, again we could safeguard against this by allowing for tagging output folders with a %user% tag. That may also help a little with traceability?]
+	Any number of users can use the tool if they have a copy of the tool installed on their PC. The tool uses all layers that are loaded in the interface in a read-only fashion, and so there is no limit to the number of users of the tool. Where all outputs are written to a central (network) location, it is important to ensure that no two users are running a search on the same search reference at the same time as this can lead to unexpected results. [Andy, we could safeguard against this by allowing for tagging output folders with a %user% tag. That may also help a little with traceability?]
 
 **Does the tool work with QGIS?**
 

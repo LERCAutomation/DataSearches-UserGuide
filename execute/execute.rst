@@ -198,4 +198,4 @@ Now you can repeat the analysis as required.
 	- The combined sites table will be overwritten for every repeat of a search using the same reference.
 	- Output tables and GIS output will be overwritten if the same map layer is included in a second search.
 
-	The reason for this is that the Reporting tool [Andy do you have a reference?], which can be run on the results of the data search, has certain requirements. The easiest way to resolve this issue is by moving the results of the first search to a different folder, e.g. one containing the buffer size in the name. At this version it is not possible to do this automatically. [Andy, we can change this easily by allowing people to use the keyword %buffersize% in the savefolder name. Let me know if you want to implement this].
+	The reason for this is that the Reporting tool [Andy do you have a reference?], which can be run on the results of the data search, has certain requirements. The easiest way to resolve this issue is by moving the results of the first search to a different folder, e.g. one containing the buffer size in the name. At this version it is not possible to do this automatically. 
