@@ -15,7 +15,7 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 - The XML configuration document has been set up correctly, both for general settings and for each individual layer that will be queried. It is named correctly.
 - The Data Searches tool has been installed and set up.
 
-Please refer to the :doc:`setup <../setup/setup>`_ section for further information about any of these requirements.
+Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
 
 .. index::
 	single: Opening the form
