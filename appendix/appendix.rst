@@ -10,7 +10,8 @@ Example XML file for ArcGIS
 
 Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note many of the settings have been included for illustration only and it is up to the user to ensure the system is configured to their requirements.
 
-``<?xml version="1.0" encoding="utf-8"?>
+``
+<?xml version="1.0" encoding="utf-8"?>
 
 <!--
 WARNING: This file should be changed carefully and a backup should be
