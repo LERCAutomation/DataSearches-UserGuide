@@ -447,6 +447,10 @@ used by the Add-in tool to select and export ArcMap data for each data search.
 </configuration>
 ``
 
+.. raw:: latex
+
+    \newpage
+
 .. index::
     single: Example XML file for MapInfo
 
