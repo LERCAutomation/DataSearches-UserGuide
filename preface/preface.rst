@@ -62,7 +62,7 @@ The code for the Data Searches Tool is 'open source' and is released under the `
 
 This guide is released under the `GNU Free Documentation License (FDL) v1.3 <http://www.gnu.org/licenses/fdl.html>`_. Permission is granted to copy, distribute and/or modify this document under the terms of the license.
 
-Please remember, however, that the tool cost a lot of money to develop and still requires further development and ongoing support. Hence any contributions towards costs would be gratefully received. Enquiries can be made via the `ALERC forum <http://forum.lrcs.org.uk/viewforum.php?id=24>`_.
+Please remember, however, that the tool cost a lot of money to develop and still requires further development and ongoing support. Hence any contributions towards costs would be gratefully received. Enquiries can be made via email to either `Hester <mailto:Hester@HesterLyonsConsulting.co.uk>`_ or `Andy <mailto:Andy@AndyFoyConsulting.co.uk>`_. .
 
 
 .. index::
@@ -73,10 +73,9 @@ Useful links
 
 Related community links:
 
-* `Users <http://forum.lrcs.org.uk/viewforum.php?id=24>`_ - Announcements, bug reports, user Q&A and feature discussions.
-* Administrators (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects/releases/>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases/>`_) - Release notes and installers for ArcGIS and MapInfo systems.
-* Developers (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) - Source code for the Data Searches Tool.
-* Issues (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects/issues>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/issues>`_) - Details of known issues and existing change requests.
+* Administrators (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases/>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases/>`_) - Release notes and installers for ArcGIS and MapInfo systems.
+* Developers (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) - Source code for the Data Searches Tool.
+* Issues (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/issues>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/issues>`_) - Details of known issues and existing change requests.
 
 
 .. index::
@@ -85,7 +84,7 @@ Related community links:
 Acknowledgements
 ================
 
-Many thanks are due to all the LRCs in the south-east of England and their staff who have, and continue to, fund and contribute to the HLU Tool.  It takes a small army of developers, testers and users to build a truly useful tool (especially users who care enough to test new releases, report bugs and discuss feature requests).
+Many thanks are due to all the LRCs in the south-east of England and their staff who have, and continue to, fund and contribute to the Data Searches tool.  It takes many developers, testers and users to build a truly useful tool (especially users who care enough to test new releases, report bugs and discuss feature requests).
 
 
 .. raw:: latex

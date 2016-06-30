@@ -15,7 +15,7 @@ The configuration is stored in an XML file called 'DataSearches.xml', and there 
 .. note:: 
 	The name of the configuration file must be 'DataSearches.xml'. The tool will not load if a different name is used.
 
-The XML files can be edited in a text editor such as Notepad or Wordpad, or using a more feature rich XML editor such as as `Sublime Text <https://www.sublimetext.com/3>`_. The configuration file is split into two sections: a section containing general attributes of the searches, and a section that deals with the way each data layer should be handled. This structure is the same for both implementations of the tool. 
+The XML file can be edited in a text editor such as Notepad or Wordpad, or using a more feature rich XML editor such as as `Sublime Text <https://www.sublimetext.com/3>`_. The configuration file is split into two sections: a section containing general attributes of the searches, and a section that deals with the way each data layer should be handled. This structure is the same for both implementations of the tool. 
 
 .. note::
 	It is important that the structure of the file is maintained as it is presented in the :doc:`appendix <../appendix/appendix>`. Any changes to the structure may result in the Data Searches Tool not loading, or not working as expected.
@@ -92,7 +92,7 @@ _`BufferLayerName`
 	The name of the layer file (kept in the `LayerFolder`_) which will be used to symbolise the buffer layer. Must include the ``.lyr`` extension.
 
 _`SearchLayer`
-	The name of the data searches GIS layer in the interface. There may be either a single search layer (of either points, polygons or lines) of this name, or there may be multiple search layers present (e.g. one of each format) in which case their names should begin with the SearchLayer entry. See :numref:`figArcGISUI` for an example. In the case of this example, the entry for this node was ``SearchSites`` and the `SearchLayerExtension`_ entry (see next attribute) was ``_point;_poly;_line``. 
+	The name of the data searches GIS layer in the interface. There may be either a single search layer (of either points, polygons or lines) of this name, or there may be multiple search layers present (e.g. one of each format) in which case their names should begin with the SearchLayer entry. See :numref:`figArcGISUI` for an example. In the case of this example, the entry for this node was ``SearchSites`` and the `SearchLayerExtensions`_ entry (see next attribute) was ``_point;_poly;_line``. 
 
 _`SearchLayerExtensions`
 	If multiple search layers are used, this node should contain a list of the extensions for each layer, delimited by semicolons (e.g. in the example used above, the entry was ``_point;_poly;_line``). If only a single layer is used this attribute should be left blank.
@@ -131,7 +131,6 @@ _`CombinedSitesTable`
 
 .. index::
 	single: Map layer attributes for ArcGIS
-
 
 **Map layer attributes**
 

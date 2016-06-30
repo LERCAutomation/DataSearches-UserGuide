@@ -132,9 +132,9 @@ The combined sites table (see :numref:`figCombinedSites`) contains a summary of 
 
 	Example of a combined sites table
 
-Finally, the log file details each step that was taken during the process, and gives some feedback about the outcomes of the steps. This includes reporting on the input for the search, the number of features that were selected in each data layer, and which data layers did not return any features (see :numref:`figLogFile`).
+Finally, the log file details each step that was taken during the process, and gives some feedback about the outcomes of the steps. This includes reporting on the input for the search, the number of features that were selected in each data layer, and which data layers did not return any features (see :numref:`figLogFileExample`).
 
-.. _figLogFile:
+.. _figLogFileExample:
 
 .. figure:: figures/LogFileExample.png
 	:align: center
@@ -142,4 +142,4 @@ Finally, the log file details each step that was taken during the process, and g
 	Example of a Data Searches Tool log file
 
 
-The following chapters, :doc:`setting up the tool <../setup/setup>` and :doc:`using the tool <../execute/execute>`, will guide you through setting up and operating the tool in such a way that these tool outputs meet the exact requirements of data searches within your organisation.
+The following chapters, :doc:`setting up the tool <../setup/setup>` and :doc:`running the tool <../execute/execute>`, will guide you through setting up and operating the tool in such a way that these tool outputs meet the exact requirements of data searches within your organisation.
