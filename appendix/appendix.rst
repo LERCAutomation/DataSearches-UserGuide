@@ -37,7 +37,7 @@ used by the Add-in tool to select and export ArcMap data for each data search.
 <DataSearches>
     <!-- The database where all the data search details are stored. -->
     <Database>
-        <value>H:\Dev\LERCAutomation\DataSearches--ArcObjects2\Access\SxBRC Data Searches v3.52.mdb</value>
+        <value>H:\Access\DataSearchesDetails.mdb</value>
     </Database>
 
     <!-- The field name of the search reference unique value. -->
@@ -52,20 +52,20 @@ used by the Add-in tool to select and export ArcMap data for each data search.
 
     <!-- The character(s) used to replace any special characters in folder names. Space is allowed -->
     <RepChar>
-        <value> </value>
+        <value> </value><!-- Note in this case space is used -->
     </RepChar>
 
     <!-- The folder where the layer files are stored. -->
     <LayerFolder>
-        <value>H:\Dev\LERCAutomation\DataSearches--ArcObjects2\LayerFiles</value>
+        <value>H:\DataSearches\LayerFiles</value>
     </LayerFolder>
 
     <!-- The file location where all data search folders are stored. -->
     <SaveRootDir>
-        <value>H:\Dev\LERCAutomation\DataSearches--ArcObjects2\Reports</value>
+        <value>H:\DataSearches\Reports</value>
     </SaveRootDir>
 
-    <!-- The folder where the report will be saved. -->
+    <!-- The template for folders where the reports will be saved. -->
     <SaveFolder>
         <value>%ref%_%sitename%</value>
     </SaveFolder>
@@ -443,6 +443,1192 @@ used by the Add-in tool to select and export ArcMap data for each data search.
             </CombinedSitesOrderByColumns>
         </NNRs>
     </MapLayers>
+</DataSearches>
+</configuration>
+``
+
+.. index::
+    single: Example XML file for MapInfo
+
+Example XML file for MapInfo
+===========================
+
+Below is an example XML setup for a MapInfo implementation of the tool. This setup is currently in used by a LERC for daily searches.
+
+``
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+WARNING: This file should be changed carefully and a backup should be
+taken before any changes so that they can be backed out.  Changed lines
+can also be commented out as below.
+-->
+
+<!--
+This config file contains all the variables used by the DataSearches
+MapBasic tool.
+
+The 'configuration' node is the 'root' node and signifies the start of the
+contents of the configuration file.
+
+The 'DataSearches' node contains all of the entries relating to the
+MapBasic tool variables.
+
+Each entry relates to a file, folder, table name, column name or other variable
+used by the MapBasic tool to select and export MapInfo data for each data search.
+-->
+
+<configuration>
+<DataSearches>
+
+  <!-- The database where all the data search details are stored. -->
+  <Database>
+    <value>G:\Data search\Data Searches - Data.mdb</value>
+  </Database>
+
+  <!-- The file location where the enquiries table will be stored. -->
+  <EnquiriesDir>
+    <value>G:\Data search\Enquiries</value>
+  </EnquiriesDir>
+
+  <!-- The field name of the search reference unique value. -->
+  <RefColumn>
+    <value>EnquiryRef</value>
+  </RefColumn>
+
+  <!-- The field name of the search reference site name. -->
+  <SiteColumn>
+    <value>SiteName</value>
+  </SiteColumn>
+
+  <!-- The character(s) used to replace any special characters in folder names. -->
+  <RepChar>
+    <value>.</value>
+  </RepChar>
+
+  <!-- The file location where all data search folders are stored. -->
+  <SaveRootDir>
+    <value>G:\Data search\Data Search Folders\2016-2017</value>
+  </SaveRootDir>
+
+  <!-- The folder where the report will be saved. -->
+  <SaveFolder>
+    <value>%ref% %sitename%</value>
+  </SaveFolder>
+
+  <!-- The sub-folder where all data search extracts will be created -->
+  <GISFolder>
+    <value>GIS</value>
+  </GISFolder>
+
+  <!-- The log file name created by the tool to output messages -->
+  <LogFileName>
+    <value>DataSearch_%subref%.log</value>
+  </LogFileName>
+
+  <!-- The default size to use for the buffer -->
+  <DefaultBufferSize>
+    <value>1</value>
+  </DefaultBufferSize>
+
+  <!-- The default option (position in the list) to use for the buffer units -->
+  <DefaultBufferUnit>
+    <value>3</value>
+  </DefaultBufferUnit>
+
+  <!-- The options for the buffer units -->
+  <BufferUnitOptions>
+    <value>Centimetres;cm$Metres;m$Kilometres;km$Feet;ft$Yards;yd$Miles;mi$</value>
+  </BufferUnitOptions>
+
+  <!-- The symbology for the buffer features -->
+  <BufferSymbology>
+    <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)</value>
+  </BufferSymbology>
+
+  <!-- The maximum number of records what will be extracted in any one search extract -->
+  <RecMax>
+    <value>1000000</value>
+  </RecMax>
+
+  <!-- The name of the table to use as the search area -->
+  <SearchTable>
+    <value>SearchSites</value>
+  </SearchTable>
+
+  <!-- The column name in the search area table used to store the search reference -->
+  <SearchColumn>
+    <value>ref</value>
+  </SearchColumn>
+
+  <!-- The buffer aggregate column values -->
+  <AggregateColumns>
+    <value>ref=ref,organisation=organisation,sitename=sitename</value>
+  </AggregateColumns>
+
+  <!-- The options for showing the selected tables -->
+  <AddSelectedTablesOptions>
+    <value>No;Yes - Without labels;Yes - With labels</value>
+  </AddSelectedTablesOptions>
+
+  <!-- The default option (position in the list) for whether selected map tables should be added to the map window -->
+  <DefaultAddSelectedTables>
+    <value>3</value>
+  </DefaultAddSelectedTables>
+
+  <!-- The options for overwritting the map labels -->
+  <OverwriteLabelOptions>
+    <value>No;Yes - Reset Counter;Yes - Increment Counter</value>
+  </OverwriteLabelOptions>
+
+  <!-- Whether any map label columns should be overwritten -->
+  <DefaultOverwriteLabels>
+    <value>3</value>
+  </DefaultOverwriteLabels>
+
+  <!-- Whether a combined sites table should be created -->
+  <DefaultCombinedSitesTable>
+    <value>Yes</value>
+  </DefaultCombinedSitesTable>
+
+  <!-- The column names of the combined sites table -->
+  <CombinedSitesTable>
+    <TableName>
+        <value>Sites</value>
+    </TableName>
+    <Columns>
+        <value>Site_Type Char(10), Site_Name Char(50), Site_Area Float, Map_Label Char(50)</value>
+    </Columns>
+    <Suffix>
+        <value>_sites</value>
+    </Suffix>
+    <Format>
+        <value>csv</value>
+    </Format>
+  </CombinedSitesTable>
+
+  <!-- The names, local names, suffixes, SQL clauses and formats of the map tables -->
+  <MapTables>
+    <Sites_-_SACs>
+        <TableName>
+            <value>SAC</value>
+        </TableName>
+        <Prefix>
+            <value>SAC</value>
+        </Prefix>
+        <Suffix>
+            <value>_sacs</value>
+        </Suffix>
+        <Columns>
+            <value>SAC_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SAC_Name Order By SAC_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SAC_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"SAC", SAC_Name, SAC_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SAC_Name, Map_Label Order By SAC_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_SACs>
+    <Sites_-_SPAs>
+        <TableName>
+            <value>SPA</value>
+        </TableName>
+        <Prefix>
+            <value>SPA</value>
+        </Prefix>
+        <Suffix>
+            <value>_spas</value>
+        </Suffix>
+        <Columns>
+            <value>SPA_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SPA_Name Order By SPA_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SPA_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"SPA", SPA_Name, SPA_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SPA_Name, Map_Label Order By SPA_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_SPAs>
+    <Sites_-_NNRs>
+        <TableName>
+            <value>NNR</value>
+        </TableName>
+        <Prefix>
+            <value>NNR</value>
+        </Prefix>
+        <Suffix>
+            <value>_nnrs</value>
+        </Suffix>
+        <Columns>
+            <value>NNR_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By NNR_Name Order By NNR_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>NNR_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"NNR", NNR_Name, NNR_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By NNR_Name, Map_Label Order By NNR_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_NNRs>
+    <Sites_-_Ramsars>
+        <TableName>
+            <value>RAMSAR</value>
+        </TableName>
+        <Prefix>
+            <value>RAMSAR</value>
+        </Prefix>
+        <Suffix>
+            <value>_ramsars</value>
+        </Suffix>
+        <Columns>
+            <value>Ramsar_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Ramsar_Name Order By Ramsar_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Ramsar_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Ramsar", Ramsar_Name, Ramsar_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By Ramsar_Name, Map_Label Order By Ramsar_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_Ramsars>
+    <Sites_-_SSSIs>
+        <TableName>
+            <value>SSSI</value>
+        </TableName>
+        <Prefix>
+            <value>SSSI</value>
+        </Prefix>
+        <Suffix>
+            <value>_sssis</value>
+        </Suffix>
+        <Columns>
+            <value>SSSI_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SSSI_Name Order By SSSI_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SSSI_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"SSSI", SSSI_Name, SSSI_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SSSI_Name, Map_Label Order By SSSI_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_SSSIs>
+    <Sites_-_LNRs>
+        <TableName>
+            <value>LNR_2015</value>
+        </TableName>
+        <Prefix>
+            <value>LNR</value>
+        </Prefix>
+        <Suffix>
+            <value>_lnrs</value>
+        </Suffix>
+        <Columns>
+            <value>LNR_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By LNR_Name Order By LNR_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>LNR_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"LNR", LNR_Name, LNR_Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By LNR_Name, Map_Label Order By LNR_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_LNRs>
+    <Sites_-_OxonLWS>
+        <TableName>
+            <value>Oxfordshire_Local_Wildlife_Sit</value>
+        </TableName>
+        <Prefix>
+            <value>OxonLWS</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxonlws</value>
+        </Suffix>
+        <Columns>
+            <value>SiteCode + " " + Name "SiteDetails"</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SiteDetails Order By SiteDetails</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SiteCode</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Oxon LWS", SiteCode + " " + Name "SiteDetails", Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxonLWS>
+    <Sites_-_BerksLWS>
+        <TableName>
+            <value>Berkshire_Local_Wildlife_Sites</value>
+        </TableName>
+        <Prefix>
+            <value>BerksLWS</value>
+        </Prefix>
+        <Suffix>
+            <value>_berkslws</value>
+        </Suffix>
+        <Columns>
+            <value>Sitecode + " " + Sitename "SiteDetails"</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SiteDetails Order By SiteDetails</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Sitecode</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Berks LWS", Sitecode + " " + Sitename "SiteDetails", Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_BerksLWS>
+    <Sites_-_OxonpLWS>
+        <TableName>
+            <value>Proposed_Oxfordshire_Local_Wil</value>
+        </TableName>
+        <Prefix>
+            <value>OxonpLWS</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxonplws</value>
+        </Suffix>
+        <Columns>
+            <value>SiteCode + " " + Name "SiteDetails"</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SiteDetails Order By SiteDetails</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SiteCode</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Oxon pLWS", SiteCode + " " + Name "SiteDetails", Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxonpLWS>
+    <Sites_-_BerkspLWS>
+        <TableName>
+            <value>Berkshire_Proposed_LWS_and_Ext</value>
+        </TableName>
+        <Prefix>
+            <value>BerkspLWS</value>
+        </Prefix>
+        <Suffix>
+            <value>_berksplws</value>
+        </Suffix>
+        <Columns>
+            <value>Sitecode + " " + Sitename "SiteDetails"</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SiteDetails Order By SiteDetails</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Sitecode</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Berks pLWS", Sitecode + " " + Sitename "SiteDetails", Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_BerkspLWS>
+    <Sites_-_OxonLGS>
+        <TableName>
+            <value>Oxfordshire_Local_Geological_S</value>
+        </TableName>
+        <Prefix>
+            <value>OxonLGS</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxonlgs</value>
+        </Suffix>
+        <Columns>
+            <value>Site_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Site_Name Order By Site_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Site_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Oxon LGS", Site_Name, Area, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By Site_Name, Map_Label Order By Site_Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxonLGS>
+    <Sites_-_BerksLGS>
+        <TableName>
+            <value>Berkshire_Local_Geological_Sit</value>
+        </TableName>
+        <Prefix>
+            <value>BerksLGS</value>
+        </Prefix>
+        <Suffix>
+            <value>_berkslgs</value>
+        </Suffix>
+        <Columns>
+            <value>Sitename</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Sitename Order By Sitename</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Sitename</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Berks LGS", Sitename, Area_ha, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By Sitename, Map_Label Order By Sitename, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_BerksLGS>
+    <Sites_-_OxSLINCS>
+        <TableName>
+            <value>Oxford_City_SLINCS_2005_Not_in</value>
+        </TableName>
+        <Prefix>
+            <value>OxfordSLINC</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxslincs</value>
+        </Suffix>
+        <Columns>
+            <value>Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Name Order By Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"Oxford SLINC", Name, " ", Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By Name, Map_Label Order By Name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxSLINCS>
+    <Sites_-_BBOWT>
+        <TableName>
+            <value>BBOWT_Nature_Reserves_April_20</value>
+        </TableName>
+        <Prefix>
+            <value>BBOWTReserve</value>
+        </Prefix>
+        <Suffix>
+            <value>_bbowt</value>
+        </Suffix>
+        <Columns>
+            <value>Site_name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Site_name Order By Site_name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Site_name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"BBOWT Reserve", Site_name, Areaha, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By Site_name, Map_Label Order By Site_name, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_BBOWT>
+    <Sites_-_WoodlandTrust>
+        <TableName>
+            <value>WoodlandTrustSites___standard</value>
+        </TableName>
+        <Prefix>
+            <value>WoodlandTrustSite</value>
+        </Prefix>
+        <Suffix>
+            <value>_wts</value>
+        </Suffix>
+        <Columns>
+            <value>WoodName</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By WoodName Order By WoodName</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>WoodName</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"WT Reserve", WoodName, Hectares, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By WoodName, Map_Label Order By WoodName, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_WoodlandTrust>
+    <Sites_-_RSPB>
+        <TableName>
+            <value>Otmoor_RSPB_Reserve</value>
+        </TableName>
+        <Prefix>
+            <value>RSPBReserve</value>
+        </Prefix>
+        <Suffix>
+            <value>_rspb</value>
+        </Suffix>
+        <Columns>
+            <value>SiteName</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By SiteName Order By SiteName</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>SiteName</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>Yes</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Map_Label</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value>"RSPB Reserve", SiteName, SiteArea, Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value>Group By SiteName, Map_Label Order By SiteName, Map_Label</value>
+        </CombinedSitesCriteria>
+    </Sites_-_RSPB>
+    <Sites_-_OxonOther>
+        <TableName>
+            <value>Other_Sites_Oxon_Sept_2012</value>
+        </TableName>
+        <Prefix>
+            <value>OxonOther</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxonother</value>
+        </Suffix>
+        <Columns>
+            <value>Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Name Order By Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>No</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Name</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Name Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value></value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value></value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxonOther>
+    <Sites_-_BerksOther>
+        <TableName>
+            <value>Other_Sites_Berkshire</value>
+        </TableName>
+        <Prefix>
+            <value>BerksOther</value>
+        </Prefix>
+        <Suffix>
+            <value>_berksother</value>
+        </Suffix>
+        <Columns>
+            <value>Site_name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Site_name Order By Site_name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Site_name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>No</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Site_name</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Site_name Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value></value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value></value>
+        </CombinedSitesCriteria>
+    </Sites_-_BerksOther>
+    <Sites_-_OxonCTA>
+        <TableName>
+            <value>Conservation_Target_Areas_for</value>
+        </TableName>
+        <Prefix>
+            <value>OxonCTA</value>
+        </Prefix>
+        <Suffix>
+            <value>_oxoncta</value>
+        </Suffix>
+        <Columns>
+            <value>Target_Area_Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Target_Area_Name Order By Target_Area_Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Target_Area_Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>No</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Target_Area_Name</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Target_Area_Name Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value></value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value></value>
+        </CombinedSitesCriteria>
+    </Sites_-_OxonCTA>
+    <Sites_-_BerksBOA>
+        <TableName>
+            <value>Berkshire_Biodiversity_Opportu</value>
+        </TableName>
+        <Prefix>
+            <value>BerksBOA</value>
+        </Prefix>
+        <Suffix>
+            <value>_berksboa</value>
+        </Suffix>
+        <Columns>
+            <value>Name</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value>Group By Name Order By Name</value>
+        </ExportCriteria>
+        <KeyColumn>
+            <value>Name</value>
+        </KeyColumn>
+        <Format>
+            <value>txt</value>
+        </Format>
+        <KeepLayer>
+            <value>Yes</value>
+        </KeepLayer>
+        <OverwriteLabels>
+            <value>No</value>
+        </OverwriteLabels>
+        <LabelColumn>
+            <value>Name</value>
+        </LabelColumn>
+        <LabelClause>
+            <value>Font ("Arial",256,10,16711680,16777215) With Name Auto On</value>
+        </LabelClause>
+        <CombinedSitesColumns>
+            <value></value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria>
+            <value></value>
+        </CombinedSitesCriteria>
+    </Sites_-_BerksBOA>
+    <Species_-_ProtNotable>
+        <TableName>
+            <value>PN_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppProtectedNotable</value>
+        </Prefix>
+        <Suffix>
+            <value>_spppn</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_ProtNotable>
+    <Species_-_ProtOnly>
+        <TableName>
+            <value>PN_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppProtected</value>
+        </Prefix>
+        <Suffix>
+            <value>_sppprot</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value>WHERE European_Directives &lt;&gt; "" OR UK_Legislation &lt;&gt; ""</value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_ProtOnly>
+    <Species_-_Bat>
+        <TableName>
+            <value>Bats_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppBat</value>
+        </Prefix>
+        <Suffix>
+            <value>_sppbat</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_Bat>
+    <Species_-_GCN>
+        <TableName>
+            <value>GCNs_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppGCN</value>
+        </Prefix>
+        <Suffix>
+            <value>_sppgcn</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_GCN>
+    <Species_-_Otter>
+        <TableName>
+            <value>Otters_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppOtter</value>
+        </Prefix>
+        <Suffix>
+            <value>_sppotter</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_Otter>
+    <Species_-_INNS>
+        <TableName>
+            <value>INNS_Data_Searches_Jan2016</value>
+        </TableName>
+        <Prefix>
+            <value>SppINNS</value>
+        </Prefix>
+        <Suffix>
+            <value>_sppinns</value>
+        </Suffix>
+        <Columns>
+            <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, INNS_Designations, Easting, Northing, Taxon_Group</value>
+        </Columns>
+        <SelectCriteria>
+            <value></value>
+        </SelectCriteria>
+        <ExportCriteria>
+            <value></value>
+        </ExportCriteria>
+        <Format>
+            <value>csv</value>
+        </Format>
+    </Species_-_INNS>
+  </MapTables>
+
 </DataSearches>
 </configuration>
 ``
