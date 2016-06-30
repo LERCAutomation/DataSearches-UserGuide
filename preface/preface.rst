@@ -49,8 +49,6 @@ This Preface explains a little about the Data Searches Tool, the community of pe
 
 :doc:`FAQs <../faq/faq>` \ has a list of commonly asked questions and their answers.
 
-:doc:`../glossary/glossary` \ contains a brief glossary and description of commonly used terms.
-
 :doc:`../appendix/appendix` \ contains examples of the XML configuration files for MapInfo and ArcGIS, lists known issues with the tool and contains a copy of the GNU Free Documentation License v1.3 covering this guide.
 
 
