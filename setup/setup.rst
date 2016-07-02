@@ -38,7 +38,7 @@ Setup for ArcGIS
 
 **General attributes**
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.1 of the Data Searches Tool.
+The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.2 of the Data Searches Tool.
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -107,16 +107,19 @@ _`AddSelectedLayersOptions`
 	The options that should be shown in the 'Add Selected layers to Map' dropdown list. These options should not be changed.
 
 _`DefaultAddSelectedLayers`
-	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' dropdown list, with 1 being the first option.
+	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' dropdown list, with 1 being the first option. If no value is entered the list box will be hidden and no layers will be added to the map.
 
 _`OverwriteLabelOptions`
 	The options that should be shown in the 'Overwrite Map Labels' dropdown list. These options should not be changed.
 
 _`DefaultOverwriteLabels`
-	The default option for the 'Overwrite Map Labels' dropdown that should be shown when the form opens. This attribute is the index number of the item in the dropdown list, with 1 being the first option.
+	The default option for the 'Overwrite Map Labels' dropdown that should be shown when the form opens. This attribute is the index number of the item in the dropdown list, with 1 being the first option. If no value is entered the list box will be hidden and labels will not be overwritten.
+
+_`CombinedSitesTableOptions`
+	The options that should be shown in the 'Create Combined Sites Table' dropdown list. These options should not be changed.
 
 _`DefaultCombinedSitesTable`
-	Yes/No attribute, defining whether the check box for 'Create Combined Sites Table?' on the interface should be set to checked (``yes``) or unchecked (``no``) by default.
+	The default option for the 'Create Combined Sites Table' dropdown that should be shown when the form opens. This attribute is the index number of the item in the dropdown list, with 1 being the first option. If no value is entered the list box will be hidden and no combined sites table will be created.
 
 _`CombinedSitesTable`
 	This section defines the combined sites table. It has the following entries:
@@ -184,6 +187,9 @@ _`Criteria`
 _`IncludeDistance`
 	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The output column will be called 'Distance' and will be included automatically in the tabular output.
 
+_`IncludeRadius`
+	A Yes/No attribute that defines whether the buffer radius that was used will be added to the tabular ouput during the process. The output column will be called 'Radius' and will be included automatically in the tabular output.
+
 _`KeyColumn`
 	The name of the column containing the unique identifier for this data layer.
 
@@ -214,7 +220,7 @@ _`CombinedSitesColumns`
 
 	- Any entry surrounded by double quotes (e.g. ``"Protected sites"``) will be included in the combined sites table 'as is'. So, in the case of this example, each row that is added to the combined sites table from this data layer will have the entry 'Protected sites' in one of the columns. This feature is useful in distinguishing which data layer each row in the combined sites table originates from. 
 
-	- If `IncludeDistance`_ is set to ``yes``, the keyword ``Distance`` can be included as a column name. The tool will automatically include the calculated distance of each feature to the point of interest in the combined sites table.
+	- If `IncludeDistance`_ is set to ``yes``, the keyword ``Distance`` can be included as a column name. The tool will automatically include the calculated distance of each feature to the point of interest in the combined sites table. Similarly the keyword 'Radius' can be included if `IncludeRadius`_ is set to ``yes``. This will then add the buffer radius that was used for each entry in the table.
 
 .. note:: 
 

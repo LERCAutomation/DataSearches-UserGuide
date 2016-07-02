@@ -149,9 +149,14 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>3</value>
         </DefaultOverwriteLabels>
 
-        <!-- Whether a combined sites table should be created by default -->
+        <!-- Options for filling out the Combined Sites table dropdown (do not change) -->
+        <CombinedSitesTableOptions>
+            <value>None;Append to existing table;Overwrite existing table</value>
+        </CombinedSitesTableOptions>
+
+        <!-- Whether a combined sites table should be created by default (index of option) -->
         <DefaultCombinedSitesTable>
-            <value>Yes</value>
+            <value>1</value> <!-- 1, 2, 3 -->
         </DefaultCombinedSitesTable>
 
         <!-- The column names of the combined sites table -->
@@ -200,6 +205,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <IncludeDistance> <!-- Yes / No attribute to define whether a Distance field should be included -->
                     <value>Yes</value><!-- Yes / No -->
                 </IncludeDistance>
+                <IncludeRadius><!-- Yes / No attribute to define whether a Radius field should be included -->
+                    <value>Yes</value><!-- Yes / No -->
+                </IncludeRadius>
                 <KeyColumn> <!-- The column in this layer that contains the unique identifier -->
                     <value>FID</value>
                 </KeyColumn>
@@ -239,7 +247,7 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <CombinedSitesOrderByColumns> <!-- Columns by which results should be ordered in the Combined Sites table -->
                     <value></value> <!-- Overrides CombinedSitesGroupColumns -->
                 </CombinedSitesOrderByColumns>
-            </Points_-_ExampleSpeciesPoints> <!-- End of this map layer -->
+            </Points_-_ExampleSpeciesPoints>
 
             <SACs> <!-- Example map layer: SACs -->
                 <!-- Example of a map layer where tabular data is grouped; distance is not included; the tabular extract is in txt format (no headers); a GIS extract is kept; a bespoke layer file is used for symbology; labels may be overwritten; labels are added in red and larger than the default; the combined sites data is grouped and statistics are extracted before inclusion -->
@@ -338,6 +346,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
                 </IncludeDistance>
+                <IncludeRadius>
+                    <value>No</value><!-- Yes / No -->
+                </IncludeRadius>
                 <KeyColumn>
                     <value>SPA_NAME</value>
                 </KeyColumn>
@@ -406,6 +417,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
                 </IncludeDistance>
+                <IncludeRadius>
+                    <value>No</value><!-- Yes / No -->
+                </IncludeRadius>
                 <KeyColumn>
                     <value>NNR_NAME</value>
                 </KeyColumn>

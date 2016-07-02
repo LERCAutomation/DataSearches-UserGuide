@@ -104,7 +104,7 @@ When either of the 'Yes' options is selected, layers will be added to the map in
 .. note:: 
 	If the `KeepLayer <../setup/setup.html#keeplayer>`__ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the dropdown list.
 
-If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. [Andy I can disable this dropdown box in ArcGIS in this instance. I assume MapInfo won't support that?] There are three options: 
+If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettings`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. [Andy I have disabled this dropdown box in ArcGIS in this instance. I assume MapInfo won't support that?] There are three options: 
 
 - No. Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist. In this case the labels will be numbered from 1 and increase incrementally for each feature. This counter will increment continuously for any other layers for which the given map label column does not exist (i.e. the counter will not reset to zero for each new layer).
 - Yes -  Reset Counter. 
@@ -116,6 +116,9 @@ If you have selected 'Yes - With labels', select how labels should be added in t
 	- If no `LabelColumn <../setup/setup.html#labelcolumn>`__ is given in the configuration file, the map layer will not be labelled in any circumstance.
 	- If the `OverwriteLabels <../setup/setup.html#overwritelabels>`__ attribute is set to ``no``, the labels for this map layer will not be overwritten even if requested by the user.
 
+
+.. note::
+	If no default values have been given in the XML file for `DefaultAddSelectedLayers`_, `DefaultOverwriteLabels`_ or `DefaultCombinedSitesTable`_, the dropdowns relating to these options will **not show on the form**. In this case, no layers will be added, no labels overwritten, and no combined sites table created, respectively.
 
 .. _figLayerSettings:
 
