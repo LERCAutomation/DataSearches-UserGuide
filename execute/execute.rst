@@ -118,7 +118,7 @@ If you have selected 'Yes - With labels', select how labels should be added in t
 
 
 .. note::
-	If no default values have been given in the XML file for `DefaultAddSelectedLayers`_, `DefaultOverwriteLabels`_ or `DefaultCombinedSitesTable`_, the dropdowns relating to these options will **not show on the form**. In this case, no layers will be added, no labels overwritten, and no combined sites table created, respectively.
+	If no default values have been given in the XML file for `DefaultAddSelectedLayers <..setup/setup.html#defaultaddselectedlayers>`_, `DefaultOverwriteLabels <..setup/setup.html#defaultoverwritelabels>`_ or `DefaultCombinedSitesTable <..setup/setup.html#defaultcombinedsitestable>`_, the dropdowns relating to these options will **not show on the form**. In this case, no layers will be added, no labels overwritten, and no combined sites table created, respectively.
 
 .. _figLayerSettings:
 
