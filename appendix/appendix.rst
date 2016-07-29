@@ -202,10 +202,10 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <Criteria> <!-- Any criteria that should be applied to this layer before extracts are saved -->
                     <value></value><!-- example: Name = 'myName' OR area_ha > 5 -->
                 </Criteria>
-                <IncludeDistance> <!-- Yes / No attribute to define whether a Distance field should be included -->
+                <IncludeDistance> <!-- Yes / No attribute to define whether Distance field should be measured -->
                     <value>Yes</value><!-- Yes / No -->
                 </IncludeDistance>
-                <IncludeRadius><!-- Yes / No attribute to define whether a Radius field should be included -->
+                <IncludeRadius><!-- Yes / No attribute to define whether Radius field should available -->
                     <value>Yes</value><!-- Yes / No -->
                 </IncludeRadius>
                 <KeyColumn> <!-- The column in this layer that contains the unique identifier -->

@@ -38,7 +38,7 @@ Setup for ArcGIS
 
 **General attributes**
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.2 of the Data Searches Tool.
+The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes and their expected values are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for version 1.2.1 of the Data Searches Tool.
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'Example/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -161,7 +161,7 @@ _`Suffix`
 	The suffix will be used to finish the name of any tabular file that is exported from this data layer during the search. The naming followed for exported tabular data is ``subref_Suffix.Format``, e.g. ``0001_SSSIs.csv``. The use of the ``subref`` keyword in this case is predefined and cannot be changed.
 
 _`Columns`
-	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
+	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. Distance and Radius columns may be included by adding the keywords 'Distance' and 'Radius'. If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
 
 	- Column names are up to 10 characters long and are case sensitive.
 	- Statistics column names are made up of the statistic requested (e.g. COUNT, SUM, MEAN, FIRST, etc.), the underscore character (``_``), and the name of the column to which the statistic applies (e.g. ``COUNT_Year``). Names longer than 10 characters are abbreviated. 
@@ -185,10 +185,10 @@ _`Criteria`
 	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include AND and OR statements and similar. String values should be enclosed in single quotes. An example might be ``Name = 'myName' AND Year > 2010``. Only records that match the criteria will be exported. 
 
 _`IncludeDistance`
-	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The output column will be called 'Distance' and will be included automatically in the tabular output.
+	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The results can be added to the tabular output by using the keyword 'Distance' in the `Columns`_ list.
 
 _`IncludeRadius`
-	A Yes/No attribute that defines whether the buffer radius that was used will be added to the tabular ouput during the process. The output column will be called 'Radius' and will be included automatically in the tabular output.
+	A Yes/No attribute that defines whether the buffer radius that was used will be available for inclusion to the tabular ouput during the process. The results can be added to the tabular output by using the keyword 'Radius' in the `Columns`_ list. 
 
 _`KeyColumn`
 	The name of the column containing the unique identifier for this data layer.
