@@ -6,7 +6,7 @@
 Frequently Asked Questions
 **************************
 
-This is a list of Frequently Asked Questions about the HLU Tool. Feel free to
+This is a list of Frequently Asked Questions about the Data Searches Tool. Feel free to
 suggest new entries!
 
 General questions
