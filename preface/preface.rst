@@ -5,7 +5,7 @@ Preface
 The most up to date version of this documentation can be found in **HTML** and **PDF** form on `ReadTheDocs <https://readthedocs.org/projects/datasearches-userguide/>`_.
 
 .. index::
-	single: Recommended User Knowledge
+	single: Recommended user knowledge
 
 Recommended User Knowledge
 ==========================
@@ -16,8 +16,8 @@ Users
 This user guide assumes that users of the Data Searches Tool have:
 
 * General IT experience including use of Microsoft Windows.
-* Experience in the use of a relevant GIS software (currently ArcGIS or MapInfo), including selecting and querying features and attributes.
-* An understanding of the data layers (designated sites and other relevant datasets) that are used by the data searches tool.
+* Experience in the use of a relevant GIS application supported by the tool (currently ArcGIS or MapInfo), including selecting and querying features and attributes.
+* An understanding of the data layers (species, designated sites and other relevant datasets) that are used by the Data Searches tool.
 
 
 Administrators
@@ -26,13 +26,17 @@ It is recommended that a person within each organisation is designated as the to
 
 * Have an understanding and experience of IT systems management.
 * Understand relational database structures.
-* Be an expert user of Microsoft Access.
 * Have qualifications, certified training or equivalent experience in managing databases using that system.
 * Have certified training or equivalent experience in advanced features of the relevant GIS software.
+* Become familiar with how the Data Searches tool has been configured within the organisation.
 * Have a good understanding of XML.
 
+.. raw:: latex
+
+   \newpage
+
 .. index::
-	single: Reading Guide
+	single: Reading guide
 
 Reading Guide
 =============
@@ -62,11 +66,11 @@ The code for the Data Searches Tool is 'open source' and is released under the `
 
 This guide is released under the `GNU Free Documentation License (FDL) v1.3 <http://www.gnu.org/licenses/fdl.html>`_. Permission is granted to copy, distribute and/or modify this document under the terms of the license.
 
-Please remember, however, that the tool cost a lot of money to develop and still requires further development and ongoing support. Hence any contributions towards costs would be gratefully received. Enquiries can be made via email to either `Hester <mailto:Hester@HesterLyonsConsulting.co.uk>`_ or `Andy <mailto:Andy@AndyFoyConsulting.co.uk>`_. .
+Please remember, however, that the tool cost a lot of money to develop and still requires further development and ongoing support. Hence any contributions towards costs would be gratefully received. Enquiries can be made via email to either `Hester <mailto:Hester@HesterLyonsConsulting.co.uk>`_ or `Andy <mailto:Andy@AndyFoyConsulting.co.uk>`_.
 
 
 .. index::
-	single: Useful Links
+	single: Useful links
 
 Useful links
 ============
@@ -84,7 +88,7 @@ Related community links:
 Acknowledgements
 ================
 
-Many thanks are due to all the LRCs in the south-east of England and their staff who have, and continue to, fund and contribute to the Data Searches tool.  It takes many developers, testers and users to build a truly useful tool (especially users who care enough to test new releases, report bugs and discuss feature requests).
+Many thanks are due to all the LERCs in the south-east of England and their staff who have, and continue to, fund and contribute to the Data Searches tool.  It takes many developers, testers and users to build a truly useful tool (especially users who care enough to test new releases, report bugs and discuss feature requests).
 
 
 .. raw:: latex
@@ -108,7 +112,7 @@ The following typographical conventions are used in this manual:
 **Tools... --> About**
 	Indicates a menu choice, or a combination of menu choices, tab selections or GUI buttons.
 
-:file:`C:\\Program Files\\HLU Tool`
+:file:`C:\Program Files (x86)\MapInfo\Professional`
 	Indicates a filename or directory name.
 
 .. tip::

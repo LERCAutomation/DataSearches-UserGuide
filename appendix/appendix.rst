@@ -3,12 +3,12 @@ Appendix
 ********
 
 .. index::
-	single: Example XML file for ArcGIS
+	single: Example XML file; ArcGIS
 
 Example XML file for ArcGIS
 ===========================
 
-Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note many of the settings have been included for illustration only and it is up to the user to ensure the system is configured to their requirements.
+Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note, many of the settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements.
 
 ::
 
@@ -468,12 +468,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
     \newpage
 
 .. index::
-    single: Example XML file for MapInfo
+    single: Example XML file; MapInfo
 
 Example XML file for MapInfo
-===========================
+============================
 
-Below is an example XML setup for a MapInfo implementation of the tool. This setup is currently in used by a LERC for daily searches.
+Below is an example XML setup for a MapInfo implementation of the tool. Whilst this setup is currently in use by a LERC for daily searches, these settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements.
 
 ::
 

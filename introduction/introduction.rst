@@ -12,6 +12,10 @@ Carrying out data searches (i.e. establishing which protected areas or species a
 
 The Data Searches Tool was originally developed for Greenspace Information for Greater London (GiGL) and implemented in MapInfo. Currently the tool is used by a variety of LERCs and is available as a MapInfo tool as well as an ArcGIS add-in.
 
+.. raw:: latex
+
+   \newpage
+
 .. index::
 	single: Tool overview
 
@@ -25,7 +29,7 @@ The Data Searches Tool presents a simple user interface, while being configurabl
 .. figure:: figures/UserInterface.png
 	:align: center
 
-	the Data Searches Tool menu
+	The Data Searches tool interface
 
 When running a search, the tool uses an existing GIS layer in the interface to find the geographical location of the  search request reference, and a linked Microsoft Access database to obtain some information about the search reference. It then queries pre-loaded data layers to establish which have features within the specified radius of the location, and exports this information in a format requested by the user. The output data is tabular and an option exists to export the associated GIS data at the same time. The tool creates a log file for each search which details the steps that were taken during the process. The process is discussed in this document in the section on :doc:`using the tool <../execute/execute>`.
 
@@ -50,7 +54,7 @@ Benefits
 There are a number of clear benefits to using the Data Searches Tool for carrying out routine data searches. 
 
 1. The tool, by encapsulating and automating the process, saves considerable time over carrying out these searches manually.
-2. Both the process and the outputs of the search are standardised, therefore minimising the risk of user error that is present in a manual search.
-3. Using the tool makes exploration easy, as it allows for the rapid evaluation of 'what if' scenarios (e.g. by varying the search radius, or exploring a number of possible locations).
-4. By specifying the outputs of the tool centrally through the configuration file, the output for each search is consistent with all other searches, regardless of the individual carrying out the search. This leads to comparability of results and a predictable experience for the users of a data search service.
-5. The searches are repeatable and, through the inclusion of the log file, automatically documented.
+#. Both the process and the outputs of the search are standardised, therefore minimising the risk of user error that is present in a manual search.
+#. Using the tool makes exploration easy, as it allows for the rapid evaluation of 'what if' scenarios (e.g. by varying the search radius, or exploring a number of possible locations).
+#. By specifying the outputs of the tool centrally through the configuration file, the output for each search is consistent with all other searches, regardless of the individual carrying out the search. This leads to comparability of results and a predictable experience for the users of a data search service.
+#. The searches are repeatable and, through the inclusion of the log file, automatically documented.
