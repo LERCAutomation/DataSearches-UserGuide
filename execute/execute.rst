@@ -18,6 +18,7 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 .. seealso::
 	Please refer to the :doc:`setup <../setup/setup>` section for further information about any of these requirements.
 
+
 .. raw:: latex
 
    \newpage
@@ -30,7 +31,6 @@ Opening the form
 
 To open the Data Searches tool in ArcGIS, click on the :kbd:`Data Searches` tool button (:numref:`figLaunchArcGIS`).
 
-
 .. _figLaunchArcGIS:
 
 .. figure:: figures/LaunchSearchesToolArcGIS.png
@@ -41,7 +41,6 @@ To open the Data Searches tool in ArcGIS, click on the :kbd:`Data Searches` tool
 
 To open the Data Searches tool in MapInfo, select **Tools... -> Data Extractor** in the `Tools` menu (:numref:`figLaunchMapInfo`).
 
-
 .. _figLaunchMapInfo:
 
 .. figure:: figures/LaunchSearchesToolMapInfo.png
@@ -50,8 +49,11 @@ To open the Data Searches tool in MapInfo, select **Tools... -> Data Extractor**
 	Launching the Data Searches tool (MapInfo)
 
 
-If there are any structural issues with the XML document, the tool will display a message with the error it has encountered, and not load any further. If any of the map layers that are listed in the configuration document are not present in the active ArcGIS document or MapInfo workspace, a warning will be shown (:numref:`figLaunchWarningArcGIS`). The layers that are missing will not be loaded into the form and so cannot be included in the search process.
+.. raw:: latex
 
+   \newpage
+
+If there are any structural issues with the XML document, the tool will display a message with the error it has encountered, and not load any further. If any of the map layers that are listed in the configuration document are not present in the active ArcGIS document or MapInfo workspace, a warning will be shown (:numref:`figLaunchWarningArcGIS`). The layers that are missing will not be loaded into the form and so cannot be included in the search process.
 
 .. _figLaunchWarningArcGIS:
 
@@ -67,7 +69,6 @@ If there are any structural issues with the XML document, the tool will display 
 
 Provided that the XML document is otherwise correct, the form will display (:numref:`figDisplayFormArcGIS`).
 
-
 .. _figDisplayformArcGIS:
 
 .. figure:: figures/DisplayFormArcGIS.png
@@ -79,13 +80,12 @@ Provided that the XML document is otherwise correct, the form will display (:num
 .. note::
 	The MapInfo version of the form has an additional button after the `Search Reference` field (:numref:`figSearchRefButtonMapInfo`) to retrieve the Site Name.
 
+	.. _figSearchRefButtonMapInfo:
 
-.. _figSearchRefButtonMapInfo:
+	.. figure:: figures/SearchReferenceButtonMapInfo.png
+		:align: center
 
-.. figure:: figures/SearchReferenceButtonMapInfo.png
-	:align: center
-
-	The additional search reference button (MapInfo)
+		The additional search reference button (MapInfo)
 
 
 .. raw:: latex
@@ -100,14 +100,12 @@ Using the form
 
 Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknownArcGIS`).
 
-
 .. _figSearchRefKnownArcGIS:
 
 .. figure:: figures/SearchReferenceKnownArcGIS.png
 	:align: center
 
 	Site name displays automatically if the search reference is found
-
 
 .. _figsearchRefUnknownArcGIS:
 
@@ -118,7 +116,7 @@ Enter the search reference in the Search Reference box. If the search reference 
 
 
 .. note::
-	The MapInfo version of the form has an additional button after the `Search Reference` field (:numref:`figSearchRefButtonMapInfo`). This must be clicked to check if the search reference exists in the linked Access database and display the site name in the Site Name box.
+	The MapInfo version of the form has an additional button ``Find`` after the `Search Reference` field (:numref:`figSearchRefButtonMapInfo`). This button must be clicked to check if the search reference exists in the linked Access database and display the site name in the `Site Name` box.
 
 
 .. raw:: latex
@@ -144,112 +142,197 @@ Next, select the buffer size and units in the Buffer Size and Buffer Units boxes
 
 	Select the buffer size and units you wish the search to use.
 
-Decide whether you wish to add the results of the search to the screen and select the relevant option in the Add Selected Layers to Map dropdown box. There are three options (:numref:`figLayerSettingsArcGIS`):
+.. raw:: latex
 
-- No. Layers will not be added to the map.
-- Yes - Without labels. Layers will be added to the map but will not be labelled.
-- Yes - With labels. Layers will be added to the map and will be labelled.
+   \newpage
 
-When either of the 'Yes' options is selected, layers will be added to the map in accordance with the settings that are given for each map layer in the configuration document. 
-
-.. note:: 
-	If the `KeepLayer <../setup/setup.html#keeplayer>`__ attribute is set to ``no`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the drop-down list.
-
-If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' dropdown box (:numref:`figLabelSettingsArcGIS`). If you have made a different selection in the Add Selected Layers to Map dropdown box, any settings in the 'Overwrite Map Labels' will be ignored. [Andy I have disabled this drop-down box in ArcGIS in this instance. I assume MapInfo won't support that?] There are three options: 
-
-- No. Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist. In this case the labels will be numbered from 1 and increase incrementally for each feature. This counter will increment continuously for any other layers for which the given map label column does not exist (i.e. the counter will not reset to zero for each new layer).
-- Yes -  Reset Counter. 
-- Yes - Increment Counter
-
-.. note::
-	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
-
-	- If no `LabelColumn <../setup/setup.html#labelcolumn>`__ is given in the configuration file, the map layer will not be labelled in any circumstance.
-	- If the `OverwriteLabels <../setup/setup.html#overwritelabels>`__ attribute is set to ``no``, the labels for this map layer will not be overwritten even if requested by the user.
-
-
-.. note::
-	If no default values have been given in the XML file for `DefaultAddSelectedLayers <..setup/setup.html#defaultaddselectedlayers>`_, `DefaultOverwriteLabels <..setup/setup.html#defaultoverwritelabels>`_ or `DefaultCombinedSitesTable <..setup/setup.html#defaultcombinedsitestable>`_, the drop-downs relating to these options will **not show on the form**. In this case, no layers will be added, no labels overwritten, and no combined sites table created, respectively.
+Decide whether you wish to add the results of the search to the screen and select the relevant option in the 'Add Selected Layers to Map' drop-down box. There are three options (:numref:`figLayerSettingsArcGIS`):
 
 .. _figLayerSettingsArcGIS:
 
 .. figure:: figures/AddLayerSettingsArcGIS.png
 	:align: center
 
-	Select how results should be added to the map, if at all.
+	Select how results should be added to the map, if at all
 
+- **No** ... Layers will not be added to the map.
+- **Yes - Without labels** ... Layers will be added to the map but will not be labelled.
+- **Yes - With labels** ... Layers will be added to the map and will be labelled.
+
+When either of the 'Yes' options is selected, layers will be added to the map in accordance with the settings that are given for each map layer in the configuration document. 
+
+.. note:: 
+	If the KeepLayer attribute is set to ``No`` for an individual layer, it will not be added to the map even if the user selects a 'Yes' option in the drop-down list.
+
+.. raw:: latex
+
+   \newpage
+
+If you have selected 'Yes - With labels', select how labels should be added in the 'Overwrite Map Labels' drop-down box (:numref:`figLabelSettingsArcGIS`). If you have made a different selection in the 'Add Selected Layers to Map' drop-down box, any settings in the 'Overwrite Map Labels' will be ignored. There are three options: 
 
 .. _figLabelSettingsArcGIS:
 
 .. figure:: figures/LabelSettingsArcGIS.png
 	:align: center
 
-	Select how labels should be added to the map, if at all.
+	Select how labels should be added to the map, if at all
+
+- **No** ... Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist.
+- **Yes - Reset Counter** ... Labels will be numbered from 1 and increase by 1 for each feature.
+- **Yes - Increment Counter** ...  Labels will be numbered from 1 and increase by 1 for each feature, but the counter will increase incrementally for all the layers (i.e. it will not reset to 1 at the start of each layer).
+
+.. note::
+	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
+
+	- If no 'LabelColumn' is given in the configuration file, the map layer will not be labelled in any circumstance.
+	- If the 'OverwriteLabels' attribute is set to ``No``, the labels for this map layer will not be overwritten even if requested by the user.
 
 
-Finally, select whether a combined sites table should be created by checking or unchecking the 'Create Combined Sites Table' check-box, and whether the log file should be cleared before the analysis by checking or unchecking the 'Clear Log File' check-box (:numref:`figCheckBoxesArcGIS`). Click 'OK' for the analysis to start.
+.. note::
+	If no default values have been given in the XML file for 'DefaultAddSelectedLayers', 'DefaultOverwriteLabels' or 'DefaultCombinedSitesTable', the drop-downs relating to these options will **not show on the form**. In this case, no layers will be added, no labels overwritten, and no combined sites table created, respectively.
 
-.. _figCheckBoxesArcGIS:
 
-.. figure:: figures/CheckBoxesArcGIS.png
+.. raw:: latex
+
+   \newpage
+
+Decide how the combined sites table should be created by selecting the relevant option in the 'Create Combined Sites Table' drop-down box. There are three options (:numref:`figCombinedSitesArcGIS`):
+
+.. _figCombinedSitesArcGIS:
+
+.. figure:: figures/CreateCombinedSitesArcGIS.png
 	:align: center
 
-	Select options for the combined sites table and log file.
+	Select how the combined sites table should be created
+
+- **None** ... No combined sites table will be created. Any existing combined sites table for this search reference will be retained.
+- **Append to existing table** ... Records will be appended to the combined sites table (if it already exists), otherwise a new combined sites table will be created.
+- **Overwrite existing table** ... Records will be saved to a new combined sites table. If a combined sites table already exists it will be deleted first.
 
 
-.. index::
-	single: Analysis results
+Finally, select whether the log file should be cleared before the process runs by checking or unchecking the 'Clear Log File' check-box (:numref:`figCheckBoxesArcGIS`).
+
+.. _figClearLogFileArcGIS:
+
+.. figure:: figures/ClearLogFileArcGIS.png
+	:align: center
+
+	Select option for clearing the log file
 
 
-Analysis Results
-----------------
+Click :kbd:`OK` for the search process to start.
 
-While the data searches tool is running the analysis, the map interface will become inactive. In ArcGIS, the screen will show 'Paused'. Once the analysis is finished the interface will reactivate.
 
-When the analysis is finished, a message box will appear (:numref:`figFinishedArcGIS`). If you would like to rerun the analysis (for example, for different data layers, or for a different buffer size), choose to keep the form open and it will retain the information as it was entered for the current analysis. Once you have made your choice, the log file will be shown using Notepad (:numref:`figLogFileArcGIS`). Using this you can review whether the search was carried out as expected. When you are finished, close the log file. It has already been saved in the analysis folder for future reference.
+.. raw:: latex
 
+   \newpage
+
+While the Data Searches tool is running the search, the map interface will become inactive (in ArcGIS the screen will show 'Paused'). Once the process is finished the interface will reactivate.
+
+When the search is finished, a message box will appear (:numref:`figFinishedArcGIS`). If you would like to rerun the search (for example, for different data layers, or for a different buffer size), choose to keep the form open and it will retain the information as it was entered for the last search.
 
 .. _figFinishedArcGIS:
 
 .. figure:: figures/FinishedArcGIS.png
 	:align: center
 
-	Once the process finishes a message box is shown.
+	Prompt to close the form when the search process completes
+
+Once you have made your choice, the log file will be shown using Notepad (:numref:`figLogFileArcGIS`). Using this you can review whether the search was carried out as expected. When you are finished, close the log file. It has already been saved in the analysis folder for future reference.
 
 .. _figLogFileArcGIS:
 
 .. figure:: figures/LogFileArcGIS.png
 	:align: center
 
-	The log file is shown for review.
+	Example log file shown for review
 
-In the map interface, the results of the analysis are added as requested. 
 
-In ArcGIS, the results are added to a new group layer of which the name format follows the short search reference, with any special characters replaced with the `RepChar <../setup/setup.html#repchar>`__ given in the XML document. Where requested in the configuration (using the `LayerFile <../setup/setup.html#layerfile>`__ attribute), symbology is applied to each result layer using layer files. Unless the buffer radius specified is zero, the system will zoom to the extent of the buffer that has been created during the search. 
+You can now repeat the search process for using a different search radius for different data layers, or for a different search request, as required.
 
-An example result map for ArcGIS is shown in :numref:`figResultsArcGIS`. Note that only results for those layers for which features were found within the search radius were added.
+.. _OverwriteWarning:
+
+.. warning:: 
+	If you rerun the search process using the **same search reference**, for example with a different buffer size, it is possible that some outputs will overwritten, or duplicated, as follows:
+
+	- Output tables and GIS layers will be overwritten if the same map layer is included in a second search. Only one copy of each output table and / or GIS layer can be saved for the same search reference.
+	
+	- The combined sites table will be overwritten if **Overwrite existing table** is selected in the 'Create Combined Sites Table' option.
+
+	- Combined sites records will be duplicated if the same map layer is included in a second search and if **Append to existing table** is selected in the 'Create Combined Sites Table' option.
+
+
+.. raw:: latex
+
+   \newpage
+
+.. index::
+	single: Search results
+
+Search Results
+--------------
+
+When the search is finished, any exported data tables, saved GIS layers, the buffer GIS layer, and the log file are all saved in the 'GISFolder' specified in the XML document. Any saved GIS layers resulting from the search are also added to the map interface (if requested).
+
+.. note::
+	Only results for those layers for which features were found within the search radius are saved and added to the map.
+
+
+.. raw:: latex
+
+   \newpage
+
+.. index::
+	single: Search results; ArcGIS
+
+**Search results in ArcGIS**
+
+In ArcGIS, search results are added to the current document as follows:
+
+- If 'Yes' is selected in the 'Add Selected Layers to Map' search option, each saved GIS layer (where 'Yes' is selected in the 'KeepLayer' attribute in the configuration) is added to a new group layer. The name of the group layer follows the short search reference format, with any special characters replaced with the 'RepChar' specified in the XML document (e.g. '2016/001' becomes '2016 001').
+
+- If either 'Yes - with labels' or 'Yes - without labels' are selected in the 'Add Selected Layers to Map' search option and, if a layer file name is specified in the 'LayerFileName' attribute in the configuration for a saved layer, symbology is applied to that layer using the specified layer file.
+
+- If 'Yes - with labels' is selected in the 'Add Selected Layers to Map' search option and, if a column name is specified in the 'LabelColumn' attribute in the configuration for a saved layer, labels are applied to that layer (as specified in the configuration using the 'LabelClause' attribute).
+
+- A buffer GIS layer, created during the search, will be added to the new group layer and symbology will be applied using the appropriate layer file (as specified in the configuration using the 'BufferLayerName' general attribute).
+
+- Unless the buffer radius specified is zero, the map will zoom to the extent of the buffer layer that was created during the search.
+
+An example of how the results will appear in ArcGIS is shown in :numref:`figResultsArcGIS`.
 
 .. _figResultsArcGIS:
 
 .. figure:: figures/ResultsArcGIS.png
 	:align: center
 
-	The results are added to the map (ArcGIS).
+	Example results from search process (ArcGIS)
 
 
-[MapInfo version here]
+.. raw:: latex
 
-All exported data tables, GIS layers and the log file are kept in the `GISFolder <../setup/setup.html#gisfolder>`__ as specified in the XML document. 
+   \newpage
 
+.. index::
+	single: Search results; MapInfo
 
-Now you can repeat the analysis as required. 
+**Search results in MapInfo**
 
-.. _OverwriteWarning:
+In MapInfo, search results are added to the active workspace as follows:
 
-.. warning:: 
-	When you rerun the analysis using the **same search reference**, for example with a different buffer size, it is likely that certain outputs are overwritten:
+- If 'Yes' is selected in the 'Add Selected Layers to Map' search option, each saved GIS layers (where 'Yes' is selected in the 'KeepLayer' attribute in the configuration) is added to **all** map windows that contain the relevant source layer. This means that if there are multiple map windows open in the workspace containing the same source layer the saved GIS layer will be added to each of those map windows.
 
-	- The combined sites table will be overwritten for every repeat of a search using the same reference.
-	- Output tables and GIS output will be overwritten if the same map layer is included in a second search.
+- If 'Yes - with labels' is selected in the 'Add Selected Layers to Map' search option and, if a column name is specified in the 'LabelColumn' attribute in the configuration for a saved layer, labels are applied to that layer (as specified in the configuration using the 'LabelClause' attribute).
 
-	The reason for this is that the Reporting tool [Andy do you have a reference?], which can be run on the results of the data search, has certain requirements. The easiest way to resolve this issue is by moving the results of the first search to a different folder, e.g. one containing the buffer size in the name. At this version it is not possible to do this automatically. 
+- A buffer GIS layer, created during the search, will be added to **all** map windows.
+
+- The map will zoom to the extent of the buffer layer that was created during the search.
+
+An example of how the results will appear in MapInfo is shown in :numref:`figResultsMapInfo`.
+
+.. _figResultsMapInfo:
+
+.. figure:: figures/ResultsMapInfo.png
+	:align: center
+
+	Example results from search process (MapInfo)

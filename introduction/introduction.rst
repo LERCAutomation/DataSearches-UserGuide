@@ -10,7 +10,7 @@ Background
 
 Carrying out data searches (i.e. establishing which protected areas or species are present within a set radius of a proposed development) is a routine task for Local Environmental Record Centres (LERCs). The process is a repetitive one, with the same kind of search being carried out each time a search request is received. The requirements for the search are defined by legislation, and the outputs generated for the searches are generally in the same format. Therefore, this is a process that is ideally suited to being automated.
 
-The Data Searches Tool was originally developed for Greenspace Information for Greater London (GiGL) and implemented in MapInfo. Currently the tool is used by a variety of LERCs and is available as a MapInfo tool as well as an ArcGIS add-in.
+The Data Searches tool was originally developed for Greenspace Information for Greater London (GiGL) and implemented in MapInfo. Currently the tool is used by a variety of LERCs and is available as a MapInfo tool as well as an ArcGIS add-in.
 
 .. raw:: latex
 
@@ -22,7 +22,7 @@ The Data Searches Tool was originally developed for Greenspace Information for G
 Tool overview
 =============
 
-The Data Searches Tool presents a simple user interface, while being configurable in a highly flexible way according to the requirements of the LERC or individual user. It is integrated into the user interface of the GIS system and presented there as a button or menu item. The tool itself has a simple interface (:numref:`figUI`), requiring a minimum of input (a reference to a search request, the data layers to be included in the search, and the radius to be used in the search are the only required items). 
+The Data Searches tool presents a simple user interface, while being configurable in a highly flexible way according to the requirements of the LERC or individual user. It is integrated into the user interface of the GIS system and presented there as a button or menu item. The tool itself has a simple interface (:numref:`figUI`), requiring a minimum of input (a reference to a search request, the data layers to be included in the search, and the radius to be used in the search are the only required items). 
 
 .. _figUI:
 
@@ -43,7 +43,7 @@ Defining the way that searches should be carried out, the output that they gener
 * For each data layer, a detailed definition of what information should be returned from it.
 * Details on the display and labelling of output from individual data layers.
 
-Using this configuration file, each individual LERC can tailor the Data Searches Tool to its individual requirements in great detail. Examples of the XML file are included in the :doc:`../appendix/appendix`, and the process of setting up this file is discussed in the section on :doc:`setting up the tool <../setup/setup>`. 
+Using this configuration file, each individual LERC can tailor the Data Searches tool to its individual requirements in great detail. Examples of the XML file are included in the :doc:`../appendix/appendix`, and the process of setting up this file is discussed in the section on :doc:`setting up the tool <../setup/setup>`. 
 
 .. index::
 	single: Benefits
@@ -51,7 +51,7 @@ Using this configuration file, each individual LERC can tailor the Data Searches
 Benefits
 ========
 
-There are a number of clear benefits to using the Data Searches Tool for carrying out routine data searches. 
+There are a number of clear benefits to using the Data Searches tool for carrying out routine data searches. 
 
 1. The tool, by encapsulating and automating the process, saves considerable time over carrying out these searches manually.
 #. Both the process and the outputs of the search are standardised, therefore minimising the risk of user error that is present in a manual search.

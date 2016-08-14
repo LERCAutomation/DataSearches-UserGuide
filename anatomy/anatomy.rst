@@ -5,12 +5,12 @@ Anatomy of a data search
 .. index::
 	single: Data search process
 
-This section describes how a typical data search might be carried out manually, and how the Data Searches Tool automates this process. Please note that the examples used in this illustration are purely fictional and do not represent a real-world scenario. 
+This section describes how a typical data search might be carried out manually, and how the Data Searches tool automates this process. Please note that the examples used in this illustration are purely fictional and do not represent a real-world scenario. 
 
 Data search process
 ===================
 
-The process of a typical data search can be broken down into a number of distinct steps that are described here. In the next section the way that the Data Searches Tool carries out these steps is explained.
+The process of a typical data search can be broken down into a number of distinct steps that are described here. In the next section the way that the Data Searches tool carries out these steps is explained.
 
 Entering a search location
 	Before any search can be carried out, the point, line or polygon describing the location that the search is centred on has to be entered into the GIS system. Typically this would be held in a single data layer, with some associated attributes such as the search reference or the name of the search site.
@@ -37,21 +37,25 @@ Repeating the process
 The Data Searches Tool
 ======================
 
-There are four component parts to the Data Searches Tool that work together to automate the process described above:
+There are four component parts to the Data Searches tool that work together to automate the process described above:
 
 1. An Access database that contains details about search requests, including a unique search reference number.
 #. One or more GIS layers that describe the locations of the searches, using the same unique search reference number to identify each search request.
 #. An XML configuration file that specifies how the searches are set up and what data should be exported for each data layer.
-#. The Data Searches Tool itself.
+#. The Data Searches tool itself.
 
-The Data Searches Tool is used within a GIS environment and requires all the required data layers to be preloaded in the GIS (see :numref:`figArcGISUI`). 
+The Data Searches tool is used within a GIS environment and requires all the required data layers to be preloaded in the GIS (see :numref:`figArcGISUI`). 
 
 .. _figArcGISUI:
 
 .. figure:: figures/InterfaceArcGISAnnotated.png
 	:align: center
 
-	An ArcGIS user interface configured for using the Data Searches tool
+	An ArcGIS document configured for using the Data Searches tool
+
+.. raw:: latex
+
+   \newpage
 
 Tool workflow
 -------------
@@ -64,8 +68,7 @@ The Data Searches tool requires minimum user input in order to carry out its pro
 #. A buffer size is entered and the units for this buffer are specified.
 #. The user chooses whether to add any selected GIS layers to the map, and whether (and how) this new data should be labelled. 
 #. Finally, the user selects whether a table combining all the results should be created during the process, and whether the log file should be cleared before the process starts. 
-#. Once the user clicks :kbd:'OK' the process starts.
-
+#. Once the user clicks :kbd:`OK` the process starts.
 
 .. _figUIAnn:
 
@@ -74,6 +77,10 @@ The Data Searches tool requires minimum user input in order to carry out its pro
 
 	The Data Searches tool workflow
 
+
+.. raw:: latex
+
+   \newpage
 
 In essence, the process that the tool follows is identical to the manual search process described above. 
 
@@ -105,7 +112,12 @@ When the process finishes, the GIS output is presented within the GIS interface 
 .. figure:: figures/ExampleOutputArcGISAnnotated.png
 	:align: center
 
-	GIS output from the Data Searches Tool (ArcGIS implementation)
+	GIS output from the Data Searches tool (ArcGIS implementation)
+
+
+.. raw:: latex
+
+   \newpage
 
 Output folder
 -------------
@@ -118,6 +130,7 @@ All the GIS and tabular outputs from the tool are stored in a user defined folde
 	:align: center
 
 	Example of the Data Searches tool output folder
+
 
 .. raw:: latex
 
@@ -145,6 +158,7 @@ A combined sites table can also be produced (see :numref:`figCombinedSites`). Th
 	:align: center
 
 	Example of a combined sites table
+
 
 .. raw:: latex
 

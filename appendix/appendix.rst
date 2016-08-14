@@ -30,8 +30,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
     The 'DataSearches' node contains all of the entries relating to the
     Add-in tool variables.
 
-    Each entry relates to a file, folder, table name, column name or other variable
-    used by the Add-in tool to select and export ArcMap data for each data search.
+    Each entry relates to a file, folder, table name, column name or other
+    variable used by the Add-in tool to select and export ArcMap data for
+    each data search.
     -->
 
     <configuration>
@@ -52,7 +53,8 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>SiteName</value>
         </SiteColumn>
 
-        <!-- The character(s) used to replace any special characters in folder names. Space is allowed -->
+        <!-- The character(s) used to replace any special characters in folder
+             names. Space is allowed -->
         <RepChar>
             <value> </value><!-- Note in this case space is used -->
         </RepChar>
@@ -92,13 +94,18 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>1</value>
         </DefaultBufferSize>
 
-        <!-- The options for the buffer units. It is not recommended that these are changed -->
-        <!-- These are read as: unit to display; unit that ArcGIS uses (American spelling); abbreviated unit -->
+        <!-- The options for the buffer units. It is not recommended that
+             these are changed -->
+        <!-- These are read as: unit to display; unit that ArcGIS uses
+             (American spelling); abbreviated unit -->
         <BufferUnitOptions>
-            <value>Centimetres;Centimeters;cm$Metres;Meters;m$Kilometres;Kilometers;km$Feet;Feet;ft$Yards;Yards;yds$Miles;Miles;mi</value>
+            <value>Centimetres;Centimeters;cm$Metres;Meters;m$Kilometres;
+                   Kilometers;km$Feet;Feet;ft$Yards;Yards;yds$Miles;Miles;
+                   mi</value>
         </BufferUnitOptions>
 
-        <!-- The default option (position in the list) to use for the buffer units -->
+        <!-- The default option (position in the list) to use for the buffer
+             units -->
         <DefaultBufferUnit>
             <value>3</value>
         </DefaultBufferUnit>
@@ -119,7 +126,8 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>_point;_poly;_line</value>
         </SearchLayerExtensions>
 
-        <!-- The column name in the search area layer used to store the search reference -->
+        <!-- The column name in the search area layer used to store the search
+             reference -->
         <SearchColumn>
             <value>ref</value>
         </SearchColumn>
@@ -131,30 +139,36 @@ Below is an example of XML that might be used to set up the Data Searches tool i
 
         <!-- The options for showing the selected tables -->
         <AddSelectedLayersOptions>
-            <value>No;Yes - Without labels;Yes - With labels</value><!-- do not change -->
+            <value>No;Yes - Without labels;Yes - With labels</value>
+                   <!-- do not change -->
         </AddSelectedLayersOptions>
 
-        <!-- The default option (position in the list) for whether selected map layers should be added to the map window -->
+        <!-- The default option (position in the list) for whether selected map
+             layers should be added to the map window -->
         <DefaultAddSelectedLayers>
             <value>3</value>
         </DefaultAddSelectedLayers>
 
         <!-- The options for overwritting the map labels -->
         <OverwriteLabelOptions>
-            <value>No;Yes - Reset Counter;Yes - Increment Counter</value><!-- do not change -->
+            <value>No;Yes - Reset Counter;Yes - Increment Counter</value>
+                   <!-- do not change -->
         </OverwriteLabelOptions>
 
-        <!-- Whether any map label columns should be overwritten (default setting) -->
+        <!-- Whether any map label columns should be overwritten (default
+             setting) -->
         <DefaultOverwriteLabels>
             <value>3</value>
         </DefaultOverwriteLabels>
 
-        <!-- Options for filling out the Combined Sites table dropdown (do not change) -->
+        <!-- Options for filling out the Combined Sites table dropdown -->
         <CombinedSitesTableOptions>
             <value>None;Append to existing table;Overwrite existing table</value>
+                   <!-- (do not change) -->
         </CombinedSitesTableOptions>
 
-        <!-- Whether a combined sites table should be created by default (index of option) -->
+        <!-- Whether a combined sites table should be created by default
+             (index of option) -->
         <DefaultCombinedSitesTable>
             <value>1</value> <!-- 1, 2, 3 -->
         </DefaultCombinedSitesTable>
@@ -172,13 +186,18 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             </Format>
         </CombinedSitesTable>
 
-
         <!-- map layer attributes -->
-        <!-- The names, local names, suffixes, SQL clauses and formats of the map tables -->
+        <!-- The names, local names, suffixes, SQL clauses and formats of the
+             map tables -->
         <MapLayers>
-            <Points_-_ExampleSpeciesPoints> <!-- This is the name of the map layer as it will be shown on the form -->
-                <!-- Example of a map layer where tabular data is grouped; the GIS data is kept; the GIS data is symbolised with a bespoke layer file; no data is written to the combined sites table -->
-                <LayerName> <!-- This is the name of the layer as it is show in the Table of Contents in ArcMap -->
+            <Points_-_ExampleSpeciesPoints> <!-- This is the name of the map
+                    layer as it will be shown on the form -->
+                <!-- Example of a map layer where tabular data is grouped; the
+                    GIS data is kept; the GIS data is symbolised with a
+                    bespoke layer file; no data is written to the combined
+                    sites table -->
+                <LayerName> <!-- This is the name of the layer as it is show in
+                    the Table of Contents in ArcMap -->
                     <value>ExampleSpeciesPoints</value>
                 </LayerName>
                 <Prefix> <!-- The prefix used for any GIS data extracts -->
@@ -188,69 +207,101 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>_spp_pts</value>
                 </Suffix>
                 <Columns> <!-- The columns to be used in the tabular extracts -->
-                    <value>Species, Year, COUNT_Spec</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>Species, Year, COUNT_Spec</value> <!-- Use commas to
+                        separate. NOTE case sensitive! -->
                 </Columns>
-                <GroupColumns> <!-- The columns that should be used for grouping results -->
-                    <value>Species, Year</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                <GroupColumns> <!-- The columns that should be used for
+                    grouping results -->
+                    <value>Species, Year</value> <!-- Use commas to separate.
+                           NOTE case sensitive! -->
                 </GroupColumns>
-                <StatisticsColumns> <!-- If grouping is used, any statistics that should be generated. -->
-                    <value>Species;COUNT</value><!-- example: area_ha;SUM$Status;FIRST -->
+                <StatisticsColumns> <!-- If grouping is used, any statistics
+                    that should be generated. -->
+                    <value>Species;COUNT</value><!-- example: area_ha;SUM$
+                           Status;FIRST -->
                 </StatisticsColumns>
-                <OrderColumns> <!-- Overrides GroupColumns. Any columns by which the results should be ordered -->
+                <OrderColumns> <!-- Overrides GroupColumns. Any columns by
+                    which the results should be ordered -->
                     <value></value>
                 </OrderColumns>
-                <Criteria> <!-- Any criteria that should be applied to this layer before extracts are saved -->
-                    <value></value><!-- example: Name = 'myName' OR area_ha > 5 -->
+                <Criteria> <!-- Any criteria that should be applied to this
+                    layer before extracts are saved -->
+                    <value></value><!-- example: Name = 'myName' OR
+                        area_ha > 5 -->
                 </Criteria>
-                <IncludeDistance> <!-- Yes / No attribute to define whether Distance field should be measured -->
+                <IncludeDistance> <!-- Yes / No attribute to define whether
+                    Distance field should be measured -->
                     <value>Yes</value><!-- Yes / No -->
                 </IncludeDistance>
-                <IncludeRadius><!-- Yes / No attribute to define whether Radius field should available -->
+                <IncludeRadius><!-- Yes / No attribute to define whether Radius
+                    field should available -->
                     <value>Yes</value><!-- Yes / No -->
                 </IncludeRadius>
-                <KeyColumn> <!-- The column in this layer that contains the unique identifier -->
+                <KeyColumn> <!-- The column in this layer that contains the
+                    unique identifier -->
                     <value>FID</value>
                 </KeyColumn>
                 <Format> <!-- The format that any tabular data will be saved as -->
                     <value>Csv</value>
                 </Format>
-                <KeepLayer> <!-- A Yes/No attribute to define whether a GIS extract should be saved -->
+                <KeepLayer> <!-- A Yes/No attribute to define whether a GIS
+                    extract should be saved -->
                     <value>Yes</value>
                 </KeepLayer>
-                <LayerFileName> <!-- The name of a layer file (*.lyr) that should be used to symbolise the extract -->
+                <LayerFileName> <!-- The name of a layer file (*.lyr) that
+                    should be used to symbolise the extract -->
                     <value>SpeciesPointsSymbology.lyr</value>
                 </LayerFileName>
-                <OverwriteLabels> <!-- A Yes/No attribute to define whether labels may be overwritten -->
+                <OverwriteLabels> <!-- A Yes/No attribute to define whether
+                    labels may be overwritten -->
                     <value>Yes</value>
                 </OverwriteLabels>
-                <LabelColumn> <!-- The name of the label column in this layer (if any) -->
+                <LabelColumn> <!-- The name of the label column in this layer
+                    (if any) -->
                     <value></value>
                 </LabelColumn>
-                <LabelClause> <!-- The definition of the labels for this layer (if any) -->
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are applied -->
+                <LabelClause> <!-- The definition of the labels for this layer
+                    (if any) -->
+                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$
+                        Type:NoRestrictions -->
+                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
+                        / OnePerShape -->
+                    <!-- If no clause is filled in the above settings are
+                        applied -->
                     <value></value>
                 </LabelClause>
-                <CombinedSitesColumns> <!-- The columns to be used in the combined sites table. -->
-                    <!-- Leave blank if the layer should not be included in the combined sites table -->
-                    <!-- Distance may be included as a keyword if IncludeDistance is set to Yes-->
+                <CombinedSitesColumns> <!-- The columns to be used in the
+                    combined sites table. -->
+                    <!-- Leave blank if the layer should not be included in
+                        the combined sites table -->
+                    <!-- Distance may be included as a keyword if
+                        IncludeDistance is set to Yes-->
                     <!-- "SSSI", SSSI_NAME, SSSI_AREA, Map_Label -->
                     <value></value>
                 </CombinedSitesColumns>
-                <CombinedSitesGroupColumns> <!-- Columns that should be used to group data before inclusion in the combined sites table, if any -->
+                <CombinedSitesGroupColumns> <!-- Columns that should be used to
+                    group data before inclusion in the combined sites table, if
+                    any -->
                     <value></value>
                 </CombinedSitesGroupColumns>
-                <CombinedSitesStatisticsColumns> <!-- Statistics columns and their required stats to be used for the combined sites table if CombinedSitesGroupColumns has been specified -->
+                <CombinedSitesStatisticsColumns> <!-- Statistics columns and
+                    their required stats to be used for the combined sites table
+                    if CombinedSitesGroupColumns has been specified -->
                     <value></value> <!-- Must include the remaining columns -->
                 </CombinedSitesStatisticsColumns>
-                <CombinedSitesOrderByColumns> <!-- Columns by which results should be ordered in the Combined Sites table -->
+                <CombinedSitesOrderByColumns> <!-- Columns by which results
+                    should be ordered in the Combined Sites table -->
                     <value></value> <!-- Overrides CombinedSitesGroupColumns -->
                 </CombinedSitesOrderByColumns>
             </Points_-_ExampleSpeciesPoints>
-
             <SACs> <!-- Example map layer: SACs -->
-                <!-- Example of a map layer where tabular data is grouped; distance is not included; the tabular extract is in txt format (no headers); a GIS extract is kept; a bespoke layer file is used for symbology; labels may be overwritten; labels are added in red and larger than the default; the combined sites data is grouped and statistics are extracted before inclusion -->
+                <!-- Example of a map layer where tabular data is grouped;
+                    distance is not included; the tabular extract is in txt format
+                    (no headers); a GIS extract is kept; a bespoke layer file is
+                    used for symbology; labels may be overwritten; labels are
+                    added in red and larger than the default; the combined sites
+                    data is grouped and statistics are extracted before
+                    inclusion -->
                 <LayerName>
                     <value>SACs</value> <!-- Name in TOC -->
                 </LayerName>
@@ -261,19 +312,23 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>_sacs</value>
                 </Suffix>
                 <Columns>
-                    <value>SAC_NAME, SAC_CODE</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>SAC_NAME, SAC_CODE</value> <!-- Use commas to separate.
+                        NOTE case sensitive! -->
                 </Columns>
                 <GroupColumns>
-                    <value>SAC_NAME</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>SAC_NAME</value> <!-- Use commas to separate. NOTE case
+                        sensitive! -->
                 </GroupColumns>
-                <StatisticsColumns> <!-- Note no statistics columns are included and so FIRST will be taken for SAC_CODE automatically-->
+                <StatisticsColumns> <!-- Note no statistics columns are included
+                    and so FIRST will be taken for SAC_CODE automatically-->
                     <value></value><!-- example: area_ha;SUM$Status;FIRST -->
                 </StatisticsColumns>
                 <OrderColumns> <!-- Overrides GroupColumns -->
                     <value></value>
                 </OrderColumns>
                 <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR area_ha > 5 -->
+                    <value></value><!-- example: Name = 'myName' OR
+                        area_ha > 5 -->
                 </Criteria>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
@@ -297,28 +352,37 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>Map_Label</value>
                 </LabelColumn>
                 <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are applied -->
-                    <value>Font:Arial$Size:11$Red:255$Green:0$Blue:0$Type:OnePerShape</value> <!-- Labels are red -->
+                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
+                        NoRestrictions -->
+                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
+                        / OnePerShape -->
+                    <!-- If no clause is filled in the above settings are
+                        applied -->
+                    <value>Font:Arial$Size:11$Red:255$Green:0$Blue:0$Type:
+                        OnePerShape</value> <!-- Labels are red -->
                 </LabelClause>
                 <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if IncludeDistance is set to Yes-->
+                    <!-- Distance may be included as a keyword if
+                        IncludeDistance is set to Yes-->
                     <value>"SAC", SAC_NAME, SUM_SAC_AR, Map_Label</value>
                 </CombinedSitesColumns>
                 <CombinedSitesGroupColumns>
                     <value>SAC_NAME</value>
                 </CombinedSitesGroupColumns>
                 <CombinedSitesStatisticsColumns>
-                    <value>SAC_AREA;SUM</value> <!-- Note that the combined sum of polygon areas is used -->
+                    <value>SAC_AREA;SUM</value> <!-- Note that the combined sum
+                        of polygon areas is used -->
                 </CombinedSitesStatisticsColumns>
                 <CombinedSitesOrderByColumns>
                     <value></value> 
                 </CombinedSitesOrderByColumns>
             </SACs>
-            
             <SPAs>
-                <!-- Example of a map layer where tabular data is grouped; distance is not included; the tabular data is in CSV format (including headers); a GIS extract is not kept; the combined sites data is grouped and statistics are extracted before inclusion -->
+                <!-- Example of a map layer where tabular data is grouped;
+                    distance is not included; the tabular data is in CSV format
+                    (including headers); a GIS extract is not kept; the
+                    combined sites data is grouped and statistics are extracted
+                    before inclusion -->
                 <LayerName>
                     <value>SPAs</value>
                 </LayerName>
@@ -329,10 +393,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>_spas</value>
                 </Suffix>
                 <Columns>
-                    <value>SPA_NAME</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>SPA_NAME</value> <!-- Use commas to separate.
+                        NOTE case sensitive! -->
                 </Columns>
                 <GroupColumns>
-                    <value>SPA_NAME</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>SPA_NAME</value> <!-- Use commas to separate.
+                        NOTE case sensitive! -->
                 </GroupColumns>
                 <StatisticsColumns>
                     <value></value><!-- example: area_ha;SUM$Status;FIRST -->
@@ -341,7 +407,8 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value></value>
                 </OrderColumns>
                 <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR area_ha > 5 -->
+                    <value></value><!-- example: Name = 'myName' OR
+                        area_ha > 5 -->
                 </Criteria>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
@@ -368,28 +435,39 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>Map_Label</value>
                 </LabelColumn>
                 <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are applied -->
+                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
+                        NoRestrictions -->
+                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
+                        / OnePerShape -->
+                    <!-- If no clause is filled in the above settings are
+                        applied -->
                     <value></value>
                 </LabelClause>
                 <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if IncludeDistance is set to Yes-->
-                    <value>"SPA", SPA_NAME, FIRST_SPA_, "Not on map"</value> <!-- Note that the actual name of the FIRST_SPA_Area column has been worked out to be FIRST_SPA_ (10 letters). Also note that, since this layer is not being kept, a tag of 'Not on map' has been added to the labels column. -->
+                    <!-- Distance may be included as a keyword if
+                        IncludeDistance is set to Yes-->
+                    <value>"SPA", SPA_NAME, FIRST_SPA_, "Not on map"</value>
+                        <!-- Note that the actual name of the FIRST_SPA_Area
+                            column has been worked out to be FIRST_SPA_
+                            (10 letters). Also note that, since this layer
+                            is not being kept, a tag of 'Not on map' has been
+                            added to the labels column. -->
                 </CombinedSitesColumns>
                 <CombinedSitesGroupColumns>
                     <value>SPA_NAME, Map_Label</value>
                 </CombinedSitesGroupColumns>
                 <CombinedSitesStatisticsColumns>
-                    <value>SPA_AREA;FIRST</value> <!-- Note that 'First' is used as the statistic -->
+                    <value>SPA_AREA;FIRST</value> <!-- Note that 'First' is
+                        used as the statistic -->
                 </CombinedSitesStatisticsColumns>
                 <CombinedSitesOrderByColumns>
                     <value></value> <!-- Overrides CombinedSitesGroupColumns -->
                 </CombinedSitesOrderByColumns>
             </SPAs>
-
             <NNRs>
-                <!-- This layer does not allow the overwrite of labels, and so the name column is included twice in the combined sites table, the second time as a label column -->
+                <!-- This layer does not allow the overwrite of labels, and so
+                    the name column is included twice in the combined sites
+                    table, the second time as a label column -->
                 <LayerName>
                     <value>NNRs</value>
                 </LayerName>
@@ -400,10 +478,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>_nnrs</value>
                 </Suffix>
                 <Columns>
-                    <value>NNR_NAME, theBla</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>NNR_NAME, theBla</value> <!-- Use commas to separate.
+                        NOTE case sensitive! -->
                 </Columns>
                 <GroupColumns>
-                    <value>NNR_NAME</value> <!-- Use commas to separate. NOTE case sensitive! -->
+                    <value>NNR_NAME</value> <!-- Use commas to separate.
+                        NOTE case sensitive! -->
                 </GroupColumns>
                 <StatisticsColumns>
                     <value></value><!-- example: area_ha;SUM$Status;FIRST -->
@@ -412,7 +492,8 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value></value>
                 </OrderColumns>
                 <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR area_ha > 5 -->
+                    <value></value><!-- example: Name = 'myName' OR
+                        area_ha > 5 -->
                 </Criteria>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
@@ -439,13 +520,17 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>NNR_Name</value>
                 </LabelColumn>
                 <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are applied -->
+                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
+                        NoRestrictions -->
+                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
+                        / OnePerShape -->
+                    <!-- If no clause is filled in the above settings are
+                        applied -->
                     <value></value>
                 </LabelClause>
                 <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if IncludeDistance is set to Yes-->
+                    <!-- Distance may be included as a keyword if
+                        IncludeDistance is set to Yes-->
                     <value>"NNR", NNR_NAME, NNR_AREA, NNR_NAME</value>
                 </CombinedSitesColumns>
                 <CombinedSitesGroupColumns>
@@ -495,8 +580,9 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
     The 'DataSearches' node contains all of the entries relating to the
     MapBasic tool variables.
 
-    Each entry relates to a file, folder, table name, column name or other variable
-    used by the MapBasic tool to select and export MapInfo data for each data search.
+    Each entry relates to a file, folder, table name, column name or other
+    variable used by the MapBasic tool to select and export MapInfo data for
+    each data search.
     -->
 
     <configuration>
@@ -522,7 +608,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
         <value>SiteName</value>
       </SiteColumn>
 
-      <!-- The character(s) used to replace any special characters in folder names. -->
+      <!-- The character(s) used to replace any special characters in folder
+        names. -->
       <RepChar>
         <value>.</value>
       </RepChar>
@@ -552,22 +639,26 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
         <value>1</value>
       </DefaultBufferSize>
 
-      <!-- The default option (position in the list) to use for the buffer units -->
+      <!-- The default option (position in the list) to use for the buffer
+        units -->
       <DefaultBufferUnit>
         <value>3</value>
       </DefaultBufferUnit>
 
       <!-- The options for the buffer units -->
       <BufferUnitOptions>
-        <value>Centimetres;cm$Metres;m$Kilometres;km$Feet;ft$Yards;yd$Miles;mi$</value>
+        <value>Centimetres;cm$Metres;m$Kilometres;km$Feet;ft$Yards;yd$
+            Miles;mi$</value>
       </BufferUnitOptions>
 
       <!-- The symbology for the buffer features -->
       <BufferSymbology>
-        <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)</value>
+        <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)
+        </value>
       </BufferSymbology>
 
-      <!-- The maximum number of records what will be extracted in any one search extract -->
+      <!-- The maximum number of records what will be extracted in any one
+        search extract -->
       <RecMax>
         <value>1000000</value>
       </RecMax>
@@ -577,7 +668,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
         <value>SearchSites</value>
       </SearchTable>
 
-      <!-- The column name in the search area table used to store the search reference -->
+      <!-- The column name in the search area table used to store the search
+        reference -->
       <SearchColumn>
         <value>ref</value>
       </SearchColumn>
@@ -592,7 +684,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
         <value>No;Yes - Without labels;Yes - With labels</value>
       </AddSelectedTablesOptions>
 
-      <!-- The default option (position in the list) for whether selected map tables should be added to the map window -->
+      <!-- The default option (position in the list) for whether selected map
+        tables should be added to the map window -->
       <DefaultAddSelectedTables>
         <value>3</value>
       </DefaultAddSelectedTables>
@@ -618,7 +711,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
             <value>Sites</value>
         </TableName>
         <Columns>
-            <value>Site_Type Char(10), Site_Name Char(50), Site_Area Float, Map_Label Char(50)</value>
+            <value>Site_Type Char(10), Site_Name Char(50), Site_Area Float,
+                Map_Label Char(50)</value>
         </Columns>
         <Suffix>
             <value>_sites</value>
@@ -628,7 +722,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
         </Format>
       </CombinedSitesTable>
 
-      <!-- The names, local names, suffixes, SQL clauses and formats of the map tables -->
+      <!-- The names, local names, suffixes, SQL clauses and formats of the
+        map tables -->
       <MapTables>
         <Sites_-_SACs>
             <TableName>
@@ -665,13 +760,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"SAC", SAC_Name, SAC_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By SAC_Name, Map_Label Order By SAC_Name, Map_Label</value>
+                <value>Group By SAC_Name, Map_Label Order By SAC_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_SACs>
         <Sites_-_SPAs>
@@ -709,13 +806,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"SPA", SPA_Name, SPA_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By SPA_Name, Map_Label Order By SPA_Name, Map_Label</value>
+                <value>Group By SPA_Name, Map_Label Order By SPA_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_SPAs>
         <Sites_-_NNRs>
@@ -753,13 +852,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"NNR", NNR_Name, NNR_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By NNR_Name, Map_Label Order By NNR_Name, Map_Label</value>
+                <value>Group By NNR_Name, Map_Label Order By NNR_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_NNRs>
         <Sites_-_Ramsars>
@@ -797,13 +898,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"Ramsar", Ramsar_Name, Ramsar_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By Ramsar_Name, Map_Label Order By Ramsar_Name, Map_Label</value>
+                <value>Group By Ramsar_Name, Map_Label Order By Ramsar_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_Ramsars>
         <Sites_-_SSSIs>
@@ -841,13 +944,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"SSSI", SSSI_Name, SSSI_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By SSSI_Name, Map_Label Order By SSSI_Name, Map_Label</value>
+                <value>Group By SSSI_Name, Map_Label Order By SSSI_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_SSSIs>
         <Sites_-_LNRs>
@@ -885,13 +990,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"LNR", LNR_Name, LNR_Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By LNR_Name, Map_Label Order By LNR_Name, Map_Label</value>
+                <value>Group By LNR_Name, Map_Label Order By LNR_Name,
+                Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_LNRs>
         <Sites_-_OxonLWS>
@@ -929,13 +1036,16 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
-                <value>"Oxon LWS", SiteCode + " " + Name "SiteDetails", Area, Map_Label</value>
+                <value>"Oxon LWS", SiteCode + " " + Name "SiteDetails", Area,
+                    Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+                <value>Group By SiteDetails, Map_Label Order By SiteDetails,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_OxonLWS>
         <Sites_-_BerksLWS>
@@ -973,103 +1083,18 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
-                <value>"Berks LWS", Sitecode + " " + Sitename "SiteDetails", Area, Map_Label</value>
+                <value>"Berks LWS", Sitecode + " " + Sitename "SiteDetails",
+                    Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
+                <value>Group By SiteDetails, Map_Label Order By SiteDetails,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_BerksLWS>
-        <Sites_-_OxonpLWS>
-            <TableName>
-                <value>Proposed_Oxfordshire_Local_Wil</value>
-            </TableName>
-            <Prefix>
-                <value>OxonpLWS</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxonplws</value>
-            </Suffix>
-            <Columns>
-                <value>SiteCode + " " + Name "SiteDetails"</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SiteDetails Order By SiteDetails</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SiteCode</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Oxon pLWS", SiteCode + " " + Name "SiteDetails", Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxonpLWS>
-        <Sites_-_BerkspLWS>
-            <TableName>
-                <value>Berkshire_Proposed_LWS_and_Ext</value>
-            </TableName>
-            <Prefix>
-                <value>BerkspLWS</value>
-            </Prefix>
-            <Suffix>
-                <value>_berksplws</value>
-            </Suffix>
-            <Columns>
-                <value>Sitecode + " " + Sitename "SiteDetails"</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SiteDetails Order By SiteDetails</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Sitecode</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Berks pLWS", Sitecode + " " + Sitename "SiteDetails", Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_BerkspLWS>
         <Sites_-_OxonLGS>
             <TableName>
                 <value>Oxfordshire_Local_Geological_S</value>
@@ -1105,13 +1130,15 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"Oxon LGS", Site_Name, Area, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By Site_Name, Map_Label Order By Site_Name, Map_Label</value>
+                <value>Group By Site_Name, Map_Label Order By Site_Name,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_OxonLGS>
         <Sites_-_BerksLGS>
@@ -1149,191 +1176,17 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Map_Label</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value>"Berks LGS", Sitename, Area_ha, Map_Label</value>
             </CombinedSitesColumns>
             <CombinedSitesCriteria>
-                <value>Group By Sitename, Map_Label Order By Sitename, Map_Label</value>
+                <value>Group By Sitename, Map_Label Order By Sitename,
+                    Map_Label</value>
             </CombinedSitesCriteria>
         </Sites_-_BerksLGS>
-        <Sites_-_OxSLINCS>
-            <TableName>
-                <value>Oxford_City_SLINCS_2005_Not_in</value>
-            </TableName>
-            <Prefix>
-                <value>OxfordSLINC</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxslincs</value>
-            </Suffix>
-            <Columns>
-                <value>Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Name Order By Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Oxford SLINC", Name, " ", Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By Name, Map_Label Order By Name, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxSLINCS>
-        <Sites_-_BBOWT>
-            <TableName>
-                <value>BBOWT_Nature_Reserves_April_20</value>
-            </TableName>
-            <Prefix>
-                <value>BBOWTReserve</value>
-            </Prefix>
-            <Suffix>
-                <value>_bbowt</value>
-            </Suffix>
-            <Columns>
-                <value>Site_name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Site_name Order By Site_name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Site_name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"BBOWT Reserve", Site_name, Areaha, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By Site_name, Map_Label Order By Site_name, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_BBOWT>
-        <Sites_-_WoodlandTrust>
-            <TableName>
-                <value>WoodlandTrustSites___standard</value>
-            </TableName>
-            <Prefix>
-                <value>WoodlandTrustSite</value>
-            </Prefix>
-            <Suffix>
-                <value>_wts</value>
-            </Suffix>
-            <Columns>
-                <value>WoodName</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By WoodName Order By WoodName</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>WoodName</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"WT Reserve", WoodName, Hectares, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By WoodName, Map_Label Order By WoodName, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_WoodlandTrust>
-        <Sites_-_RSPB>
-            <TableName>
-                <value>Otmoor_RSPB_Reserve</value>
-            </TableName>
-            <Prefix>
-                <value>RSPBReserve</value>
-            </Prefix>
-            <Suffix>
-                <value>_rspb</value>
-            </Suffix>
-            <Columns>
-                <value>SiteName</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SiteName Order By SiteName</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SiteName</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"RSPB Reserve", SiteName, SiteArea, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SiteName, Map_Label Order By SiteName, Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_RSPB>
         <Sites_-_OxonOther>
             <TableName>
                 <value>Other_Sites_Oxon_Sept_2012</value>
@@ -1369,7 +1222,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Name</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Name Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Name
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value></value>
@@ -1413,7 +1267,8 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>Site_name</value>
             </LabelColumn>
             <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Site_name Auto On</value>
+                <value>Font ("Arial",256,10,16711680,16777215) With Site_name
+                    Auto On</value>
             </LabelClause>
             <CombinedSitesColumns>
                 <value></value>
@@ -1422,94 +1277,6 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value></value>
             </CombinedSitesCriteria>
         </Sites_-_BerksOther>
-        <Sites_-_OxonCTA>
-            <TableName>
-                <value>Conservation_Target_Areas_for</value>
-            </TableName>
-            <Prefix>
-                <value>OxonCTA</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxoncta</value>
-            </Suffix>
-            <Columns>
-                <value>Target_Area_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Target_Area_Name Order By Target_Area_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Target_Area_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>No</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Target_Area_Name</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Target_Area_Name Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value></value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value></value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxonCTA>
-        <Sites_-_BerksBOA>
-            <TableName>
-                <value>Berkshire_Biodiversity_Opportu</value>
-            </TableName>
-            <Prefix>
-                <value>BerksBOA</value>
-            </Prefix>
-            <Suffix>
-                <value>_berksboa</value>
-            </Suffix>
-            <Columns>
-                <value>Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Name Order By Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>No</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Name</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Name Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value></value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value></value>
-            </CombinedSitesCriteria>
-        </Sites_-_BerksBOA>
         <Species_-_ProtNotable>
             <TableName>
                 <value>PN_Data_Searches_Jan2016</value>
@@ -1521,7 +1288,11 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>_spppn</value>
             </Suffix>
             <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+                <value>Scientific_name, Common_name, Abundance, Date,
+                    Grid_Reference, Grid_Reference_Qualifier, Location,
+                    Type_of_Record, Data_Origin, European_Directives,
+                    UK_Legislation, Priority_NERC_S41, Other_Designations,
+                    Easting, Northing, Taxon_Group</value>
             </Columns>
             <SelectCriteria>
                 <value></value>
@@ -1533,29 +1304,6 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>csv</value>
             </Format>
         </Species_-_ProtNotable>
-        <Species_-_ProtOnly>
-            <TableName>
-                <value>PN_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppProtected</value>
-            </Prefix>
-            <Suffix>
-                <value>_sppprot</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value>WHERE European_Directives &lt;&gt; "" OR UK_Legislation &lt;&gt; ""</value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_ProtOnly>
         <Species_-_Bat>
             <TableName>
                 <value>Bats_Data_Searches_Jan2016</value>
@@ -1567,7 +1315,11 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>_sppbat</value>
             </Suffix>
             <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+                <value>Scientific_name, Common_name, Abundance, Date,
+                Grid_Reference, Grid_Reference_Qualifier, Location,
+                Type_of_Record, Data_Origin, European_Directives,
+                UK_Legislation, Priority_NERC_S41, Other_Designations,
+                Easting, Northing, Taxon_Group</value>
             </Columns>
             <SelectCriteria>
                 <value></value>
@@ -1590,7 +1342,11 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>_sppgcn</value>
             </Suffix>
             <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
+                <value>Scientific_name, Common_name, Abundance, Date,
+                Grid_Reference, Grid_Reference_Qualifier, Location,
+                Type_of_Record, Data_Origin, European_Directives,
+                UK_Legislation, Priority_NERC_S41, Other_Designations,
+                Easting, Northing, Taxon_Group</value>
             </Columns>
             <SelectCriteria>
                 <value></value>
@@ -1602,29 +1358,6 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>csv</value>
             </Format>
         </Species_-_GCN>
-        <Species_-_Otter>
-            <TableName>
-                <value>Otters_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppOtter</value>
-            </Prefix>
-            <Suffix>
-                <value>_sppotter</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, European_Directives, UK_Legislation, Priority_NERC_S41, Other_Designations, Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_Otter>
         <Species_-_INNS>
             <TableName>
                 <value>INNS_Data_Searches_Jan2016</value>
@@ -1636,7 +1369,10 @@ Below is an example XML setup for a MapInfo implementation of the tool. Whilst t
                 <value>_sppinns</value>
             </Suffix>
             <Columns>
-                <value>Scientific_name, Common_name, Abundance_and_or_Sex_Stage_Info, Date, Grid_Reference, Grid_Reference_Qualifier, Location, Type_of_Record, Data_Origin, INNS_Designations, Easting, Northing, Taxon_Group</value>
+                <value>Scientific_name, Common_name, Abundance, Date,
+                Grid_Reference, Grid_Reference_Qualifier, Location,
+                Type_of_Record, Data_Origin, INNS_Designations,
+                Easting, Northing, Taxon_Group</value>
             </Columns>
             <SelectCriteria>
                 <value></value>

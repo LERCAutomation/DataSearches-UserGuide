@@ -13,7 +13,7 @@ Recommended User Knowledge
 Users
 -----
 
-This user guide assumes that users of the Data Searches Tool have:
+This user guide assumes that users of the Data Searches tool have:
 
 * General IT experience including use of Microsoft Windows.
 * Experience in the use of a relevant GIS application supported by the tool (currently ArcGIS or MapInfo), including selecting and querying features and attributes.
@@ -41,15 +41,15 @@ It is recommended that a person within each organisation is designated as the to
 Reading Guide
 =============
 
-This Preface explains a little about the Data Searches Tool, the community of people who develop and use it, and the licensing conditions for using and distributing it. It also explains how to read this user guide.
+This Preface explains a little about the Data Searches tool, the community of people who develop and use it, and the licensing conditions for using and distributing it. It also explains how to read this user guide.
 
-:doc:`../introduction/introduction` \ explains why the Data Searches Tool is needed, what it does and where it comes from.
+:doc:`../introduction/introduction` \ explains why the Data Searches tool is needed, what it does and where it comes from.
 
-:doc:`Anatomy of a data search <../anatomy/anatomy>` \ is a brief outline of the key stages of a data search, and how the Data Searches Tool addresses these.
+:doc:`Anatomy of a data search <../anatomy/anatomy>` \ is a brief outline of the key stages of a data search, and how the Data Searches tool addresses these.
 
-:doc:`Setting up the tool <../setup/setup>` \ describes how to install and set up the Data Searches Tool.
+:doc:`Setting up the tool <../setup/setup>` \ describes how to install and set up the Data Searches tool.
 
-:doc:`Running the tool <../execute/execute>` \ describes how to run the Data Searches Tool.
+:doc:`Running the tool <../execute/execute>` \ describes how to run the Data Searches tool.
 
 :doc:`FAQs <../faq/faq>` \ has a list of commonly asked questions and their answers.
 
@@ -62,7 +62,7 @@ This Preface explains a little about the Data Searches Tool, the community of pe
 Licensing
 =========
 
-The code for the Data Searches Tool is 'open source' and is released under the `GNU General Public License (GPL) v3 <http://www.gnu.org/licenses/gpl.html>`_. Users are free to install it on as many computers as they like, and to redistribute it according to the GPLv3 license.
+The code for the Data Searches tool is 'open source' and is released under the `GNU General Public License (GPL) v3 <http://www.gnu.org/licenses/gpl.html>`_. Users are free to install it on as many computers as they like, and to redistribute it according to the GPLv3 license.
 
 This guide is released under the `GNU Free Documentation License (FDL) v1.3 <http://www.gnu.org/licenses/fdl.html>`_. Permission is granted to copy, distribute and/or modify this document under the terms of the license.
 
@@ -78,7 +78,7 @@ Useful links
 Related community links:
 
 * Administrators (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases/>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases/>`_) - Release notes and installers for ArcGIS and MapInfo systems.
-* Developers (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) - Source code for the Data Searches Tool.
+* Developers (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) - Source code for the Data Searches tool.
 * Issues (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/issues>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/issues>`_) - Details of known issues and existing change requests.
 
 
@@ -112,7 +112,7 @@ The following typographical conventions are used in this manual:
 **Tools... --> About**
 	Indicates a menu choice, or a combination of menu choices, tab selections or GUI buttons.
 
-:file:`C:\Program Files (x86)\MapInfo\Professional`
+:file:`C:\\Program Files (x86)\\MapInfo\\Professional`
 	Indicates a filename or directory name.
 
 .. tip::
