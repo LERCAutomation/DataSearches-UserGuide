@@ -559,7 +559,7 @@ In order to add the Data Searches tool to the user interface, it needs to be add
 	Starting Customize Mode in ArcGIS
 
 
-Customising toolbars is done through the Customize dialog, which can be started either through the Add-In Manager (by clicking 'Customize', see :numref:`figAddInManager`), or through choosing the 'Customize Mode...' option in the Customize Menu (:numref:`figCustomizeMode`).
+Customising toolbars is done through the Customize dialog, which can be started either through the Add-In Manager (by clicking **Customize**, see :numref:`figAddInManager`), or through choosing the 'Customize Mode...' option in the Customize Menu (:numref:`figCustomizeMode`).
 
 .. raw:: latex
 
@@ -610,7 +610,7 @@ Once a new toolbar is created and named, it is automatically added to the ArcMap
 
    \newpage
 
-As a final step the Data Searches tool is added to the toolbar. This is done from the Command tab in the Customize dialog (:numref:`figAddInCommands`). Click on Add-In Controls and the Data Searches tool will be shown in the right-hand panel.
+As a final step the Data Searches tool is added to the toolbar. This is done from the Command tab in the Customize dialog (:numref:`figAddInCommands`). Click on **Add-In Controls** and the Data Searches tool will be shown in the right-hand panel.
 
 .. _figAddInCommands:
 
@@ -637,7 +637,7 @@ To add the tool to the toolbar, simply drag and drop it onto it (:numref:`figDra
 
    \newpage
 
-In order to function, the tool needs to know the location of the XML configuration file. The first time the tool is run, or whenever the configuration file is moved, a dialog will appear asking for the folder containing the XML file (:numref:`figFirstStart`). Navigate to the folder where the XML file is kept and click OK. If the XML file is present and its structure is correct, the Data Searches form will be shown. Even if the tool is not run at this time, the location of the configuration file will be stored for future use.
+In order to function, the tool needs to know the location of the XML configuration file. The first time the tool is run, or whenever the configuration file is moved, a dialog will appear asking for the folder containing the XML file (:numref:`figFirstStart`). Navigate to the folder where the XML file is kept and click **OK**. If the XML file is present and its structure is correct, the Data Searches form will be shown. Even if the tool is not run at this time, the location of the configuration file will be stored for future use.
 
 .. _figFirstStart:
 
@@ -671,7 +671,7 @@ To install the tool in MapInfo, make sure that the configuration of the XML file
 
    \newpage
 
-In the `Tool Manager` dialog, click :kbd:`Add Tool...`, then locate the tool using the browse button :kbd:`...` on the `Add Tool` dialog (:numref:`figAddTool`). Enter a name in the **Title** box (e.g. 'DataSearches'), and a description if desired. Then click :kbd:`Ok` to close the `Add Tool` dialog.
+In the `Tool Manager` dialog, click **Add Tool...**, then locate the tool using the browse button :kbd:`...` on the `Add Tool` dialog (:numref:`figAddTool`). Enter a name in the **Title** box (e.g. 'DataSearches'), and a description if desired. Then click **Ok** to close the `Add Tool` dialog.
 
 .. _figAddTool:
 
@@ -685,7 +685,7 @@ In the `Tool Manager` dialog, click :kbd:`Add Tool...`, then locate the tool usi
 
    \newpage
 
-The tool will now show in the `Tool Manager` dialog (:numref:`figToolAdded`) and the **Loaded** box will be checked. To load the tool automatically whenever MapInfo is started check the **AutoLoad** box.  Then click :kbd:`Ok` to close the `Tool Manager` dialog.
+The tool will now show in the `Tool Manager` dialog (:numref:`figToolAdded`) and the **Loaded** box will be checked. To load the tool automatically whenever MapInfo is started check the **AutoLoad** box.  Then click **Ok** to close the `Tool Manager` dialog.
 
 .. _figToolAdded:
 

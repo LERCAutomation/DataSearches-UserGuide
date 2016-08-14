@@ -29,7 +29,7 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 Opening the form
 ================
 
-To open the Data Searches tool in ArcGIS, click on the :kbd:`Data Searches` tool button (:numref:`figLaunchArcGIS`).
+To open the Data Searches tool in ArcGIS, click on the **Data Searches tool** button (:numref:`figLaunchArcGIS`).
 
 .. _figLaunchArcGIS:
 
@@ -116,7 +116,7 @@ Enter the search reference in the Search Reference box. If the search reference 
 
 
 .. note::
-	The MapInfo version of the form has an additional button ``Find`` after the `Search Reference` field (:numref:`figSearchRefButtonMapInfo`). This button must be clicked to check if the search reference exists in the linked Access database and display the site name in the `Site Name` box.
+	The MapInfo version of the form has an additional button **Find** after the `Search Reference` field (:numref:`figSearchRefButtonMapInfo`). This button must be clicked to check if the search reference exists in the linked Access database and display the site name in the `Site Name` box.
 
 
 .. raw:: latex
@@ -220,7 +220,7 @@ Finally, select whether the log file should be cleared before the process runs b
 	Select option for clearing the log file
 
 
-Click :kbd:`OK` for the search process to start.
+Click **OK** for the search process to start.
 
 
 .. raw:: latex

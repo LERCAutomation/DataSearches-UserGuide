@@ -68,7 +68,7 @@ The Data Searches tool requires minimum user input in order to carry out its pro
 #. A buffer size is entered and the units for this buffer are specified.
 #. The user chooses whether to add any selected GIS layers to the map, and whether (and how) this new data should be labelled. 
 #. Finally, the user selects whether a table combining all the results should be created during the process, and whether the log file should be cleared before the process starts. 
-#. Once the user clicks :kbd:`OK` the process starts.
+#. Once the user clicks **OK** the process starts.
 
 .. _figUIAnn:
 
