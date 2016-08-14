@@ -98,7 +98,7 @@ Provided that the XML document is otherwise correct, the form will display (:num
 Using the form
 ==============
 
-Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknownArcGIS`).
+Enter the search reference in the **Search Reference** box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`).
 
 .. _figSearchRefKnownArcGIS:
 
@@ -106,6 +106,9 @@ Enter the search reference in the Search Reference box. If the search reference 
 	:align: center
 
 	Site name displays automatically if the search reference is found
+
+
+If the search reference does not exist, but you are certain the search reference exists in the search layer(s), enter the site name manually (:numref:`figSearchRefUnknownArcGIS`).
 
 .. _figsearchRefUnknownArcGIS:
 
@@ -210,7 +213,11 @@ Decide how the combined sites table should be created by selecting the relevant 
 - **Overwrite existing table** ... Records will be saved to a new combined sites table. If a combined sites table already exists it will be deleted first.
 
 
-Finally, select whether the log file should be cleared before the process runs by checking or unchecking the 'Clear Log File' check-box (:numref:`figCheckBoxesArcGIS`).
+.. raw:: latex
+
+   \newpage
+
+Finally, select whether the log file should be cleared before the process runs by checking or unchecking the 'Clear Log File' check-box (:numref:`figClearLogFileArcGIS`).
 
 .. _figClearLogFileArcGIS:
 
@@ -222,10 +229,6 @@ Finally, select whether the log file should be cleared before the process runs b
 
 Click **OK** for the search process to start.
 
-
-.. raw:: latex
-
-   \newpage
 
 While the Data Searches tool is running the search, the map interface will become inactive (in ArcGIS the screen will show 'Paused'). Once the process is finished the interface will reactivate.
 

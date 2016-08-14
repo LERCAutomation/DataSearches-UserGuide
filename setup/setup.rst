@@ -488,8 +488,10 @@ Installing in ArcGIS
 
 Installing the tool in ArcGIS is straightforward. There are a few different ways it can be installed:
 
-1. Installation through Windows Explorer.
-	- Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`).
+Installation through Windows Explorer
+*************************************
+
+Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`).
 
 .. _figInstallTool:
 
@@ -498,7 +500,11 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Installing the Data Searches tool from Windows Explorer
 
-	- Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`).
+.. raw:: latex
+
+   \newpage
+
+Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`).
 
 .. _figConfirmInstall:
 
@@ -507,7 +513,8 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Installation begins after clicking 'Install Add-in'
 
-	- Once it is installed, it will become available to add to the ArcGIS interface as a button.
+
+Once it is installed, it will become available to add to the ArcGIS interface as a button (see `CustomisingToolbarsArcGIS`_).
 
 .. note::
 	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
@@ -516,8 +523,10 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
    \newpage
 
-2. Installation from within ArcMap.
-	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`).
+Installation from within ArcMap
+*******************************
+
+Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`).
 
 .. _figOpenAddInManager:
 
@@ -526,16 +535,20 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Starting the ArcGIS Add-In Manager
 
-	- If the Data Searches tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
+.. raw:: latex
+
+   \newpage
+
+If the Data Searches tool is not shown, use the **Options** tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
 
 .. _figAddInOptions:
 
 .. figure:: figures/AddInOptions.png
 	:align: center
 
-	The options tab in the ArcGIS Add-In Manager
+	The 'Options' tab in the ArcGIS Add-In Manager
 
-	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
+Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button (see `CustomisingToolbarsArcGIS`_).
 
 .. _figAddInManager:
 
@@ -548,6 +561,11 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 .. raw:: latex
 
    \newpage
+
+.. _CustomisingToolbarsArcGIS:
+
+Customising toolbars
+********************
 
 In order to add the Data Searches tool to the user interface, it needs to be added to a toolbar. It is recommended that this is done inside a document that has already been loaded with all the data layers that are required for the tool to run. The tool should then be saved with this document (see `Fundamentals of Saving your Customizations <http://desktop.arcgis.com/en/arcmap/10.3/guide-books/customizing-the-ui/fundamentals-of-saving-your-customizations.htm>`_ for an explanation of how customisations are stored within ArcGIS).
 
@@ -565,7 +583,7 @@ Customising toolbars is done through the Customize dialog, which can be started 
 
    \newpage
 
-Once this dialog is open, ensure that the check box 'Create new toolbars and menus in the document' is checked in the Options tab (:numref:`figCustomizeOptions`).
+Once this dialog is open, ensure that the check box 'Create new toolbars and menus in the document' is checked in the **Options** tab (:numref:`figCustomizeOptions`).
 
 .. _figCustomizeOptions:
 
@@ -575,7 +593,11 @@ Once this dialog is open, ensure that the check box 'Create new toolbars and men
 	Customising the document in ArcGIS
 
 
-It is recommended that the button for the Data Searches tool is added to a new toolbar. Toolbars are created through the Toolbars tab in the Customize dialog, as shown in figures :numref:`figCustomizeToolbars` and :numref:`figNameToolbar`.
+.. raw:: latex
+
+   \newpage
+
+It is recommended that the button for the Data Searches tool is added to a new toolbar. Toolbars are created through the **Toolbars** tab in the Customize dialog, as shown in figures :numref:`figCustomizeToolbars` and :numref:`figNameToolbar`.
 
 .. _figCustomizeToolbars:
 
@@ -610,7 +632,7 @@ Once a new toolbar is created and named, it is automatically added to the ArcMap
 
    \newpage
 
-As a final step the Data Searches tool is added to the toolbar. This is done from the Command tab in the Customize dialog (:numref:`figAddInCommands`). Click on **Add-In Controls** and the Data Searches tool will be shown in the right-hand panel.
+As a final step the Data Searches tool is added to the toolbar. This is done from the **Command** tab in the Customize dialog (:numref:`figAddInCommands`). Click on **Add-In Controls** and the Data Searches tool will be shown in the right-hand panel.
 
 .. _figAddInCommands:
 
