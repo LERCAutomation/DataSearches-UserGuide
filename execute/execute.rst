@@ -27,7 +27,7 @@ As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Dat
 	single: Opening the form
 
 Opening the form
-----------------
+================
 
 To open the Data Searches tool in ArcGIS, click on the :kbd:`Data Searches` tool button (:numref:`figLaunchArcGIS`).
 
@@ -96,7 +96,7 @@ Provided that the XML document is otherwise correct, the form will display (:num
 	single: Using the form
 
 Using the form
---------------
+==============
 
 Enter the search reference in the Search Reference box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`). If it does not exist, but you are certain the search reference exists in the search layer(s), enter the site name by hand (:numref:`figSearchRefUnknownArcGIS`).
 
@@ -238,6 +238,11 @@ When the search is finished, a message box will appear (:numref:`figFinishedArcG
 
 	Prompt to close the form when the search process completes
 
+
+.. raw:: latex
+
+   \newpage
+
 Once you have made your choice, the log file will be shown using Notepad (:numref:`figLogFileArcGIS`). Using this you can review whether the search was carried out as expected. When you are finished, close the log file. It has already been saved in the analysis folder for future reference.
 
 .. _figLogFileArcGIS:
@@ -248,11 +253,11 @@ Once you have made your choice, the log file will be shown using Notepad (:numre
 	Example log file shown for review
 
 
-You can now repeat the search process for using a different search radius for different data layers, or for a different search request, as required.
+You can now repeat the search process using a different search radius with different data layers, or for a different search request, as required.
 
 .. _OverwriteWarning:
 
-.. warning:: 
+.. caution:: 
 	If you rerun the search process using the **same search reference**, for example with a different buffer size, it is possible that some outputs will overwritten, or duplicated, as follows:
 
 	- Output tables and GIS layers will be overwritten if the same map layer is included in a second search. Only one copy of each output table and / or GIS layer can be saved for the same search reference.
@@ -269,8 +274,8 @@ You can now repeat the search process for using a different search radius for di
 .. index::
 	single: Search results
 
-Search Results
---------------
+Search results
+==============
 
 When the search is finished, any exported data tables, saved GIS layers, the buffer GIS layer, and the log file are all saved in the 'GISFolder' specified in the XML document. Any saved GIS layers resulting from the search are also added to the map interface (if requested).
 
@@ -285,7 +290,8 @@ When the search is finished, any exported data tables, saved GIS layers, the buf
 .. index::
 	single: Search results; ArcGIS
 
-**Search results in ArcGIS**
+Search results in ArcGIS
+------------------------
 
 In ArcGIS, search results are added to the current document as follows:
 
@@ -316,7 +322,8 @@ An example of how the results will appear in ArcGIS is shown in :numref:`figResu
 .. index::
 	single: Search results; MapInfo
 
-**Search results in MapInfo**
+Search results in MapInfo
+-------------------------
 
 In MapInfo, search results are added to the active workspace as follows:
 

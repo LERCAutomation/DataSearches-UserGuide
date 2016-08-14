@@ -34,7 +34,7 @@ Repeating the process
 .. index::
 	single: Tool overview
 
-The Data Searches Tool
+The Data Searches tool
 ======================
 
 There are four component parts to the Data Searches tool that work together to automate the process described above:
@@ -51,7 +51,7 @@ The Data Searches tool is used within a GIS environment and requires all the req
 .. figure:: figures/InterfaceArcGISAnnotated.png
 	:align: center
 
-	An ArcGIS document configured for using the Data Searches tool
+	Example of an ArcGIS document configured for the Data Searches tool
 
 .. raw:: latex
 
@@ -100,7 +100,7 @@ In essence, the process that the tool follows is identical to the manual search 
 .. index::
 	single: Tool outputs
 
-Tool Outputs
+Tool outputs
 ============
 
 Below is a selection of outputs generated from an example data search using the search options shown in figures :numref:`figArcGISUI` and :numref:`figUIAnn`. These examples were generated using the ArcGIS tool - the outputs from the MapInfo tool have a slightly different format. The tabular data, however, is the same for both implementations of the tool [Andy you might want to include the visuals from the MapInfo implementation].
@@ -112,7 +112,7 @@ When the process finishes, the GIS output is presented within the GIS interface 
 .. figure:: figures/ExampleOutputArcGISAnnotated.png
 	:align: center
 
-	GIS output from the Data Searches tool (ArcGIS implementation)
+	Example of GIS output from the Data Searches tool (ArcGIS)
 
 
 .. raw:: latex

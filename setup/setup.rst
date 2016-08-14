@@ -66,7 +66,7 @@ Setup for ArcGIS
 
 
 General attributes for ArcGIS
------------------------------
+*****************************
 
 The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 1.2.1 of the Data Searches tool.
 
@@ -166,7 +166,7 @@ CombinedSitesTable
 	single: Map layer attributes; ArcGIS
 
 Map layer attributes for ArcGIS
--------------------------------
+*******************************
 
 .. _MapLayers:
 All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new child node is created that has the name of the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is shown in the ArcGIS table of contents (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleArcGIS`. 
@@ -286,7 +286,7 @@ Setup for MapInfo
 	single: General attributes; MapInfo
 
 General attributes for MapInfo
-------------------------------
+******************************
 
 The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the MapInfo version 1.2.1 of the Data Searches tool.
 
@@ -388,7 +388,7 @@ CombinedSitesTable
 	single: Map layer attributes; MapInfo
 
 Map layer attributes for MapInfo
---------------------------------
+********************************
 
 .. _MapLayers:
 All map layer attributes are found within the ``<MapTables>`` node. For each data layer that can be included in the searches, a new child node is created that has a descriptive name for the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is known in the active MapInfo workspace (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleMapInfo`. 
@@ -489,12 +489,7 @@ Installing in ArcGIS
 Installing the tool in ArcGIS is straightforward. There are a few different ways it can be installed:
 
 1. Installation through Windows Explorer.
-	- Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`). 
-	- Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`). 
-	- Once it is installed, it will become available to add to the ArcGIS interface as a button.
-
-.. note::
-	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
+	- Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`).
 
 .. _figInstallTool:
 
@@ -503,6 +498,8 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Installing the Data Searches tool from Windows Explorer
 
+	- Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`).
+
 .. _figConfirmInstall:
 
 .. figure:: figures/AddInConfirmInstall.png
@@ -510,14 +507,17 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Installation begins after clicking 'Install Add-in'
 
+	- Once it is installed, it will become available to add to the ArcGIS interface as a button.
+
+.. note::
+	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
+
 .. raw:: latex
 
    \newpage
 
 2. Installation from within ArcMap.
-	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`). 
-	- If the Data Searches tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
-	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
+	- Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`).
 
 .. _figOpenAddInManager:
 
@@ -526,6 +526,7 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	Starting the ArcGIS Add-In Manager
 
+	- If the Data Searches tool is not shown, use the Options tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
 
 .. _figAddInOptions:
 
@@ -534,6 +535,7 @@ Installing the tool in ArcGIS is straightforward. There are a few different ways
 
 	The options tab in the ArcGIS Add-In Manager
 
+	- Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button.
 
 .. _figAddInManager:
 
@@ -604,6 +606,10 @@ Once a new toolbar is created and named, it is automatically added to the ArcMap
 	New toolbar added to the ArcGIS Interface
 
 
+.. raw:: latex
+
+   \newpage
+
 As a final step the Data Searches tool is added to the toolbar. This is done from the Command tab in the Customize dialog (:numref:`figAddInCommands`). Click on Add-In Controls and the Data Searches tool will be shown in the right-hand panel.
 
 .. _figAddInCommands:
@@ -626,6 +632,10 @@ To add the tool to the toolbar, simply drag and drop it onto it (:numref:`figDra
 	:align: center
 
 	Adding the Data Searches tool to the new toolbar
+
+.. raw:: latex
+
+   \newpage
 
 In order to function, the tool needs to know the location of the XML configuration file. The first time the tool is run, or whenever the configuration file is moved, a dialog will appear asking for the folder containing the XML file (:numref:`figFirstStart`). Navigate to the folder where the XML file is kept and click OK. If the XML file is present and its structure is correct, the Data Searches form will be shown. Even if the tool is not run at this time, the location of the configuration file will be stored for future use.
 
