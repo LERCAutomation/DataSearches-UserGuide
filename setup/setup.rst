@@ -168,7 +168,6 @@ CombinedSitesTable
 Map layer attributes for ArcGIS
 *******************************
 
-.. _MapLayers:
 All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new child node is created that has the name of the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is shown in the ArcGIS table of contents (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleArcGIS`. 
 
 .. tip::
@@ -390,7 +389,6 @@ CombinedSitesTable
 Map layer attributes for MapInfo
 ********************************
 
-.. _MapLayers:
 All map layer attributes are found within the ``<MapTables>`` node. For each data layer that can be included in the searches, a new child node is created that has a descriptive name for the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is known in the active MapInfo workspace (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleMapInfo`. 
 
 .. tip::

@@ -30,17 +30,17 @@ Operating the tool
 
 	This issue can arise in several ways:
 
-	- The layer isn't loaded in your GIS document or workspace. In this case, a `message will pop up <../execute/execute.html#figlaunchwarning>`__ before the form is displayed informing you the layer isn't loaded. Add the layer to GIS and restart the tool and the problem should be resolved.
+	- The layer isn't loaded in your GIS document or workspace. In this case, a :ref:`message will pop up <figlaunchwarningArcGIS>` before the form is displayed informing you the layer isn't loaded. Add the layer to GIS and restart the tool and the problem should be resolved.
 	- The layer isn't listed in the XML configuration document. Please refer to the :doc:`setup <../setup/setup>` section and add it as a map layer.
 	- The map layer is listed in the configuration document, but the 'LayerName' is spelled incorrectly. Note that the name must follow the exact format of the name of the layer in the current GIS document or active workspace (in ArcGIS the name is also case sensitive).
 
 **I ran a data search twice with different radius settings. The combined sites table only has one set of results**
 
-	When the same search reference is used twice, the combined sites table will be overwritten in the second search unless **Append to existing table** is selected in the 'Create Combined Sites Table' option. Please see the `warning <../execute/execute.html#OverwriteWarning>`_ in the 'Running the Tool' section for details.
+	When the same search reference is used twice, the combined sites table will be overwritten in the second search unless **Append to existing table** is selected in the 'Create Combined Sites Table' option. Please see the :ref:`warning <OverwriteWarning>` in the 'Running the Tool' section for details.
 
 **I ran a data search twice with different radius settings and included the same data layers. There is only one set of results**
 
-	When the same search reference is used twice, the output from any layers that were included in the first search will be overwritten. Please see the `warning <../execute/execute.html#overwritewarning>`_ in the 'Running the Tool' section for details. If you need to keep two sets of results, for example using different radii, then move the results from the first search to a different folder before carrying out the second search.
+	When the same search reference is used twice, the output from any layers that were also included in the first search will be overwritten. If you need to keep two sets of results, for example using different search radii, then move the results from the first search to a different folder before carrying out the second search.
 
 
 Tool issues
