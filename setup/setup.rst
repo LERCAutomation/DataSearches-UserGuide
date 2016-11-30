@@ -68,7 +68,7 @@ Setup for ArcGIS
 General attributes for ArcGIS
 *****************************
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 1.2.1 of the Data Searches tool.
+The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 1.3.0.1 of the Data Searches tool.
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'XYBRC/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -236,6 +236,12 @@ KeepLayer
 	.. note:: 
 		If no features are selected in a data layer during a search, no new data layer will be created even if the KeepLayer attribute is set to ``Yes``.
 
+LoadWarning
+	A Yes/No attribute that defines whether a warning should be issued if this layer is not loaded in ArcGIS.
+
+PreSelectLayer
+	A Yes/No attribute that defines whether this layer should be highlighted by default when the tool menu is loaded.
+
 _`LayerFileName`
 	The name of the layer file (``.lyr``) that should be used to symbolise any GIS output from this data layer. The layer file should be present in the `LayerFolder`_ specified in the general attributes. This name is case sensitive. If no value is entered the system will use the default symbology assigned during processing.
 
@@ -247,6 +253,9 @@ LabelColumn
 
 LabelClause
 	An ArcGIS clause that defines the format, font type, font size and colour of the labels for this layer. The format of this clause is as follows: ``Font:FontName$Size:FontSize$Red:PercentRed$Green:PercentGreen`` ``$Blue:PercentBlue$Type:PlacementType``, where the ``Type`` is the ArcGIS label placement type with the following options:  NoRestrictions, OnePerName, OnePerPart or OnePerShape. An example would be ``Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions``. If no clause is filled in these default settings are applied (Arial, size 10, black, each polygon in a multi-part polygon is labelled).
+
+LabelReset
+	A Yes/No attribute that defines whether the label counter should be set to 0 when this layer is being processed, enabling an override of the user's choice from the Overwrite Map Labels dropdown box. Note that if the LabelReset is set to 'Yes', labels will start at 1 for this layer even if the option to overwrite labels is set to 'Yes - Increment Counter'. If the overwrite labels option selected is 'No' or 'Yes - Reset Counter', the LabelReset entry will be ignored. 
 
 CombinedSitesColumns
 	A comma-separated list of column names to be included in the combined sites table. If this entry is left blank the data layer will not be included in the combined sites table. A number of special cases apply to this attribute:

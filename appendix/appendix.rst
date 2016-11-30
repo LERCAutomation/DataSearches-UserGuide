@@ -248,6 +248,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     extract should be saved -->
                     <value>Yes</value>
                 </KeepLayer>
+                <LoadWarning>
+                    <value>Yes</value>
+                </LoadWarning>
+                <PreSelectLayer>
+                    <value>No</value>
+                </PreSelectLayer>
                 <LayerFileName> <!-- The name of a layer file (*.lyr) that
                     should be used to symbolise the extract -->
                     <value>SpeciesPointsSymbology.lyr</value>
@@ -342,6 +348,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <KeepLayer>
                     <value>Yes</value>
                 </KeepLayer>
+                <LoadWarning>
+                    <value>Yes</value>
+                </LoadWarning>
+                <PreSelectLayer>
+                    <value>No</value>
+                </PreSelectLayer>
                 <LayerFileName>
                     <value>SACsSymbology.lyr</value>
                 </LayerFileName>
@@ -425,6 +437,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <KeepLayer>
                     <value>No</value>
                 </KeepLayer>
+                <LoadWarning>
+                    <value>Yes</value>
+                </LoadWarning>
+                <PreSelectLayer>
+                    <value>Yes</value>
+                </PreSelectLayer>
                 <LayerFileName>
                     <value></value>
                 </LayerFileName>
@@ -510,6 +528,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <KeepLayer>
                     <value>Yes</value>
                 </KeepLayer>
+                <LoadWarning>
+                    <value>No</value>
+                </LoadWarning>
+                <PreSelectLayer>
+                    <value>No</value>
+                </PreSelectLayer>
                 <LayerFileName>
                     <value>NNRSymbology.lyr</value>
                 </LayerFileName>
