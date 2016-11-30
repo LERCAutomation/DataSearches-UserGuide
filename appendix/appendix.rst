@@ -276,6 +276,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                         applied -->
                     <value></value>
                 </LabelClause>
+                <LabelReset>
+                    <value>No</value>
+                </LabelReset>
                 <CombinedSitesColumns> <!-- The columns to be used in the
                     combined sites table. -->
                     <!-- Leave blank if the layer should not be included in
@@ -373,6 +376,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>Font:Arial$Size:11$Red:255$Green:0$Blue:0$Type:
                         OnePerShape</value> <!-- Labels are red -->
                 </LabelClause>
+                <LabelReset>
+                    <value>No</value>
+                </LabelReset>
                 <CombinedSitesColumns>
                     <!-- Distance may be included as a keyword if
                         IncludeDistance is set to Yes-->
@@ -461,6 +467,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                         applied -->
                     <value></value>
                 </LabelClause>
+                <LabelReset>
+                    <value>Yes</value>
+                </LabelReset>
                 <CombinedSitesColumns>
                     <!-- Distance may be included as a keyword if
                         IncludeDistance is set to Yes-->
@@ -552,6 +561,9 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                         applied -->
                     <value></value>
                 </LabelClause>
+                <LabelReset>
+                    <value>No</value>
+                </LabelReset>
                 <CombinedSitesColumns>
                     <!-- Distance may be included as a keyword if
                         IncludeDistance is set to Yes-->
