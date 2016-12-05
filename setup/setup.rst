@@ -173,6 +173,10 @@ All map layer attributes are found within the ``<MapLayers>`` node. For each dat
 .. tip::
 	If you wish to display spaces in any layer names in the tool menu use an underscore (``_``) for each space in the node name for the layer. XML does not allow spaces in node names, but the tool will translate these underscores into spaces when the form is opened.
 
+.. _GroupLayers:
+	.. note::
+		If you wish to group layers into functional groups (which can be labelled together), use a hyphen (``-``) to give the group name before the name of the layer in naming the child node (e.g. in ``<Sites_-_SSSIs>``, 'Sites' would be the group name). 
+
 .. _figXMLExampleArcGIS:
 
 .. figure:: figures/DataLayerXMLExampleArcGIS.png
