@@ -186,7 +186,7 @@ If you have selected 'Yes - With labels', select how labels should be added in t
 - **Yes - Do Not Reset** ... Labels will be numbered from 1 and increase by 1 for each feature, but the counter will increase incrementally for all the layers (i.e. it will not reset to 1 at the start of each layer).
 
 .. note:: 
-	A 'layer group' is defined by the inclusion of a hyphen in the layer definition. The part of the layer definition before the hyphen is treated as the group name (see the :ref:`note <grouplayers>` on group layers).
+	A 'layer group' is defined by the inclusion of a hyphen in the layer definition. The part of the layer definition before the hyphen is treated as the group name (see the :ref:`note <group>` on group layers).
 
 .. note::
 	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
