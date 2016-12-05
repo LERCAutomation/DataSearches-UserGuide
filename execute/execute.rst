@@ -67,7 +67,7 @@ If there are any structural issues with the XML document, the tool will display 
 
    \newpage
 
-Provided that the XML document is otherwise correct, the form will display (:numref:`figDisplayFormArcGIS`).
+Provided that the XML document is otherwise correct, the form will display (:numref:`figDisplayFormArcGIS`), using the settings given in the XML file for the defaults.
 
 .. _figDisplayformArcGIS:
 
@@ -181,8 +181,12 @@ If you have selected 'Yes - With labels', select how labels should be added in t
 	Select how labels should be added to the map, if at all
 
 - **No** ... Existing map labels will not be overwritten. However, new map labels will be created if the map label column given in the configuration document doesn't exist.
-- **Yes - Reset Counter** ... Labels will be numbered from 1 and increase by 1 for each feature.
-- **Yes - Increment Counter** ...  Labels will be numbered from 1 and increase by 1 for each feature, but the counter will increase incrementally for all the layers (i.e. it will not reset to 1 at the start of each layer).
+- **Yes - Reset Each Layer** ... Labels will be numbered from 1 and increase by 1 for each feature. For each new layer the label number will be reset to 1.
+- **Yes - Reset Each Group** ...  Labels will be numbered from 1 and increase by 1 for each feature in a layer group. For the first layer in each new layer group the label number will be reset to 1.
+- **Yes - Do Not Reset** ... Labels will be numbered from 1 and increase by 1 for each feature, but the counter will increase incrementally for all the layers (i.e. it will not reset to 1 at the start of each layer).
+
+.. note:: 
+	A 'layer group' is defined by the inclusion of a hyphen in the layer definition. The part of the layer definition before the hyphen is treated as the group name (see :ref:`GroupLayers <grouplayers>`)
 
 .. note::
 	Map layers will be labelled in accordance with the settings that are given for each map layer in the configuration document. These settings can override the above options in the following circumstances:
