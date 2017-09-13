@@ -62,6 +62,30 @@ Setup for ArcGIS
 ----------------
 
 .. index::
+	single: Launch configuration; ArcGIS
+
+Launch configuration for ArcGIS
+*******************************
+
+There are two components to the configuration of the ArcGIS version of the Data Searches tool: The first one is a small XML file (the launch configuration, which must be called ``DataSearches.xml``) that defines whether the user should be offered a choice of configuration files, and the second is the configuration file itself. In this way, more than one configuration can be set up to allow for flexibility in the way the tool is used by different users. 
+
+.. note::
+	All configuration files must be kept in the same folder.
+
+The launch configuration has the following entries:
+
+ChooseXML
+	Yes/No attribute, defining whether the user should be allowed a choice in what configuration file is loaded.
+
+DefaultProfile
+	The name of the default profile that will be offered as the first choice. If only this profile is present, the main form will launch without offering the user the choice. This name is given without the full path, e.g. ``DefaultProfile.xml``. If no default profile is specified, the system looks for ``DefaultProfile.xml`` in the XML folder.
+
+The way the launch configuration file operates is as follows:
+- If ChooseXML is set to No, the tool will launch using the default profile.
+- if ChooseXML is set to Yes, but only the default profile is found in the XML folder, the tool will launch using the default profile without offering the user a choice.
+- if ChooseXML is set to Yes and there are one or more configuration files in the XML folder other than the default profile, it will offer the user a choice. It will also offer the user a choice if the default profile is not found, but one or more configuration files are present.
+
+.. index::
 	single: General attributes; ArcGIS
 
 
