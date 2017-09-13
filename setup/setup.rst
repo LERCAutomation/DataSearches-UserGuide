@@ -104,13 +104,16 @@ The first section of the configuration file deals with a series of general attri
 
 
 Database
-	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension. The database must have a table called 'Enquiries' that contains, at the very least, the search reference and the site name.
+	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension. The database must have a table called 'Enquiries' that contains, at the very least, the search reference and the site name. This attribute may be left blank if no database is used.
 
 RefColumn
 	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets. The search reference must follow the format 'LERCName/Year/EnquiryNumber'.
 
 SiteColumn
 	The name of the column in the Enquiries table within the Access database, that contains the site name. The name must be given without any brackets.
+
+RequireSiteName
+	A Yes/No attribute that defines whether the site name must be entered. Although the site name field on the form will be active, the user may choose to leave it blank.
 
 RepChar
 	The character(s) used to replace any special characters in file or folder names. 'Special' characters are any of the following: ``\, %,$, :, *, /, ?, <, >, |, ~, £, .``. The replacement character can itself not be a special character.
@@ -142,6 +145,9 @@ BufferUnitOptions
 DefaultBufferUnit
 	The buffer unit that should be shown by default in the 'Buffer Unit' drop-down list. This attribute is the index number of the unit in the drop-down list, with 1 being the first option.
 
+KeepBufferArea
+	A Yes/No attribute that defines whether a GIS file of the buffer area should be kept.
+
 BufferLayerName
 	The name of the layer file (kept in the `LayerFolder`_) which will be used to symbolise the buffer layer. Must include the ``.lyr`` extension.
 
@@ -153,6 +159,12 @@ _`SearchLayerExtensions`
 
 SearchColumn
 	The name of the column in the search layer(s) that holds the search reference.
+
+KeepSearchFeatures
+	A Yes/No attribute defining whether the feature used in the search should be kept as a GIS file.
+
+SearchSymbologyBase
+	The base name of the search layer symbology file (without the .lyr). Note the relevant extension (from `SearchLayerExtensions`_) will be added. This layer file is used to set the symbology for the saved feature.
 
 AggregateColumns
 	A list, delimited by semicolons, of the fields in the search layer that should be used to dissolve the buffer during processing. This attribute can be used in cases where the search sites are multi-part features which may create a number of overlapping buffers rather than one continuous one.
@@ -177,11 +189,10 @@ DefaultCombinedSitesTable
 
 CombinedSitesTable
 	This section defines the combined sites table. It has the following entries:
-
+	Name
+		The name of the combined sites table. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 	Columns
 		A comma-delimited list of the column headings that the combined sites table should have.
-	Suffix
-		An entry of what the suffix of the file name should be. The name of the combined sites table is given by ``subref_Suffix.Format``, e.g. ``001_sites.csv`` where the suffix is ``sites`` and the format is ``csv``. The use of the ``subref`` keyword is predefined in this case and cannot be changed.
 	Format
 		The format that the combined sites table should have. Choose from ``csv`` or ``txt``.
 
