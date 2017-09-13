@@ -74,16 +74,17 @@ There are two components to the configuration of the ArcGIS version of the Data 
 
 The launch configuration has the following entries:
 
-ChooseXML
+_`ChooseXML`
 	Yes/No attribute, defining whether the user should be allowed a choice in what configuration file is loaded.
 
 DefaultProfile
 	The name of the default profile that will be offered as the first choice. If only this profile is present, the main form will launch without offering the user the choice. This name is given without the full path, e.g. ``DefaultProfile.xml``. If no default profile is specified, the system looks for ``DefaultProfile.xml`` in the XML folder.
 
 The way the launch configuration file operates is as follows:
-- If ChooseXML is set to No, the tool will launch using the default profile.
-- if ChooseXML is set to Yes, but only the default profile is found in the XML folder, the tool will launch using the default profile without offering the user a choice.
-- if ChooseXML is set to Yes and there are one or more configuration files in the XML folder other than the default profile, it will offer the user a choice. It will also offer the user a choice if the default profile is not found, but one or more configuration files are present.
+
+- If `ChooseXML`_ is set to No, the tool will launch using the default profile.
+- if `ChooseXML`_ is set to Yes, but only the default profile is found in the XML folder, the tool will launch using the default profile without offering the user a choice.
+- if `ChooseXML`_ is set to Yes and there are one or more configuration files in the XML folder other than the default profile, it will offer the user a choice. It will also offer the user a choice if the default profile is not found, but one or more configuration files are present.
 
 .. index::
 	single: General attributes; ArcGIS
