@@ -38,20 +38,25 @@ Below is an example of XML that might be used to set up the Data Searches tool i
     <configuration>
     <!--- General attributes -->
     <DataSearches>
-        <!-- The database where all the data search details are stored. -->
+        <!-- The database where all the data search details are stored. This may be left blank. -->
         <Database>
             <value>H:\Access\DataSearchesDetails.mdb</value>
         </Database>
 
-        <!-- The field name of the search reference unique value. -->
+        <!-- The field name of the search reference unique value in the database. -->
         <RefColumn>
             <value>EnquiryRef</value>
         </RefColumn>
 
-        <!-- The field name of the search reference site name. -->
+        <!-- The field name of the search reference site name in the database. -->
         <SiteColumn>
             <value>SiteName</value>
         </SiteColumn>
+
+        <!-- Is a site name required? Yes/No -->
+        <RequireSiteName>
+            <value>No</value>
+        </RequireSiteName>
 
         <!-- The character(s) used to replace any special characters in folder
              names. Space is allowed -->
@@ -64,7 +69,7 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>H:\DataSearches\LayerFiles</value>
         </LayerFolder>
 
-        <!-- The file location where all data search folders are stored. -->
+        <!-- The file location where all data search output folders are stored. -->
         <SaveRootDir>
             <value>H:\DataSearches\Reports</value>
         </SaveRootDir>
@@ -110,6 +115,11 @@ Below is an example of XML that might be used to set up the Data Searches tool i
             <value>3</value>
         </DefaultBufferUnit>
 
+        <!-- Should the buffer be kept as a GIS file? Yes/No -->
+        <KeepBufferArea>
+            <value>Yes</value>
+        </KeepBufferArea>
+
         <!-- The name of the buffer symbology layer file -->
         <BufferLayerName>
             <value>BufferOutline.lyr</value>
@@ -131,6 +141,17 @@ Below is an example of XML that might be used to set up the Data Searches tool i
         <SearchColumn>
             <value>ref</value>
         </SearchColumn>
+
+        <!-- Should the search feature be kept as a GIS layer? Yes/No -->
+        <KeepSearchFeature>
+            <value>Yes</value>
+        </KeepSearchFeature>
+
+        <!-- The base name of the search layer symbology file (without the .lyr). 
+        Note the relevant extension (from SearchLayerExtensions) and the .lyr will be added -->
+        <SearchSymbologyBase>
+            <value>FeatureSymbology</value>
+        </SearchSymbologyBase>
 
         <!-- The buffer aggregate column values. Delimited with semicolons -->
         <AggregateColumns>
@@ -175,12 +196,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
 
         <!-- The column names of the combined sites table -->
         <CombinedSitesTable>
+            <Name>
+                <value>Sites_%subref%</value> <!-- do not include .txt or .csv -->
+            </Name>
             <Columns>
                 <value>Site_Type,Site_Name,Site_Area,Map_Label</value>
             </Columns>
-            <Suffix>
-                <value>_sites</value>
-            </Suffix>
             <Format>
                 <value>csv</value>
             </Format>
@@ -200,12 +221,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     the Table of Contents in ArcMap -->
                     <value>ExampleSpeciesPoints</value>
                 </LayerName>
-                <Prefix> <!-- The prefix used for any GIS data extracts -->
+                <GISOutputName> <!-- The prefix used for any GIS data extracts -->
                     <value>ExampleSpecies</value>
-                </Prefix>
-                <Suffix> <!-- The suffix used for any tabular extracts -->
+                </GISOutputName>
+                <TableOutputName> <!-- The suffix used for any tabular extracts -->
                     <value>_spp_pts</value>
-                </Suffix>
+                </TableOutputName>
                 <Columns> <!-- The columns to be used in the tabular extracts -->
                     <value>Species, Year, COUNT_Spec</value> <!-- Use commas to
                         separate. NOTE case sensitive! -->
@@ -215,7 +236,7 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                     <value>Species, Year</value> <!-- Use commas to separate.
                            NOTE case sensitive! -->
                 </GroupColumns>
-                <StatisticsColumns> <!-- If grouping is used, any statistics
+                <StatisticsColumns> <!-- Any statistics
                     that should be generated. -->
                     <value>Species;COUNT</value><!-- example: area_ha;SUM$
                            Status;FIRST -->
@@ -311,12 +332,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <LayerName>
                     <value>SACs</value> <!-- Name in TOC -->
                 </LayerName>
-                <Prefix>
+                <GISOutputName>
                     <value>SACs</value>
-                </Prefix>
-                <Suffix>
+                </GISOutputName>
+                <TableOutputName>
                     <value>_sacs</value>
-                </Suffix>
+                </TableOutputName>
                 <Columns>
                     <value>SAC_NAME, SAC_CODE</value> <!-- Use commas to separate.
                         NOTE case sensitive! -->
@@ -398,12 +419,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <LayerName>
                     <value>SPAs</value>
                 </LayerName>
-                <Prefix>
+                <GISOutputName>
                     <value>SPAs</value>
-                </Prefix>
-                <Suffix>
+                </GISOutputName>
+                <TableOutputName>
                     <value>_spas</value>
-                </Suffix>
+                </TableOutputName>
                 <Columns>
                     <value>SPA_NAME</value> <!-- Use commas to separate.
                         NOTE case sensitive! -->
@@ -489,12 +510,12 @@ Below is an example of XML that might be used to set up the Data Searches tool i
                 <LayerName>
                     <value>NNRs</value>
                 </LayerName>
-                <Prefix>
+                <GISOutputName>
                     <value>NNRs</value>
-                </Prefix>
-                <Suffix>
+                </GISOutputName>
+                <TableOutputName>
                     <value>_nnrs</value>
-                </Suffix>
+                </TableOutputName>
                 <Columns>
                     <value>NNR_NAME, theBla</value> <!-- Use commas to separate.
                         NOTE case sensitive! -->

@@ -7,12 +7,12 @@ Running the tool
 
 The operation of the Data Searches tool is explained in this section. While the interface is similar between the ArcGIS and MapInfo implementations of the tool, there are some differences. These are pointed out where relevant throughout this document.
 
-As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Data Searches tool is operated from a GIS project file within which the data required to run the tool is already loaded. It also relies on an Access database with details about the searches, and a configuration document. Therefore, before running the tool, ensure the following conditions are met:
+As discussed in the :doc:`Setting up the tool <../setup/setup>` section, the Data Searches tool is operated from a GIS project file within which the data required to run the tool is already loaded. It also relies on an optional Access database with details about the searches, and a configuration document. Therefore, before running the tool, ensure the following conditions are met:
 
 - A GIS document has been created which contains both the search sites layer(s) and the data layers describing protected sites and species that will be queried, as required. 
-- An Access database exists that contains the relevant information about the searches, in the correct tables and formats.
+- Where applicable, an Access database exists that contains the relevant information about the searches, in the correct tables and formats.
 - The search sites layer(s) have a column that contains the unique reference for each search, and this reference has the correct format.
-- The XML configuration document has been set up correctly, both for general settings and for each individual layer that will be queried. It is named correctly.
+- The XML configuration document has been set up correctly, both for general settings and for each individual layer that will be queried. It is named correctly. For ArcGIS, both the launch configuration and a profile configuration have been set up.
 - The Data Searches tool has been installed and set up.
 
 .. seealso::
@@ -52,6 +52,16 @@ To open the Data Searches tool in MapInfo, select **Tools... -> Data Extractor**
 .. raw:: latex
 
    \newpage
+
+In ArcGIS, if more than one profile is found and the launch configuration is set up to allow the user to choose, a menu will appear asking the user to choose an XML profile (:numref:`figChooseXML`).
+
+.. _figChooseXML:
+
+.. figure:: figures/ChooseXMLFile.png
+	:align: center
+
+	Choosing an XML profile in ArcGIS
+
 
 If there are any structural issues with the XML document, the tool will display a message with the error it has encountered, and not load any further. If any of the map layers that are listed in the configuration document are not present in the active ArcGIS document or MapInfo workspace, a warning will be shown (:numref:`figLaunchWarningArcGIS`). The layers that are missing will not be loaded into the form and so cannot be included in the search process.
 
@@ -98,7 +108,7 @@ Provided that the XML document is otherwise correct, the form will display (:num
 Using the form
 ==============
 
-Enter the search reference in the **Search Reference** box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`).
+Enter the search reference in the **Search Reference** box. If the search reference exists in the linked Access database, the site name will be displayed in the Site Name box (:numref:`figSearchRefKnownArcGIS`). The search reference is case insensitive.
 
 .. _figSearchRefKnownArcGIS:
 
@@ -108,7 +118,7 @@ Enter the search reference in the **Search Reference** box. If the search refere
 	Site name displays automatically if the search reference is found
 
 
-If the search reference does not exist, but you are certain the search reference exists in the search layer(s), enter the site name manually (:numref:`figSearchRefUnknownArcGIS`).
+If the search reference does not exist, but you are certain the search reference exists in the search layer(s), enter the site name manually (:numref:`figSearchRefUnknownArcGIS`). If the site does not have a name and the attribute :ref:`RequireSiteName <requiresitename>` in the XML profile is set to No, the site name can be left blank.
 
 .. _figsearchRefUnknownArcGIS:
 

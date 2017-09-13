@@ -223,11 +223,11 @@ The attributes that are required for each map layer are as follows:
 LayerName
 	The name of the layer as it is shown in the GIS interface. Characters that cannot be included in the layer name are ``/`` and ``&`` as they will cause the tool to fail. The characters ``-``, ``_``, ``+`` and ``\`` are permitted.
 
-Prefix
-	The prefix will be used to start the name of any GIS layer that is exported from this data layer during the search. The naming followed for exported GIS layers is ``Prefix_subref.shp``, e.g. ``SSSIs_001.shp``. The use of the ``subref`` keyword in this case is predefined and cannot be changed.
+_`GISOutputName`
+	The GISOutputName will be used to name any GIS layer that is exported from this data layer during the search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
-Suffix
-	The suffix will be used to finish the name of any tabular file that is exported from this data layer during the search. The naming followed for exported tabular data is ``subref_Suffix.Format``, e.g. ``0001_SSSIs.csv``. The use of the ``subref`` keyword in this case is predefined and cannot be changed.
+TableOutputName
+	The TableOutputName will be used to name any tabular file that is exported from this data layer during the search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
 Columns
 	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. Distance and Radius columns may be included by adding the keywords 'Distance' and 'Radius'. If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
@@ -245,7 +245,7 @@ _`GroupColumns`
 	A comma-separated list of the name(s) of any column(s) that should be used for grouping the outputs from the search on this layer. The column names are case sensitive and should match the column names in the source layer.
 
 _`StatisticsColumns`
-	If `GroupColumns`_ are specified, statistics may be requested from any columns in the input layer. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;STATISTIC``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the Columns list as described above.
+	Statistics may be requested from any columns in the input layer whether `GroupColumns`_ is specified or not. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;STATISTIC``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the Columns list as described above. If no `GroupColumns`_ have been defined, the statistics are calculated across the entire output.
 
 OrderColumns
 	A comma-separated list of columns by which the results should be ordered in the tabular output for this layer. The order of this list overrides any order in the `GroupColumns`_ attribute.
@@ -269,7 +269,7 @@ Format
 	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
 
 KeepLayer
-	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``No`` is entered all geographical data generated for this data layer during the process will be deleted. If ``Yes`` is entered, a data layer will be created that follows the naming convention ``Prefix_subref.shp``. The use of the ``subref`` keyword in this case is predefined and cannot be changed. 
+	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``No`` is entered all geographical data generated for this data layer during the process will be deleted. If ``Yes`` is entered, a data layer will be created that is named according to the `GISOutputName`_ attribute.
 
 	.. note:: 
 		If no features are selected in a data layer during a search, no new data layer will be created even if the KeepLayer attribute is set to ``Yes``.
