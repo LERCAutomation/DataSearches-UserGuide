@@ -190,6 +190,7 @@ DefaultCombinedSitesTable
 
 CombinedSitesTable
 	This section defines the combined sites table. It has the following entries:
+	
 	Name
 		The name of the combined sites table. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 	Columns
