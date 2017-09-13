@@ -13,6 +13,8 @@ Below is an example of XML that might be used to set up the Data Searches tool i
 The first XML file is the launch configuration, ``DataSearches.xml``. The name of this file should not be changed.
 
 ::
+
+
     <?xml version="1.0" encoding="utf-8"?>
 
     <!--
@@ -58,8 +60,6 @@ The first XML file is the launch configuration, ``DataSearches.xml``. The name o
 The second XML file for ArcGIS is the tool configuration file. The most used profile that is created should be called ``DefaultProfile.xml``, and this name should also be used if only one profile is used. This file provides the full configuration for the tool and its outputs.
 
 ::
-
-
 
 
     <?xml version="1.0" encoding="utf-8"?>
