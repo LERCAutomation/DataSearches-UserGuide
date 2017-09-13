@@ -10,7 +10,57 @@ Example XML file for ArcGIS
 
 Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note, many of the settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements.
 
+The first XML file is the launch configuration, ``DataSearches.xml``. The name of this file should not be changed.
+
 ::
+    <?xml version="1.0" encoding="utf-8"?>
+
+    <!--
+    WARNING: This file should be changed carefully and a backup should be
+    taken before any changes so that they can be backed out.  Changed lines
+    can also be commented out as below.
+    -->
+
+    <!--
+    This config file contains all the variables used by the DataSearches
+    ArcGIS Add-in tool.
+
+    The 'configuration' node is the 'root' node and signifies the start of the
+    contents of the configuration file.
+
+    The 'InitialConfig' node contains the nodes relating to the initial setup of the tool.
+
+    Note a detailed XML profile file must also be set up in order for the tool to run.
+
+    -->
+
+
+
+    <configuration>
+    <InitialConfig>
+        <!-- Are we allowing the user to choose their own configuration file? Yes/No -->
+        <ChooseXML>
+            <value>Yes</value>
+        </ChooseXML>
+
+        <!-- What is the default XML file called? If blank, the system looks for DefaultProfile.xml -->
+        <DefaultProfile>
+            <value>DefaultProfile.xml</value>
+        </DefaultProfile>
+    </InitialConfig>
+    </configuration>
+
+
+.. raw:: latex
+
+    \newpage
+
+The second XML file for ArcGIS is the tool configuration file. The most used profile that is created should be called ``DefaultProfile.xml``, and this name should also be used if only one profile is used. This file provides the full configuration for the tool and its outputs.
+
+::
+
+
+
 
     <?xml version="1.0" encoding="utf-8"?>
 
