@@ -182,7 +182,7 @@ AddSelectedLayersOptions
 DefaultAddSelectedLayers
 	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no layers will be added to the map.
 
-GroupLayerName
+_`GroupLayerName`
 	The name of the group layer that will be created in the ArcGIS Table of Contents, under which the results of the data search will be kept. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
 OverwriteLabelOptions

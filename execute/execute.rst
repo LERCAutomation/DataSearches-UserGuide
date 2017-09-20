@@ -312,7 +312,7 @@ Search results in ArcGIS
 
 In ArcGIS, search results are added to the current document as follows:
 
-- If 'Yes' is selected in the 'Add Selected Layers to Map' search option, each saved GIS layer (where 'Yes' is selected in the 'KeepLayer' attribute in the configuration) is added to a new group layer. The name of the group layer follows the short search reference format, with any special characters replaced with the 'RepChar' specified in the XML document (e.g. '2016/001' becomes '2016 001').
+- If 'Yes' is selected in the 'Add Selected Layers to Map' search option, each saved GIS layer (where 'Yes' is selected in the 'KeepLayer' attribute in the configuration) is added to a new group layer. The name of the group layer follows the 'GroupLayerName', with any special characters replaced with the 'RepChar' as specified in the XML document (e.g. '2016/001' becomes '2016 001').
 
 - If either 'Yes - with labels' or 'Yes - without labels' are selected in the 'Add Selected Layers to Map' search option and, if a layer file name is specified in the 'LayerFileName' attribute in the configuration for a saved layer, symbology is applied to that layer using the specified layer file.
 
