@@ -149,6 +149,9 @@ DefaultBufferUnit
 KeepBufferArea
 	A Yes/No attribute that defines whether a GIS file of the buffer area should be kept.
 
+BufferSaveName
+	The name of the GIS file that the buffer area should be exported to. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
+
 BufferLayerName
 	The name of the layer file (kept in the `LayerFolder`_) which will be used to symbolise the buffer layer. Must include the ``.lyr`` extension.
 
@@ -161,8 +164,11 @@ _`SearchLayerExtensions`
 SearchColumn
 	The name of the column in the search layer(s) that holds the search reference.
 
-KeepSearchFeatures
+KeepSearchFeature
 	A Yes/No attribute defining whether the feature used in the search should be kept as a GIS file.
+
+SearchFeatureName
+	The name of the GIS file that the search feature should be exported to. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
 SearchSymbologyBase
 	The base name of the search layer symbology file (without the .lyr). Note the relevant extension (from `SearchLayerExtensions`_) will be added. This layer file is used to set the symbology for the saved feature.
@@ -175,6 +181,9 @@ AddSelectedLayersOptions
 
 DefaultAddSelectedLayers
 	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no layers will be added to the map.
+
+GroupLayerName
+	The name of the group layer that will be created in the ArcGIS Table of Contents, under which the results of the data search will be kept. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
 OverwriteLabelOptions
 	The options that should be shown in the 'Overwrite Map Labels' drop-down list. These options should not be changed.
