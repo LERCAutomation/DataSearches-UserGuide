@@ -8,7 +8,7 @@ Appendix
 Example XML file for ArcGIS
 ===========================
 
-Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note, many of the settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements.
+Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note, many of the settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements. The XML below is compatible with version 2.1 of the tool.
 
 The first XML file is the launch configuration, ``DataSearches.xml``. The name of this file should not be changed.
 
@@ -170,6 +170,11 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
             <value>Yes</value>
         </KeepBufferArea>
 
+        <!-- The output name for the buffer GIS file. The size of the buffer will be added automatically. -->
+        <BufferSaveName>
+            <value>Buffer_%subref%</value>
+        </BufferSaveName>
+
         <!-- The name of the buffer symbology layer file -->
         <BufferLayerName>
             <value>BufferOutline.lyr</value>
@@ -196,6 +201,11 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
         <KeepSearchFeature>
             <value>Yes</value>
         </KeepSearchFeature>
+
+        <!-- The name of the search feature output layer -->
+        <SearchFeatureName>
+            <value>%sitename%</value>
+        </SearchFeatureName>
 
         <!-- The base name of the search layer symbology file (without the .lyr). 
         Note the relevant extension (from SearchLayerExtensions) and the .lyr will be added -->
@@ -226,11 +236,15 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                    <!-- do not change -->
         </OverwriteLabelOptions>
 
-        <!-- Whether any map label columns should be overwritten (default
-             setting) -->
+        <!-- Whether any map label columns should be overwritten (default setting) -->
         <DefaultOverwriteLabels>
             <value>3</value>
         </DefaultOverwriteLabels>
+
+        <!-- The units any area measurements will be done in. Choose from Ha, Km2, m2. Default is Ha if left blank. -->
+        <AreaMeasurementUnit>
+            <value>ha</value>
+        </AreaMeasurementUnit>
 
         <!-- Options for filling out the Combined Sites table dropdown -->
         <CombinedSitesTableOptions>
@@ -271,11 +285,11 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     the Table of Contents in ArcMap -->
                     <value>ExampleSpeciesPoints</value>
                 </LayerName>
-                <GISOutputName> <!-- The prefix used for any GIS data extracts -->
-                    <value>ExampleSpecies</value>
+                <GISOutputName> <!-- The name used for any GIS data extracts -->
+                    <value>%subref%_ExampleSpecies</value>
                 </GISOutputName>
-                <TableOutputName> <!-- The suffix used for any tabular extracts -->
-                    <value>_spp_pts</value>
+                <TableOutputName> <!-- The name used for any tabular extracts -->
+                    <value>%subref%_spp_pts</value>
                 </TableOutputName>
                 <Columns> <!-- The columns to be used in the tabular extracts -->
                     <value>Species, Year, COUNT_Spec</value> <!-- Use commas to
@@ -300,6 +314,9 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value></value><!-- example: Name = 'myName' OR
                         area_ha > 5 -->
                 </Criteria>
+                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. -->
+                    <value>No</value>
+                </IncludeArea>
                 <IncludeDistance> <!-- Yes / No attribute to define whether
                     Distance field should be measured -->
                     <value>Yes</value><!-- Yes / No -->
@@ -383,14 +400,15 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value>SACs</value> <!-- Name in TOC -->
                 </LayerName>
                 <GISOutputName>
-                    <value>SACs</value>
+                    <value>%subref%_SACs</value>
                 </GISOutputName>
                 <TableOutputName>
-                    <value>_sacs</value>
+                    <value>%subref%_sacs</value>
                 </TableOutputName>
                 <Columns>
                     <value>SAC_NAME, SAC_CODE</value> <!-- Use commas to separate.
-                        NOTE case sensitive! -->
+                        NOTE case sensitive! Use Area, Distance and Radius keywords to include these fields. If an Area
+                        field already exists in the layer, use the capitalisation of this field (e.g. AREA). -->
                 </Columns>
                 <GroupColumns>
                     <value>SAC_NAME</value> <!-- Use commas to separate. NOTE case
@@ -407,6 +425,10 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value></value><!-- example: Name = 'myName' OR
                         area_ha > 5 -->
                 </Criteria>
+                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
+                            any existing Area field will be used for the calculation. -->
+                    <value>Yes</value>
+                </IncludeArea>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
                 </IncludeDistance>
@@ -470,14 +492,15 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value>SPAs</value>
                 </LayerName>
                 <GISOutputName>
-                    <value>SPAs</value>
+                    <value>%subref%_SPAs</value>
                 </GISOutputName>
                 <TableOutputName>
-                    <value>_spas</value>
+                    <value>%subref%_spas</value>
                 </TableOutputName>
                 <Columns>
-                    <value>SPA_NAME</value> <!-- Use commas to separate.
-                        NOTE case sensitive! -->
+                    <value>SPA_NAME</value> <!-- Use commas to separate. NOTE case sensitive! 
+                    Use Area, Distance and Radius keywords to include these fields. If an Area
+                    field already exists in the layer, use the capitalisation of this field (e.g. AREA).-->
                 </Columns>
                 <GroupColumns>
                     <value>SPA_NAME</value> <!-- Use commas to separate.
@@ -493,6 +516,9 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value></value><!-- example: Name = 'myName' OR
                         area_ha > 5 -->
                 </Criteria>
+                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
+                            any existing Area field will be used for the calculation. -->
+                    <value>Yes</value>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
                 </IncludeDistance>
@@ -556,19 +582,20 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
             <NNRs>
                 <!-- This layer does not allow the overwrite of labels, and so
                     the name column is included twice in the combined sites
-                    table, the second time as a label column -->
+                    table, the second time as a label column. A new Area field is included in the table output. -->
                 <LayerName>
                     <value>NNRs</value>
                 </LayerName>
                 <GISOutputName>
-                    <value>NNRs</value>
+                    <value>%subref%_NNRs</value>
                 </GISOutputName>
                 <TableOutputName>
-                    <value>_nnrs</value>
+                    <value>%subref%_nnrs</value>
                 </TableOutputName>
                 <Columns>
-                    <value>NNR_NAME, theBla</value> <!-- Use commas to separate.
-                        NOTE case sensitive! -->
+                    <value>NNR_NAME, Area</value> <!-- Use commas to separate. NOTE case sensitive! 
+                    Use Area, Distance and Radius keywords to include these fields. If an Area
+                    field already exists in the layer, use the capitalisation of this field (e.g. AREA).-->
                 </Columns>
                 <GroupColumns>
                     <value>NNR_NAME</value> <!-- Use commas to separate.
@@ -584,6 +611,9 @@ The second XML file for ArcGIS is the tool configuration file. The most used pro
                     <value></value><!-- example: Name = 'myName' OR
                         area_ha > 5 -->
                 </Criteria>
+                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
+                            any existing Area field will be used for the calculation. -->
+                    <value>Yes</value>
                 <IncludeDistance>
                     <value>No</value><!-- Yes / No -->
                 </IncludeDistance>

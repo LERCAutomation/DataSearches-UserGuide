@@ -93,7 +93,7 @@ The way the launch configuration file operates is as follows:
 General attributes for ArcGIS
 *****************************
 
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 1.4.1 of the Data Searches tool.
+The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 2.1 of the Data Searches tool.
 
 .. note::
 	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'XYBRC/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
@@ -191,6 +191,9 @@ OverwriteLabelOptions
 DefaultOverwriteLabels
 	The default option for the 'Overwrite Map Labels' drop-down that should be shown when the form opens. This attribute is the index number of the item in the drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and labels will not be overwritten.
 
+_`AreaMeasurementUnit`
+	The units that any area measurements will be done in. Choose from Ha, Km2 and m2. The Default if left blank is Ha.
+
 CombinedSitesTableOptions
 	The options that should be shown in the 'Create Combined Sites Table' drop-down list. These options should not be changed.
 
@@ -241,7 +244,7 @@ TableOutputName
 	The TableOutputName will be used to name any tabular file that is exported from this data layer during the search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
 Columns
-	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. Distance and Radius columns may be included by adding the keywords 'Distance' and 'Radius'. If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
+	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. Area, Distance and Radius columns may be included by adding the keywords 'Area', Distance' and 'Radius' (but note the remark about pre-existing area fields in the `IncludeArea`_ node). If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
 
 	- Column names are up to 10 characters long and are case sensitive.
 	- Statistics column names are made up of the statistic requested (e.g. COUNT, SUM, MEAN, FIRST, etc.), the underscore character (``_``), and the name of the column to which the statistic applies (e.g. ``COUNT_Year``). Names longer than 10 characters are abbreviated. 
@@ -267,6 +270,9 @@ Criteria
 	.. note::
 		Any clause specified here must adhere to ArcGIS SQL syntax as the clause will be run within ArcGIS.
 
+_`IncludeArea`
+	A Yes/No attribute that defines wether an area calculation should be included in the analysis. If `ClipOutput`_ is set to Yes, areas will be calculated for the clipped polygons. The values are calculated in a column called 'Area' and the results can be added to the tabular output by using the keyword 'Area' in the Columns list. Note that if a column called Area is already present in the input layer, this will be used for the calculations. In this case, it is important to use the correct case for the column name (e.g. if the field is called AREA, the full caps must be maintained). Areas can only be calculated for layers that have polygon topology, and the tool accounts for this.
+
 _`IncludeDistance`
 	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The results can be added to the tabular output by using the keyword 'Distance' in the Columns list.
 
@@ -284,6 +290,9 @@ KeepLayer
 
 	.. note:: 
 		If no features are selected in a data layer during a search, no new data layer will be created even if the KeepLayer attribute is set to ``Yes``.
+
+_`ClipOutput`
+	A Yes/No attribute that defines whether any output should be clipped to the search area (buffer radius). Note that this attribute affects area calculations; if it is set to 'Yes', any areas calculated will be those of the clipped area, even if the layer is not kept subsequently.
 
 LoadWarning
 	A Yes/No attribute that defines whether a warning should be issued if this layer is not loaded in ArcGIS.
