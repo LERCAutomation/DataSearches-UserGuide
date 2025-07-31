@@ -379,7 +379,16 @@ RefColumn
 	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets. The search reference must follow the format 'LERCName/Year/EnquiryNumber'.
 
 SiteColumn
-	The name of the column in the Enquiries table within the Access database, that contains the site name. The name must be given without any brackets.
+	The name of the column in the Enquiries table within the Access database that contains the site name. The name must be given without any brackets. Leave blank to ignore the column.
+
+OrgColumn
+	The name of the column in the Enquiries table within the Access database that contains requester organisation name. The name must be given without any brackets. Leave blank to ignore the column.
+
+RadiusColumn
+	The name of the column in the Enquiries table within the Access database that contains search reference radius. The name must be given without any brackets. Leave blank to ignore the column.
+
+RequireSiteName
+	Whether a site name must be entered (or retrieved from the database) or is optional.
 
 RepChar
 	The character(s) used to replace any special characters in file or folder names. 'Special' characters are any of the following: ``\, %,$, :, *, /, ?, <, >, |, ~, £, .``. The replacement character can itself not be a special character.
@@ -396,6 +405,9 @@ GISFolder
 LogFileName
 	The name of the log file that will be created during processing. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
 
+DefaultClearLogFile
+	Should the existing log file be cleared by default. The user has the option to override this when using the tool.
+
 DefaultBufferSize
 	The default buffer size that will appear in the 'Buffer Size' text box when the form is opened.
 
@@ -406,7 +418,7 @@ DefaultBufferUnit
 	The buffer unit that should be shown by default in the 'Buffer Unit' drop-down list. This attribute is the index number of the unit in the drop-down list, with 1 being the first option.
 
 BufferSymbology
-	The symbology to be applied to the buffered search area.
+	The symbology to be applied to the buffered search area once added to the current map.
 
 RecMax
 	The maximum number of records what will be extracted in any one map layer. This is a simple measure to avoid exceeding MapInfo's standard 4Gb file size.
