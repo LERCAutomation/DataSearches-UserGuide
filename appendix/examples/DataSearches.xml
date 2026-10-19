@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <DataSearches>
+    <ToolTitle><value>Data Searches</value></ToolTitle>
+    <DefaultProfile><value>DefaultProfile.xml</value></DefaultProfile>
+  </DataSearches>
+</configuration>

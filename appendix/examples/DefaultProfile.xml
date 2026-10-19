@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Example only: replace paths, source table names and column names. -->
+<configuration>
+  <DataSearches>
+    <Debug><value>No</value></Debug>
+
+    <!-- Leave Database blank for manual site-name entry. -->
+    <Database><value></value></Database>
+    <EnquiriesDir><value>D:\DataSearches\Enquiries</value></EnquiriesDir>
+    <EnquiriesTable><value>Enquiries</value></EnquiriesTable>
+    <RefColumn><value>EnquiryRef</value></RefColumn>
+    <SiteColumn><value>SiteName</value></SiteColumn>
+    <OrgColumn><value></value></OrgColumn>
+    <PartnerColumn><value></value></PartnerColumn>
+    <RadiusColumn><value></value></RadiusColumn>
+    <RequireSiteName><value>No</value></RequireSiteName>
+
+    <RepChar><value> </value></RepChar>
+    <!-- Optional local working root; blank writes directly to final output. -->
+    <WorkingDir><value></value></WorkingDir>
+    <SaveRootDir><value>D:\DataSearches\Reports</value></SaveRootDir>
+    <SaveFolder><value>%subref%</value></SaveFolder>
+    <GISFolder><value>GIS</value></GISFolder>
+    <LogFileName><value>Data_Search_%subref%.log</value></LogFileName>
+    <DefaultClearLogFile><value>Yes</value></DefaultClearLogFile>
+
+    <DefaultBufferSize><value>1</value></DefaultBufferSize>
+    <BufferUnitOptions>
+      <value>Centimetres;cm$Metres;m$Kilometres;km$Feet;ft$Yards;yd$Miles;mi$</value>
+    </BufferUnitOptions>
+    <DefaultBufferUnit><value>3</value></DefaultBufferUnit>
+    <BufferSymbology>
+      <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)</value>
+    </BufferSymbology>
+    <SearchAreaSymbology>
+      <value>Global Pen (2,2,0) Global Brush (1,16777215,16777215)</value>
+    </SearchAreaSymbology>
+
+    <!-- Object-style rules used for Layers and tables. -->
+    <Buffer>
+      <Symbology>
+        <Symbol>
+          <Clause><value></value></Clause>
+          <Object><value>Region</value></Object>
+          <Pen><value>2,2,16711680</value></Pen>
+          <Brush><value>1,16777215,16777215</value></Brush>
+        </Symbol>
+      </Symbology>
+    </Buffer>
+    <SearchArea>
+      <Symbology>
+        <Symbol>
+          <Clause><value></value></Clause>
+          <Object><value>Region</value></Object>
+          <Pen><value>2,2,0</value></Pen>
+          <Brush><value>1,16777215,16777215</value></Brush>
+        </Symbol>
+        <Symbol>
+          <Clause><value></value></Clause>
+          <Object><value>Line</value></Object>
+          <Pen><value>2,2,0</value></Pen>
+        </Symbol>
+        <Symbol>
+          <Clause><value></value></Clause>
+          <Object><value>Point</value></Object>
+          <Symbol><value>35,16711935,12</value></Symbol>
+        </Symbol>
+      </Symbology>
+    </SearchArea>
+
+    <RecMax><value>5000000</value></RecMax>
+    <SearchTable><value>SearchSites</value></SearchTable>
+    <AggregateColumns>
+      <value>EnquiryRef=EnquiryRef,SiteName=SiteName</value>
+    </AggregateColumns>
+    <UpdateTable><value>No</value></UpdateTable>
+    <KeepBufferArea><value>Yes</value></KeepBufferArea>
+    <BufferSaveName><value>Buffer_%subref%_%radius%</value></BufferSaveName>
+    <KeepSearchFeature><value>Yes</value></KeepSearchFeature>
+    <SearchFeatureName><value>SearchArea_%subref%</value></SearchFeatureName>
+
+    <!-- Option order is significant; defaults are one-based positions. -->
+    <AddSelectedTablesOptions>
+      <value>No;Yes - Without labels;Yes - With labels</value>
+    </AddSelectedTablesOptions>
+    <DefaultAddSelectedTables><value>3</value></DefaultAddSelectedTables>
+    <KeepSelectedTablesOptions>
+      <value>None;TAB;SHP;BOTH</value>
+    </KeepSelectedTablesOptions>
+    <DefaultKeepSelectedTables><value>2</value></DefaultKeepSelectedTables>
+    <ApplySymbologyOptions>
+      <value>None;Layers only;Layers and tables</value>
+    </ApplySymbologyOptions>
+    <DefaultApplySymbology><value>2</value></DefaultApplySymbology>
+    <GroupLayerName><value>%subref%_%sitename%</value></GroupLayerName>
+    <OverwriteLabelOptions>
+      <value>No;Yes - Reset Each Layer;Yes - Reset Each Group;Yes - Do Not Reset</value>
+    </OverwriteLabelOptions>
+    <DefaultOverwriteLabels><value>2</value></DefaultOverwriteLabels>
+    <CombinedSitesOptions>
+      <value>None;Append to existing table;Overwrite existing table</value>
+    </CombinedSitesOptions>
+    <DefaultCombinedSitesTable><value>3</value></DefaultCombinedSitesTable>
+
+    <CombinedSitesTable>
+      <TableName><value>Sites</value></TableName>
+      <Columns>
+        <value>Site_Type Char(20),Site_Name Char(100),Map_Label Char(10)</value>
+      </Columns>
+      <TableOutputName><value>%subref%_sites</value></TableOutputName>
+      <Format><value>csv</value></Format>
+    </CombinedSitesTable>
+
+    <!-- Only required for SHP output: check the installed Translator. -->
+    <UTPath><value>C:\Program Files\MapInfo\Professional\UT</value></UTPath>
+    <UTCommand><value>Fme.exe</value></UTCommand>
+
+    <MapTables>
+      <Sites_-_SSSIs>
+        <TableName><value>SSSIs</value></TableName>
+        <GISOutputName><value>SSSIs_%subref%_%radius%</value></GISOutputName>
+        <TableOutputName><value>%subref%_SSSIs_%radius%</value></TableOutputName>
+        <Columns>
+          <value>Select_Table.SiteRef,Select_Table.SiteName,Map_Label,
+            %radius% "Radius",%overlaparea% "OverlapHa"</value>
+        </Columns>
+        <!-- Conditions only: omit leading Where or And. -->
+        <SelectCriteria><value></value></SelectCriteria>
+        <ExportCriteria><value>Order By SiteRef</value></ExportCriteria>
+        <KeyColumn><value>SiteRef</value></KeyColumn>
+        <Format><value>csv</value></Format>
+        <Macro><value></value></Macro>
+        <KeepLayer><value>Yes</value></KeepLayer>
+        <LoadWarning><value>Yes</value></LoadWarning>
+        <PreselectLayer><value>Yes</value></PreselectLayer>
+        <OverwriteLabels><value>Yes</value></OverwriteLabels>
+        <LabelColumn><value>Map_Label</value></LabelColumn>
+        <LabelClause><value>With Map_Label Auto On</value></LabelClause>
+        <Symbology>
+          <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)</value>
+        </Symbology>
+        <CombinedSitesColumns>
+          <value>"SSSI",Select_Table.SiteName,Map_Label</value>
+        </CombinedSitesColumns>
+        <CombinedSitesCriteria><value>Order By SiteName</value></CombinedSitesCriteria>
+      </Sites_-_SSSIs>
+    </MapTables>
+  </DataSearches>
+</configuration>

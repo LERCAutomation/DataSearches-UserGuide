@@ -2,6 +2,8 @@
 Preface
 *******
 
+.. Screenshot refresh: see FIGURE-CHECKLIST.md before publication.
+
 The most up to date version of this documentation can be found in **HTML** and **PDF** form on `ReadTheDocs <https://readthedocs.org/projects/datasearches-userguide/>`_.
 
 .. index::
@@ -13,10 +15,15 @@ Recommended User Knowledge
 Users
 -----
 
-This user guide assumes that users of the Data Searches tool have:
+This guide covers Data Searches for MapInfo version 1.4.47. A separate
+`ArcGIS Pro version <https://github.com/LERCAutomation/DataSearches-ArcPro>`_
+has its own
+`user guide <https://readthedocs.org/projects/datasearches-arcpro-userguide/>`_.
+
+This user guide assumes that users of the MapInfo tool have:
 
 * General IT experience including use of Microsoft Windows.
-* Experience in the use of a relevant GIS application supported by the tool (currently ArcGIS or MapInfo), including selecting and querying features and attributes.
+* Experience in the use of MapInfo, including selecting and querying features and attributes.
 * An understanding of the data layers (species, designated sites and other relevant datasets) that are used by the Data Searches tool.
 
 
@@ -53,7 +60,7 @@ This Preface explains a little about the Data Searches tool, the community of pe
 
 :doc:`FAQs <../faq/faq>` \ has a list of commonly asked questions and their answers.
 
-:doc:`../appendix/appendix` \ contains examples of the XML configuration files for MapInfo and ArcGIS, lists known issues with the tool and contains a copy of the GNU Free Documentation License v1.3 covering this guide.
+:doc:`../appendix/appendix` \ contains the MapInfo change log, current configuration examples, known limitations and a copy of the GNU Free Documentation License v1.3 covering this guide.
 
 
 .. index::
@@ -77,9 +84,9 @@ Useful links
 
 Related community links:
 
-* Administrators (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/releases/>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/releases/>`_) - Release notes and installers for ArcGIS and MapInfo systems.
-* Developers (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo>`_) - Source code for the Data Searches tool.
-* Issues (`ArcGIS <https://github.com/LERCAutomation/DataSearches--ArcObjects2/issues>`_ and `MapInfo <https://github.com/LERCAutomation/DataSearches-MapInfo/issues>`_) - Details of known issues and existing change requests.
+* Administrators: `MapInfo releases <https://github.com/LERCAutomation/DataSearches-MapInfo/releases/>`_ - release downloads.
+* Developers: `MapInfo source code <https://github.com/LERCAutomation/DataSearches-MapInfo>`_.
+* Issues: `MapInfo issue tracker <https://github.com/LERCAutomation/DataSearches-MapInfo/issues>`_ - known issues and change requests.
 
 
 .. index::

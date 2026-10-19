@@ -2,810 +2,521 @@
 Setting up the tool
 *******************
 
-Before the Data Searches tool will function, it needs to be installed and configured. It is recommended that the configuration is carried out first, although the steps are interchangeable for the ArcGIS implementation. 
+This chapter describes Data Searches for MapInfo version 1.4.47. Configure
+the tool before making it available to users, and back up existing profiles
+when upgrading.
 
 .. index::
-	single: Configuring the tool
-
-Configuring the tool
-====================
-
-The configuration is stored in an XML file called 'DataSearches.xml', and there are some differences in the contents of this file between the MapInfo and the ArcGIS implementations of the tool. Please ensure that you are using the correct XML file, examples of both of which can be found in the :doc:`Appendix <../appendix/appendix>`. Attributes and settings are presented as nodes (beginning with a start node, e.g. ``<example>``, and finishing with an end note, e.g. ``<\example>``), with the value for the setting held between the ``<value>`` and ``<\value>`` tag. 
-
-.. caution:: 
-	The name of the configuration file must be 'DataSearches.xml'. The tool will not load if a different name is used.
-
-The XML file can be edited in a text editor such as Notepad or Wordpad, or using a more feature rich XML editor such as as `Sublime Text <https://www.sublimetext.com/3>`_. The configuration file is split into two sections:
-
-_`General attributes`
-	General and default attributes for the tool.
-
-_`Data layers`
-	Deals with the way each data layer should be handled. This structure is the same for both implementations of the tool.
-
-.. caution::
-	It is important that the structure of the file is maintained as it is presented in the :doc:`Appendix <../appendix/appendix>`. Any changes to the structure may result in the Data Searches tool not loading, or not working as expected.
-
-Once editing has been completed and the edits have been saved, it is recommended that the configuration file is opened using an internet browser such as Internet Explorer which will help highlight any editing errors – only if the structure of the file is valid will the whole file be displayed in the internet browser.
-
-.. note::
-	It is recommended that the configuration file is kept in a central (network) location, so that all users use the same configuration. Additionally, in case of the MapInfo implementation of the tool, it is essential that the configuration file is kept in the same folder as the compiled version of the tool.
-
-
-.. index::
-	single: Special characters in XML
-
-.. raw:: latex
-
-   \newpage
-
-Special characters in XML
--------------------------
-
-The characters ``&``, ``<`` and ``>`` are not valid within values and, so in order to be used, must be **escaped** with XML entities as follows:
-
-<
-	This must be escaped with ``&lt;`` entity, since it is assumed to be the beginning of a tag. For example, ``RecYear &lt; 2010``
-
->
-	This should be escaped with ``&gt;`` entity. It is not mandatory -- it depends on the context -- but it is strongly advised to escape it. For example, ``RecYear &gt; 1980``
-
-&
-	This must be escaped with ``&amp;`` entity, since it is assumed to be the beginning of a entity reference. For example, ``TaxonGroup = 'Invertebrates - Dragonflies &amp; Damselflies'``
-
-
-.. index::
-	single: Setup; ArcGIS
-
-
-Setup for ArcGIS
-----------------
-
-.. index::
-	single: Launch configuration; ArcGIS
-
-Launch configuration for ArcGIS
-*******************************
-
-There are two components to the configuration of the ArcGIS version of the Data Searches tool: The first one is a small XML file (the launch configuration, which must be called ``DataSearches.xml``) that defines whether the user should be offered a choice of configuration files, and the second is the configuration file itself. In this way, more than one configuration can be set up to allow for flexibility in the way the tool is used by different users. 
-
-.. note::
-	All configuration files must be kept in the same folder.
-
-The launch configuration has the following entries:
-
-_`ChooseXML`
-	Yes/No attribute, defining whether the user should be allowed a choice in what configuration file is loaded.
-
-DefaultProfile
-	The name of the default profile that will be offered as the first choice. If only this profile is present, the main form will launch without offering the user the choice. This name is given without the full path, e.g. ``DefaultProfile.xml``. If no default profile is specified, the system looks for ``DefaultProfile.xml`` in the XML folder.
-
-The way the launch configuration file operates is as follows:
-
-- If `ChooseXML`_ is set to No, the tool will launch using the default profile.
-- if `ChooseXML`_ is set to Yes, but only the default profile is found in the XML folder, the tool will launch using the default profile without offering the user a choice.
-- if `ChooseXML`_ is set to Yes and there are one or more configuration files in the XML folder other than the default profile, it will offer the user a choice. It will also offer the user a choice if the default profile is not found, but one or more configuration files are present.
-
-.. index::
-	single: General attributes; ArcGIS
-
-
-General attributes for ArcGIS
-*****************************
-
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the ArcGIS version 2.1 of the Data Searches tool.
-
-.. note::
-	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'XYBRC/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
-
-	- ``%ref%`` uses the full enquiry reference.
-	- ``%shortref%`` uses the numeric part of the reference (e.g. '2016/001').
-	- ``%subref%`` uses the Enquiry Number (e.g. '001').
-	- ``%sitename%`` uses the name of the site (e.g. 'Example site').
-
-
-Database
-	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension. The database must have a table called 'Enquiries' that contains, at the very least, the search reference and the site name. This attribute may be left blank if no database is used.
-
-RefColumn
-	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets. The search reference must follow the format 'LERCName/Year/EnquiryNumber'.
-
-SiteColumn
-	The name of the column in the Enquiries table within the Access database, that contains the site name. The name must be given without any brackets.
-
-RequireSiteName
-	A Yes/No attribute that defines whether the site name must be entered. Although the site name field on the form will be active, the user may choose to leave it blank.
-
-RepChar
-	The character(s) used to replace any special characters in file or folder names. 'Special' characters are any of the following: ``\, %,$, :, *, /, ?, <, >, |, ~, £, .``. The replacement character can itself not be a special character.
-
-_`LayerFolder`
-	The folder where layer files (``.lyr``) are kept. These files are used to symbolise the GIS data layers that are exported during processing.
-
-SaveRootDir
-	The folder within which all output folders will be created.
- 
-SaveFolder
-	The name of the folder that will be created for each search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-GISFolder
-	The name of the folder where all data generated by the Data Searches tool will be stored. This folder will be created in the SaveFolder. The keywords ``%ref%``, ``%shortref%``, ``%subref%`` and ``%sitename%`` are allowed.
-
-LogFileName
-	The name of the log file that will be created during processing. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-DefaultClearLogFile
-	Yes/No attribute, defining whether the check box for 'Clear Log File?' on the interface should be set to checked (``Yes``) or unchecked (``No``) when the form is opened.
-
-DefaultBufferSize
-	The default buffer size that will appear in the 'Buffer Size' text box when the form is opened.
-
-BufferUnitOptions
-	The options for buffer units that will be shown in the 'Buffer Unit' drop-down list. It is not recommended that these are changed. However, details of how any changes should be formatted are in the comments for this attribute within the XML file.
-
-DefaultBufferUnit
-	The buffer unit that should be shown by default in the 'Buffer Unit' drop-down list. This attribute is the index number of the unit in the drop-down list, with 1 being the first option.
-
-KeepBufferArea
-	A Yes/No attribute that defines whether a GIS file of the buffer area should be kept.
-
-BufferSaveName
-	The name of the GIS file that the buffer area should be exported to. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-BufferLayerName
-	The name of the layer file (kept in the `LayerFolder`_) which will be used to symbolise the buffer layer. Must include the ``.lyr`` extension.
-
-SearchLayer
-	The name of the data searches GIS layer in the interface. There may be either a single search layer (of either points, polygons or lines) of this name, or there may be multiple search layers present (e.g. one of each format) in which case their names should begin with the SearchLayer entry. See :numref:`figArcGISUI` for an example. In the case of this example, the entry for this node was ``SearchSites`` and the `SearchLayerExtensions`_ entry (see next attribute) was ``_point;_poly;_line``. 
-
-_`SearchLayerExtensions`
-	If multiple search layers are used, this node should contain a list of the extensions for each layer, delimited by semicolons (e.g. in the example used above, the entry was ``_point;_poly;_line``). If only a single layer is used this attribute should be left blank.
-
-SearchColumn
-	The name of the column in the search layer(s) that holds the search reference.
-
-KeepSearchFeature
-	A Yes/No attribute defining whether the feature used in the search should be kept as a GIS file.
-
-SearchFeatureName
-	The name of the GIS file that the search feature should be exported to. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-SearchSymbologyBase
-	The base name of the search layer symbology file (without the .lyr). Note the relevant extension (from `SearchLayerExtensions`_) will be added. This layer file is used to set the symbology for the saved feature.
-
-AggregateColumns
-	A list, delimited by semicolons, of the fields in the search layer that should be used to dissolve the buffer during processing. This attribute can be used in cases where the search sites are multi-part features which may create a number of overlapping buffers rather than one continuous one.
-
-AddSelectedLayersOptions
-	The options that should be shown in the 'Add Selected layers to Map' drop-down list. These options should not be changed.
-
-DefaultAddSelectedLayers
-	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no layers will be added to the map.
-
-_`GroupLayerName`
-	The name of the group layer that will be created in the ArcGIS Table of Contents, under which the results of the data search will be kept. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-OverwriteLabelOptions
-	The options that should be shown in the 'Overwrite Map Labels' drop-down list. These options should not be changed.
-
-DefaultOverwriteLabels
-	The default option for the 'Overwrite Map Labels' drop-down that should be shown when the form opens. This attribute is the index number of the item in the drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and labels will not be overwritten.
-
-_`AreaMeasurementUnit`
-	The units that any area measurements will be done in. Choose from Ha, Km2 and m2. The Default if left blank is Ha.
-
-CombinedSitesTableOptions
-	The options that should be shown in the 'Create Combined Sites Table' drop-down list. These options should not be changed.
-
-DefaultCombinedSitesTable
-	The default option for the 'Create Combined Sites Table' drop-down that should be shown when the form opens. This attribute is the index number of the item in the drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no combined sites table will be created.
-
-CombinedSitesTable
-	This section defines the combined sites table. It has the following entries:
-	
-	Name
-		The name of the combined sites table. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-	Columns
-		A comma-delimited list of the column headings that the combined sites table should have.
-	Format
-		The format that the combined sites table should have. Choose from ``csv`` or ``txt``.
-
-
-.. index::
-	single: Map layer attributes; ArcGIS
-
-Map layer attributes for ArcGIS
-*******************************
-
-All map layer attributes are found within the ``<MapLayers>`` node. For each data layer that can be included in the searches, a new child node is created that has the name of the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool menu, and can be different from the layer name as it is shown in the ArcGIS table of contents (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleArcGIS`. 
-
-.. tip::
-	If you wish to display spaces in any layer names in the tool menu use an underscore (``_``) for each space in the node name for the layer. XML does not allow spaces in node names, but the tool will translate these underscores into spaces when the form is opened.
-
-.. note::
-	If you wish to _`group` layers into functional groups (which can be labelled together), use a hyphen (``-``) to give the group name before the name of the layer in naming the child node (e.g. in ``<Sites_-_SSSIs>``, 'Sites' would be the group name). 
-
-.. _figXMLExampleArcGIS:
-
-.. figure:: figures/DataLayerXMLExampleArcGIS.png
-	:align: center
-
-	Simplified example of data layer attributes configuration (ArcGIS)
-
-The attributes that are required for each map layer are as follows:
-
-LayerName
-	The name of the layer as it is shown in the GIS interface. Characters that cannot be included in the layer name are ``/`` and ``&`` as they will cause the tool to fail. The characters ``-``, ``_``, ``+`` and ``\`` are permitted.
-
-_`GISOutputName`
-	The GISOutputName will be used to name any GIS layer that is exported from this data layer during the search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-TableOutputName
-	The TableOutputName will be used to name any tabular file that is exported from this data layer during the search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-Columns
-	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names are case sensitive and should match the column names in the source layer. Area, Distance and Radius columns may be included by adding the keywords 'Area', Distance' and 'Radius' (but note the remark about pre-existing area fields in the `IncludeArea`_ node). If results from any aggregate functions are to be included, they should follow the naming convention that ArcGIS employs for statistics fields, as follows:
-
-	- Column names are up to 10 characters long and are case sensitive.
-	- Statistics column names are made up of the statistic requested (e.g. COUNT, SUM, MEAN, FIRST, etc.), the underscore character (``_``), and the name of the column to which the statistic applies (e.g. ``COUNT_Year``). Names longer than 10 characters are abbreviated. 
-	- If, due to abbreviation, two output columns would be given the same name, ArcGIS will automatically add a count of ``_1`` to the column name. Where the column name is nine or ten characters long, it will replace the last one or two characters of the second column with ``_1``, always ensuring the length of the column name does not exceed ten characters. 
-	- Numbering for any subsequent columns with the same name will follow this format adding one to each column number until this number reaches 9. Any subsequent columns will be numbered ``_10``, ``_11`` etc, so adding or replacing up to three rather than two characters in the column name. Again in all cases the new column name will be ten characters long or less.
-
-	.. tip::
-		If you are unsure what the output column names will be from an aggregation operation, run the Dissolve tool (this resides in the ArcGIS toolbox, under Data Management Tools => Generalisation) on a sample of your data, and include the statistics columns with the relevant statistic types as you intend to use them in the Data Searches tool. The output will contain the column names as they will be generated by the Data Searches tool, since it uses the same process.
-
-
-_`GroupColumns`
-	A comma-separated list of the name(s) of any column(s) that should be used for grouping the outputs from the search on this layer. The column names are case sensitive and should match the column names in the source layer.
-
-_`StatisticsColumns`
-	Statistics may be requested from any columns in the input layer whether `GroupColumns`_ is specified or not. The format of this attribute is as follows: ``ColumnName1;STATISTIC$ColumnName2;STATISTIC``, e.g. ``Area;SUM$Year;COUNT``. Note that in order to be included in the tabular output, the output columns for these statistics must be included in the Columns list as described above. If no `GroupColumns`_ have been defined, the statistics are calculated across the entire output.
-
-OrderColumns
-	A comma-separated list of columns by which the results should be ordered in the tabular output for this layer. The order of this list overrides any order in the `GroupColumns`_ attribute.
-
-Criteria
-	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include ``AND`` and ``OR`` statements and similar. String values should be enclosed in single quotes. An example might be ``Name = 'myName' AND Year > 2010``. Only records that match the criteria will be exported.
-
-	.. note::
-		Any clause specified here must adhere to ArcGIS SQL syntax as the clause will be run within ArcGIS.
-
-_`IncludeArea`
-	A Yes/No attribute that defines wether an area calculation should be included in the analysis. If `ClipOutput`_ is set to Yes, areas will be calculated for the clipped polygons. The values are calculated in a column called 'Area' and the results can be added to the tabular output by using the keyword 'Area' in the Columns list. Note that if a column called Area is already present in the input layer, this will be used for the calculations. In this case, it is important to use the correct case for the column name (e.g. if the field is called AREA, the full caps must be maintained). Areas can only be calculated for layers that have polygon topology, and the tool accounts for this.
-
-_`IncludeDistance`
-	A Yes/No attribute that defines whether the distance of each feature in the data layer to the search location will be measured during the process. The results can be added to the tabular output by using the keyword 'Distance' in the Columns list.
-
-_`IncludeRadius`
-	A Yes/No attribute that defines whether the buffer radius that was used will be available for inclusion to the tabular output during the process. The results can be added to the tabular output by using the keyword 'Radius' in the Columns list. 
-
-KeyColumn
-	The name of the column containing the unique identifier for this data layer.
-
-Format
-	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
-
-KeepLayer
-	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``No`` is entered all geographical data generated for this data layer during the process will be deleted. If ``Yes`` is entered, a data layer will be created that is named according to the `GISOutputName`_ attribute.
-
-	.. note:: 
-		If no features are selected in a data layer during a search, no new data layer will be created even if the KeepLayer attribute is set to ``Yes``.
-
-_`ClipOutput`
-	A Yes/No attribute that defines whether any output should be clipped to the search area (buffer radius). Note that this attribute affects area calculations; if it is set to 'Yes', any areas calculated will be those of the clipped area, even if the layer is not kept subsequently.
-
-LoadWarning
-	A Yes/No attribute that defines whether a warning should be issued if this layer is not loaded in ArcGIS.
-
-PreSelectLayer
-	A Yes/No attribute that defines whether this layer should be highlighted by default when the tool menu is loaded.
-
-_`LayerFileName`
-	The name of the layer file (``.lyr``) that should be used to symbolise any GIS output from this data layer. The layer file should be present in the `LayerFolder`_ specified in the general attributes. This name is case sensitive. If no value is entered the system will use the default symbology assigned during processing.
-
-.. note::
-	If a layer file is defined in LayerFileName, any settings defined applying to labels for this layer (i.e. `LabelColumn`_ and `LabelClause`_) will be overridden. Instead, the tool will apply the labels in the way they are defined in the layer file, including the column that should be used for labelling.
-
-OverwriteLabels
-	A Yes/No attribute that specifies whether the labels in this data layer can be overwritten for any GIS output. If the attribute is set to ``No``, labels will not be overwritten even if requested by the user through the 'Overwrite Map Labels' options on the form.
-
-_`LabelColumn`
-	The name of the column in this data layer that contains the labels. If this entry has a column name that does not exist in the data layer, the tool will create this label column when necessary even if OverwriteLabels is set to ``No``. In this case, the features will be automatically numbered and numbering will follow the rule that is selected by the user through the 'Overwrite Map Labels' options on the form. If this attribute is left blank, no labels will be created or displayed for this layer even when requested by the user. 
-
-_`LabelClause`
-	An ArcGIS clause that defines the format, font type, font size and colour of the labels for this layer. The format of this clause is as follows: ``Font:FontName$Size:FontSize$Red:PercentRed$Green:PercentGreen`` ``$Blue:PercentBlue$Type:PlacementType``, where the ``Type`` is the ArcGIS label placement type with the following options:  NoRestrictions, OnePerName, OnePerPart or OnePerShape. An example would be ``Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:NoRestrictions``. If no clause is filled in these default settings are applied (Arial, size 10, black, each polygon in a multi-part polygon is labelled).
- 
-
-CombinedSitesColumns
-	A comma-separated list of column names to be included in the combined sites table. If this entry is left blank the data layer will not be included in the combined sites table. A number of special cases apply to this attribute:
-
-	- Any entry surrounded by double quotes (e.g. ``"Protected sites"``) will be included in the combined sites table 'as is'. So, in the case of this example, each row that is added to the combined sites table from this data layer will have the entry 'Protected sites' in one of the columns. This feature is useful in distinguishing which data layer each row in the combined sites table originates from. 
-
-	- If `IncludeDistance`_ is set to ``yes``, the keyword ``Distance`` can be included as a column name. The tool will automatically include the calculated distance of each feature to the point of interest in the combined sites table. Similarly the keyword ``Radius`` can be included if `IncludeRadius`_ is set to ``yes``. This will then add the buffer radius that was used for each entry in the table.
-
-	.. note:: 
-		The column headings of the combined sites table follow the 'Columns' entry under the CombinedSitesTable attribute in the general attributes. It is important to ensure that the CombinedSitesColumns are given in the same order as expected by this attribute.
-
-_`CombinedSitesGroupColumns`
-	A comma-separated list of column names by which the output from this data layer should be grouped before inclusion in the combined sites table. 
-
-_`CombinedSitesStatisticsColumns`
-	If any aggregation is applied for this data layer (through the `CombinedSitesGroupColumns`_ attribute), statistics may be included in the combined sites table in the same way as described for `StatisticsColumns`_.
-
-_`CombinedSitesOrderByColumns`
-	A comma-separated list of column names by which the output of this layer should be ordered before inclusion in the combined sites table. This entry overrides any ordering created by the `CombinedSitesGroupColumns`_ attribute.
-
-.. caution::
-	All entries in the configuration file are **case sensitive**. Most common errors in the setting up of the tool are caused by using the incorrect case for entries.
-
-
-.. raw:: latex
-
-   \newpage
-
-.. index::
-	single: Setup; MapInfo
-
-Setup for MapInfo
------------------
-
-.. index::
-	single: General attributes; MapInfo
-
-General attributes for MapInfo
-******************************
-
-The first section of the configuration file deals with a series of general attributes for the Data Searches tool. These general nodes specify where files are kept, how output files should be named and other overall settings. Details on these attributes (and their typical values where known) are given below. The list follows the order within which the attributes are found in the configuration file. This version of the configuration details is valid for the MapInfo version 1.2.1 of the Data Searches tool.
-
-.. note::
-	The enquiry reference takes the form 'LERCName/Year/EnquiryNumber' (e.g. 'XYBRC/2016/001'). Within the configuration file, it is possible to use all or parts of this reference for naming files and folders. The following options are available:
-
-	- ``%ref%`` uses the full enquiry reference.
-	- ``%shortref%`` uses the numeric part of the reference (e.g. '2016/001').
-	- ``%subref%`` uses the Enquiry Number (e.g. '001').
-	- ``%sitename%`` uses the name of the site (e.g. 'Example site').
-
-
-_`ToolTitle`
-	The title to use for the program in the MapInfo Tools menu.
-
-Database
-	The path to the Access database that contains the details of all search requests. This must be the full path including the ``.mdb`` extension. The database must have a table called 'Enquiries' that contains, at the very least, the search reference and the site name.
-
-EnquiriesDir
-	The folder where a temporary table will be created by MapInfo when querying the Access database.
-
-RefColumn
-	The name of the column in the Enquiries table within the Access database that contains the search reference. The name must be given without any brackets. The search reference must follow the format 'LERCName/Year/EnquiryNumber'.
-
-SiteColumn
-	The name of the column in the Enquiries table within the Access database that contains the site name. The name must be given without any brackets. Leave blank to ignore the column.
-
-OrgColumn
-	The name of the column in the Enquiries table within the Access database that contains requester organisation name. The name must be given without any brackets. Leave blank to ignore the column.
-
-RadiusColumn
-	The name of the column in the Enquiries table within the Access database that contains search reference radius. The name must be given without any brackets. Leave blank to ignore the column.
-
-RequireSiteName
-	Whether a site name must be entered (or retrieved from the database) or is optional.
-
-RepChar
-	The character(s) used to replace any special characters in file or folder names. 'Special' characters are any of the following: ``\, %,$, :, *, /, ?, <, >, |, ~, £, .``. The replacement character can itself not be a special character.
-
-SaveRootDir
-	The folder within which all output folders will be created.
- 
-SaveFolder
-	The name of the folder that will be created for each search. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-GISFolder
-	The name of the folder where all data generated by the Data Searches tool will be stored. This folder will be created in the SaveFolder. The keywords ``%ref%``, ``%shortref%``, ``%subref%`` and ``%sitename%`` are allowed.
-
-LogFileName
-	The name of the log file that will be created during processing. The keywords ``%ref%``, ``%shortref%``, ``%subref%``and ``%sitename%`` are allowed.
-
-DefaultClearLogFile
-	Should the existing log file be cleared by default. The user has the option to override this when using the tool.
-
-DefaultBufferSize
-	The default buffer size that will appear in the 'Buffer Size' text box when the form is opened.
-
-BufferUnitOptions
-	The options for buffer units that will be shown in the 'Buffer Unit' drop-down list. It is not recommended that these are changed. However, details of how any changes should be formatted are in the comments for this attribute within the XML file.
-
-DefaultBufferUnit
-	The buffer unit that should be shown by default in the 'Buffer Unit' drop-down list. This attribute is the index number of the unit in the drop-down list, with 1 being the first option.
-
-BufferSymbology
-	The symbology to be applied to the buffered search area once added to the current map.
-
-RecMax
-	The maximum number of records what will be extracted in any one map layer. This is a simple measure to avoid exceeding MapInfo's standard 4Gb file size.
-
-SearchTable
-	The name of the GIS layer containing the data search point, line or polygon.
-
-SearchColumn
-	The name of the column in the search table that holds the search reference.
-
-AggregateColumns
-	A list, delimited by commas, of the fields in the search layer that should be used to dissolve the buffer during processing. This attribute can be used in cases where the search sites are multi-part features which may create a number of overlapping buffers rather than one continuous one.
-
-AddSelectedTablesOptions
-	The options that should be shown in the 'Add Selected layers to Map' drop-down list. These options should not be changed.
-
-DefaultAddSelectedTables
-	The default option for adding the selected layers that should be shown when the form opens. This attribute is the index number of the item in the 'Add Selected Layers to Map' drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no layers will be added to the map.
-
-OverwriteLabelOptions
-	The options that should be shown in the 'Overwrite Map Labels' drop-down list. These options should not be changed.
-
-DefaultOverwriteLabels
-	The default option for the 'Overwrite Map Labels' drop-down that should be shown when the form opens. This attribute is the index number of the item in the drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and labels will not be overwritten.
-
-CombinedSitesOptions
-	The options that should be shown in the 'Create Combined Sites Table' drop-down list. These options should not be changed.
-
-DefaultCombinedSitesTable
-	The default option for the 'Create Combined Sites Table' drop-down that should be shown when the form opens. This attribute is the index number of the item in the drop-down list, with 1 being the first option. If no value is entered the list box will be hidden and no combined sites table will be created.
-
-CombinedSitesTable
-	This section defines the combined sites table. It has the following entries:
-
-	TableName
-		The name of the temporary GIS layer that will be created when generating the combines sites table.
-	Columns
-		A comma-delimited list of the column headings, and their data types/lengths, that the combined sites table should have.
-	Suffix
-		An entry of what the suffix of the file name should be. The name of the combined sites table is given by ``subref_Suffix.Format``, e.g. ``001_sites.csv`` where the suffix is ``sites`` and the format is ``csv``. The use of the ``subref`` keyword is predefined in this case and cannot be changed.
-	Format
-		The format that the combined sites table should have. Choose from ``csv`` or ``txt``.
-
-
-.. index::
-	single: Map layer attributes; MapInfo
-
-Map layer attributes for MapInfo
-********************************
-
-All map layer attributes are found within the ``<MapTables>`` node. For each data layer that can be included in the searches, a new child node is created that has a descriptive name for the layer (e.g. ``<Sites_-_SSSIs>``). This name is name of the layer as it will be shown in the tool interface, and can be different from the layer name as it is known in the active MapInfo workspace (which will be set in a subsequent child node). A simple example of a map layer definition with limited attributes is shown in :numref:`figXMLExampleMapInfo`. 
-
-.. tip::
-	If you wish to display spaces in any layer names in the tool menu use an underscore (``_``) for each space in the node name for the layer. XML does not allow spaces in node names, but the tool will translate these underscores into spaces when the form is opened.
-
-.. _figXMLExampleMapInfo:
-
-.. figure:: figures/DataLayerXMLExampleMapInfo.png
-	:align: center
-
-	Simplified example of data layer attributes configuration (MapInfo)
-
-The attributes that are required for each map layer are as follows:
-
-TableName
-	The name of the layer as it is known in the active workspace.
-
-Prefix
-	The prefix will be used to start the name of any GIS layer that is exported from this data layer during the search. The naming followed for exported GIS layers is ``Prefix_subref.shp``, e.g. ``SSSIs_001.shp``. The use of the ``subref`` keyword in this case is predefined and cannot be changed.
-
-Suffix
-	The suffix will be used to finish the name of any tabular file that is exported from this data layer during the search. The naming followed for exported tabular data is ``subref_Suffix.Format``, e.g. ``0001_SSSIs.csv``. The use of the ``subref`` keyword in this case is predefined and cannot be changed.
-
-Columns
-	A comma-separated list of columns that should be included in the tabular data exported from this data layer during the search. The column names (not case sensitive) should match the column names in the source layer.
-
-	.. note::
-		A radius column (the radius of the search buffer) may be included by adding the keyword '%Radius%'. If any aggregate functions are included a name should be provided for the columns (e.g. 'COUNT(*) "RecCount"').
-
-_`SelectCriteria`
-	Selection criteria that should be used on the data layer during the search. These can be used to, for example, suppress confidential records, report on particular species only, or only include records after a certain date. The criteria take the form ``ColumnName Operand Value`` and may include ``AND`` and ``OR`` statements and similar. String values should be enclosed in double quotes. An example might be ``Name = "myName" AND Year > 2010``. Only records that match the criteria will be selected.
-
-	.. note::
-		Any clause specified here must adhere to MapInfo SQL syntax as the clause will be run within MapInfo.
-
-ExportCriteria
-	Additional criteria that will be applied **after** records have been selected using the `SelectCriteria`_ but **before** they are exported to a tabular output. Typically this is used to group and order records using the ``Group By`` and ``Order By`` clauses. Examples might be ``Group By SSSI_Name Order By SSSI_Name`` and ``Order By SORTORDER, LATIN_NAME``.
-
-KeyColumn
-	The name of the column containing the unique identifier for this data layer.
-
-Format
-	The format of tabular output exported from this data layer during a search. Options are ``csv`` and ``txt``. If ``txt`` is selected as a format no column names will be included in the output. They are included for ``csv`` output.
-
-KeepLayer
-	A Yes/No attribute that defines whether a GIS data layer should be kept of the features selected in this map layer during the search. If ``No`` is entered all geographical data generated for this data layer during the process will be deleted. If ``Yes`` is entered, a data layer will be created that follows the naming convention ``Prefix_subref.tab``. The use of the ``subref`` keyword in this case is predefined and cannot be changed. 
-
-	.. note::
-		If no features are selected in a data layer during a search, no new data layer will be created even if the KeepLayer attribute is set to ``Yes``
-
-OverwriteLabels
-	A Yes/No attribute that specifies whether the labels in this data layer can be overwritten for any GIS output. If the attribute is set to ``No``, labels will not be overwritten even if requested by the user through the 'Overwrite Map Labels' options on the form.
-
-LabelColumn
-	The name of the column in this data layer that contains the labels. If this entry has a column name that does not exist in the data layer the tool will create this label column. In this case, the features will be automatically numbered and numbering will follow the rule that is selected by the user through the 'Overwrite Map Labels' options on the form. If this attribute is left blank, no labels will be created or displayed for this layer even when requested by the user. 
-
-_`LabelClause`
-	A MapBasic clause that controls the labelling options, including expression used to construct the labels, the line call-out style, font type/size, label position and offset, overlap rules, duplicate controls and visibility. An example would be ``Font ("Arial",256,10,16711680,16777215) With Name Auto On``. If no clause is provided no labels will appear.
-
-	.. note::
-		For more information on how to set label clauses lookup the MapBasic **Set Map statement** instruction in the MapBasic Reference guide for your current version of MapInfo, available at `MapBasic product documentation <http://www.pbinsight.com/support/product-documentation/details/mapinfo-mapbasic>`_.
-
-CombinedSitesColumns
-	A comma-separated list of column names to be included in the combined sites table. If this entry is left blank the data layer will not be included in the combined sites table. A number of special cases apply to this attribute:
-
-	- Any entry surrounded by double quotes (e.g. ``"SSSI"``) will be included in the combined sites table 'as is'. So, in the case of this example, each row that is added to the combined sites table from this data layer will have the entry 'SSSI' in the relevant column. This feature is useful in distinguishing which data layer each row in the combined sites table originates from. 
-
-	- An entry of ``%Radius%`` means the search area radius size (e.g. '2km') that was used will be added to each row in the combined sites table for this data layer.
-
-	.. note:: 
-		The column headings of the combined sites table follow the 'Columns' entry under the CombinedSitesTable attribute in the general attributes. It is important to ensure that the CombinedSitesColumns are given in the same order as expected by this attribute.
-
-CombinedSitesCriteria
-	SQL criteria that will be applied **after** records have been selected using the `SelectCriteria`_ but **before** they are added to a combined sites table. Typically this is used to group and order records using the ``Group By`` and ``Order By`` clauses. An example might be ``Group By SiteDetails, Map_Label Order By SiteDetails, Map_Label``.
-
-.. caution::
-	All entries in the configuration file are **case sensitive**. Most common errors in the setting up of the tool are caused by using the incorrect case for entries.
-
-
-.. raw:: latex
-
-   \newpage
-
-.. index::
-	single: Installation
+   single: Installation
 
 Installing the tool
 ===================
 
-.. index::
-	single: Installation; ArcGIS
-
-Installing in ArcGIS
---------------------
-
-Installing the tool in ArcGIS is straightforward. There are a few different ways it can be installed:
-
-Installation through Windows Explorer
-*************************************
-
-Open Windows Explorer and double-click on the ESRI Add-in file for the data searches tool (:numref:`figInstallTool`).
-
-.. _figInstallTool:
-
-.. figure:: figures/AddInInstall.png
-	:align: center
-
-	Installing the Data Searches tool from Windows Explorer
-
-.. raw:: latex
-
-   \newpage
-
-Installation will begin after confirming you wish to install the tool on the dialog that appears (:numref:`figConfirmInstall`).
-
-.. _figConfirmInstall:
-
-.. figure:: figures/AddInConfirmInstall.png
-	:align: center
-
-	Installation begins after clicking 'Install Add-in'
-
-
-Once it is installed, it will become available to add to the ArcGIS interface as a button (see `CustomisingToolbarsArcGIS`_).
-
-.. note::
-	In order for this process to work all running ArcMap sessions must be closed. The tool will not install or install incorrectly if there are copies of ArcMap running.
-
-.. raw:: latex
-
-   \newpage
-
-Installation from within ArcMap
-*******************************
-
-Firstly, open the Add-In Manager through the Customize menu (:numref:`figOpenAddInManager`).
-
-.. _figOpenAddInManager:
-
-.. figure:: figures/StartAddInManager.png
-	:align: center
-
-	Starting the ArcGIS Add-In Manager
-
-.. raw:: latex
-
-   \newpage
-
-If the Data Searches tool is not shown, use the **Options** tab to add the folder where the tool is kept (:numref:`figAddInOptions`). The security options should be set to the lowest setting as the tool is not digitally signed.
-
-.. _figAddInOptions:
-
-.. figure:: figures/AddInOptions.png
-	:align: center
-
-	The 'Options' tab in the ArcGIS Add-In Manager
-
-Once the tool shows in the Add-In Manager (:numref:`figAddInManager`), it is available to add to the ArcGIS interface as a button (see `CustomisingToolbarsArcGIS`_).
-
-.. _figAddInManager:
-
-.. figure:: figures/AddInManager.png
-	:align: center
-
-	The ArcGIS Add-In Manager showing the Data Searches tool
-
-
-.. raw:: latex
-
-   \newpage
-
-.. _CustomisingToolbarsArcGIS:
-
-Customising toolbars
-********************
-
-In order to add the Data Searches tool to the user interface, it needs to be added to a toolbar. It is recommended that this is done inside a document that has already been loaded with all the data layers that are required for the tool to run. The tool should then be saved with this document (see `Fundamentals of Saving your Customizations <http://desktop.arcgis.com/en/arcmap/10.3/guide-books/customizing-the-ui/fundamentals-of-saving-your-customizations.htm>`_ for an explanation of how customisations are stored within ArcGIS).
-
-.. _figCustomizeMode:
-
-.. figure:: figures/CustomizeMode.png
-	:align: center
-
-	Starting Customize Mode in ArcGIS
-
-
-Customising toolbars is done through the Customize dialog, which can be started either through the Add-In Manager (by clicking **Customize**, see :numref:`figAddInManager`), or through choosing the 'Customize Mode...' option in the Customize Menu (:numref:`figCustomizeMode`).
-
-.. raw:: latex
-
-   \newpage
-
-Once this dialog is open, ensure that the check box 'Create new toolbars and menus in the document' is checked in the **Options** tab (:numref:`figCustomizeOptions`).
-
-.. _figCustomizeOptions:
-
-.. figure:: figures/CustomizeAnnotated.png
-	:align: center
-
-	Customising the document in ArcGIS
-
-
-.. raw:: latex
-
-   \newpage
-
-It is recommended that the button for the Data Searches tool is added to a new toolbar. Toolbars are created through the **Toolbars** tab in the Customize dialog, as shown in figures :numref:`figCustomizeToolbars` and :numref:`figNameToolbar`.
-
-.. _figCustomizeToolbars:
-
-.. figure:: figures/CustomizeToolbarsAnnotated.png
-	:align: center
-
-	Adding a new toolbar in ArcGIS
-
-.. _figNameToolbar:
-
-.. figure:: figures/NameNewToolbar.png
-	:align: center
-
-	Naming the new toolbar in ArcGIS
-
-
-.. raw:: latex
-
-   \newpage
-
-Once a new toolbar is created and named, it is automatically added to the ArcMap interface as well as to the Customize dialog (:numref:`figNewToolbar`. In this case the toolbar was named 'TestToolbar'). 
-
-.. _figNewToolbar:
-
-.. figure:: figures/NewToolbarAddedAnnotated.png
-	:align: center
-
-	New toolbar added to the ArcGIS Interface
-
-
-.. raw:: latex
-
-   \newpage
-
-As a final step the Data Searches tool is added to the toolbar. This is done from the **Command** tab in the Customize dialog (:numref:`figAddInCommands`). Click on **Add-In Controls** and the Data Searches tool will be shown in the right-hand panel.
-
-.. _figAddInCommands:
-
-.. figure:: figures/AddInCommandsAnnotated.png
-	:align: center
-
-	Finding the Data Searches tool in the add-in commands
-
-
-.. raw:: latex
-
-   \newpage
-
-To add the tool to the toolbar, simply drag and drop it onto it (:numref:`figDragDropTool`). Close the Customize dialog and **save the document**. The Data Searches tool is now ready for its final configuration and first use.
-
-.. _figDragDropTool:
-
-.. figure:: figures/DragAndDropTool.png
-	:align: center
-
-	Adding the Data Searches tool to the new toolbar
-
-.. raw:: latex
-
-   \newpage
-
-In order to function, the tool needs to know the location of the XML configuration file. The first time the tool is run, or whenever the configuration file is moved, a dialog will appear asking for the folder containing the XML file (:numref:`figFirstStart`). Navigate to the folder where the XML file is kept and click **OK**. If the XML file is present and its structure is correct, the Data Searches form will be shown. Even if the tool is not run at this time, the location of the configuration file will be stored for future use.
-
-.. _figFirstStart:
-
-.. figure:: figures/FirstStart.png
-	:align: center
-
-	Locating the configuration file folder
-
-
-.. raw:: latex
-
-   \newpage
-
-.. index::
-	single: Installation; MapInfo
-
-Installing in MapInfo
----------------------
-
-To install the tool in MapInfo, make sure that the configuration of the XML file as described above is complete, that the XML file is in the same directory as the tool MapBasic application (.MBX). Then, open `Tool Manager` in MapInfo by selecting :kbd:`Tools --> Tool Manager...` in the menu bar (:numref:`figToolManager`). 
+Use the compiled application supplied for your MapInfo version and its 32-bit
+or 64-bit edition. Copy the application and its supplied support files to the
+installation folder. Keep ``DataSearches.xml``, the profile XML files and the
+supplied ribbon icons with the application. Source files alone are not a
+runnable installation.
+
+Load the application using MapInfo's **Tool Manager** or **Tools** window.
+In the classic interface, choose **Tools --> Tool Manager**, select
+**Add Tool**, browse to the application and enter a title. Select **Loaded**
+to load it now and **AutoLoad** to load it whenever MapInfo starts. These
+illustrations show the classic interface; ribbon editions have a different layout.
+See :numref:`figToolManager` for Tool Manager and :numref:`figAddTool` for
+the Add Tool dialog.
 
 .. _figToolManager:
 
 .. figure:: figures/ToolManager.png
-	:align: center
+   :align: center
 
-	The Tool Manager in MapInfo 12 or earlier
-
-
-.. raw:: latex
-
-   \newpage
-
-In the `Tool Manager` dialog, click **Add Tool...**, then locate the tool using the browse button :kbd:`...` on the `Add Tool` dialog (:numref:`figAddTool`). Enter a name in the **Title** box (e.g. 'DataSearches'), and a description if desired. Then click **Ok** to close the `Add Tool` dialog.
+   Tool Manager in the classic MapInfo interface
 
 .. _figAddTool:
 
 .. figure:: figures/AddToolDialog.png
-	:align: center
+   :align: center
 
-	Adding a tool in Tool Manager
+   Adding the Data Searches application
 
-
-.. raw:: latex
-
-   \newpage
-
-The tool will now show in the `Tool Manager` dialog (:numref:`figToolAdded`) and the **Loaded** box will be checked. To load the tool automatically whenever MapInfo is started check the **AutoLoad** box.  Then click **Ok** to close the `Tool Manager` dialog.
+After adding the application, check its **Loaded** and **AutoLoad** settings
+as shown in :numref:`figToolAdded`.
 
 .. _figToolAdded:
 
 .. figure:: figures/DataSearchesLoaded.png
-	:align: center
+   :align: center
 
-	The Data Searches tool is loaded
+   Data Searches loaded in the classic Tool Manager
 
-The tool will now appear as a new entry in the `Tools` menu (:numref:`figToolMenu`).
+The classic interface adds a **Data Searches** menu under **Tools**, with
+**Run**, **About** and **Exit** commands. The 64-bit ribbon interface adds a
+button in the **Home** tab's **Tools** group. Its title comes from ``ToolTitle``
+in the launch configuration. The classic menu is shown in
+:numref:`figToolMenu`.
 
 .. _figToolMenu:
 
 .. figure:: figures/DataSearchesToolMenu.png
-	:align: center
+   :align: center
 
-	The Data Searches tool menu
-
-.. note::
-	The name that will appear in the `Tools` menu is dependent on the `ToolTitle`_ value in the configuration file, **not** the name given when adding the tool using the Tool Manager.
+   Data Searches commands in the classic Tools menu
 
 .. tip::
-	It is recommended that a MapInfo Workspace is created that contains all the required GIS layers to run the tool. Once this workspace has been set up and the tool has been configured and installed, running the Data Searches tool becomes a simple process.
+   Save a workspace containing the search-sites table and all source tables
+   required by the profiles. Open these before opening the search form, and
+   include the search-sites table in a map window.
 
+Requirements and folder access
+------------------------------
+
+Users need access to the installation, source data and final output folders.
+The search-sites table must be writable: MapInfo uses it temporarily during
+buffer creation and commits pending edits before that step. Save or discard
+other edits before running the tool.
+
+Database lookup needs a readable Access database, a writable ``EnquiriesDir``
+and suitable database drivers. If ``WorkingDir`` is configured, it must be
+writable and Windows ``robocopy.exe`` must be available. SHP output requires
+the Universal Translator configured by ``UTPath`` and ``UTCommand``. An optional
+export ``Macro`` requires Windows Script Host and any software used by the script.
+
+.. index::
+   single: Configuring the tool
+   single: XML; Profiles
+
+.. _configuration:
+
+Configuring the tool
+====================
+
+Keep both parts of the configuration alongside the compiled application:
+
+* ``DataSearches.xml`` is the launch configuration. Its ``DataSearches`` node
+  contains ``ToolTitle`` and ``DefaultProfile``.
+* A profile, usually ``DefaultProfile.xml``, contains the general settings and
+  ``MapTables`` definitions under its own ``DataSearches`` node.
+
+One profile is used automatically. With several XML files other than
+``DataSearches.xml``, the tool asks the user to choose. Keep unrelated XML files
+out of the application folder. ``DefaultProfile`` sets the initially selected
+file; include ``.xml``. If blank, the default is ``DefaultProfile.xml``.
+
+.. caution::
+   Keep the launch file name ``DataSearches.xml``. The tool excludes it from
+   the profile list, so a separate profile is required. Preserve node names
+   and their case.
+
+Edit XML in a text or XML editor. A setting normally has the form
+``<Example><value>setting</value></Example>``. Closing tags use a forward slash.
+Check the XML for well-formedness after editing; valid XML can still contain
+incorrect paths, table names or SQL. The appendix provides
+:ref:`downloadable examples <example_xml>`.
+
+Special characters in XML
+-------------------------
+
+Within values, escape ``<`` as ``&lt;`` and ``&`` as ``&amp;``. Escaping ``>``
+as ``&gt;`` is also good practice. For example::
+
+   <SelectCriteria>
+       <value>Year &gt; 2010 And Status &lt;&gt; "Confidential"</value>
+   </SelectCriteria>
+
+The XML reader restores these characters before passing the expression to
+MapInfo. Double quotes within element text do not need escaping.
+
+.. index::
+   single: XML; Variables
+
+.. _naming_variables:
+
+Naming variables
+----------------
+
+These variables work in ``SaveFolder``, ``GISFolder``, ``LogFileName``,
+``BufferSaveName``, ``SearchFeatureName``, ``GroupLayerName``, each layer's
+``GISOutputName`` and ``TableOutputName``, and the combined sites
+``TableOutputName``. Use the lower-case spellings shown.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 26 74
+
+   * - Variable
+     - Meaning
+   * - ``%ref%``
+     - Full search reference entered on the form.
+   * - ``%shortref%``
+     - Numeric part of the reference, with separators processed for names.
+   * - ``%subref%``
+     - Final part of the processed numeric reference.
+   * - ``%sitename%``
+     - Site name entered or retrieved from the database.
+   * - ``%organisation%``
+     - Organisation retrieved using ``OrgColumn``.
+   * - ``%partner%``
+     - Partner retrieved using ``PartnerColumn``.
+   * - ``%radius%``
+     - Buffer size and unit abbreviation; decimal points become underscores
+       in names, for example ``1_5km``.
+
+For ``XYBRC/2026/001``, ``%subref%`` normally gives ``001``. ``%shortref%``
+depends on ``RepChar`` and separator processing: check representative names.
+Special characters are replaced and spaces in GIS table names become underscores.
+Specify complete output names; a reference is not added automatically.
+Variables are not expanded in ``WorkingDir`` or ``SaveRootDir``.
+
+General profile settings
+========================
+
+Database and search tables
+--------------------------
+
+Debug
+   ``Yes`` adds diagnostic messages to the log.
+
+Database
+   Full Access database path, including its extension. Leave blank to run
+   without lookup and enter the site name manually.
+
+EnquiriesDir
+   Writable folder for the Access table's ``Enquiries.tab`` registration.
+
+EnquiriesTable
+   Table inside the Access database, for example ``Enquiries``.
+
+RefColumn
+   Reference column used in both the Access table and ``SearchTable``. Use
+   the same column name in both. Text references support MapInfo ``LIKE`` patterns.
+
+SiteColumn, OrgColumn, PartnerColumn
+   Access columns holding the site name, requester organisation and partner.
+   Leave unused names blank. The optional search-table update uses these names too.
+
+RadiusColumn
+   Search-table column intended to receive the buffer size and units during
+   an optional update. It does not retrieve a radius from Access. Leave blank
+   if unused.
+
+.. _requiresitename:
+
+RequireSiteName
+   ``Yes`` requires a site name; ``No`` permits a blank. With lookup enabled,
+   the site-name control is disabled and **Find** retrieves the name. Without
+   lookup the field is editable.
+
+SearchTable
+   Open MapInfo table containing the search locations. One profile uses one
+   search table; several matching features can be selected. Its reference
+   column is ``RefColumn``. ``SearchColumn`` is not read by the current tool.
+
+AggregateColumns
+   MapBasic ``Data`` assignments used when creating the buffer, for example
+   ``EnquiryRef=EnquiryRef, SiteName=SiteName``. Preserve fields needed by
+   buffer-based export expressions. This is not just a list of field names.
+
+UpdateTable
+   Controls the optional attempt to update search-table attributes from lookup
+   values and the radius. Set explicitly to ``No`` unless this operation has
+   been checked for your installation; see :doc:`the running instructions <../execute/execute>`. It does
+   not make the table read-only during buffering.
+
+Output folders and logging
+--------------------------
+
+RepChar
+   Replacement for special characters in generated names. A space is allowed.
+   Choose a character suitable for Windows file names and MapInfo table names.
+
+SaveRootDir
+   Full final output root, such as ``D:\DataSearches\Reports`` or a UNC path.
+
+SaveFolder
+   Request folder beneath the root. Supports :ref:`naming_variables`.
+   Leave blank to use the root directly.
+
+GISFolder
+   Output folder beneath the request folder. Supports naming variables.
+   Leave blank to use the request folder directly.
+
+.. _working_directory:
+
+WorkingDir
+   Optional working root, preferably local when final outputs are on a network.
+   Each run creates a fresh subfolder beneath it. Interrupted runs are retained
+   and are neither cleared nor included in later runs. Leave blank or omit
+   this setting to process directly in the final GIS folder. The working run
+   folder and final folder must not overlap.
+
+   After processing, saved tables are committed and closed and Robocopy moves
+   the current run's files to the final GIS folder before results are mapped.
+   Matching outputs are replaced; unrelated destination files are retained.
+   For an append, the existing combined sites table is copied into the fresh
+   working folder first.
+
+   A failed move stops mapping and retains untransferred files. A partial move
+   can leave files in both locations. The log identifies both folders. See
+   :ref:`transfer_recovery` before retrying.
+
+LogFileName
+   Final log name, including an extension such as ``.log``. Supports naming
+   variables. A temporary journal adds ``_tmp`` before the extension.
+
+DefaultClearLogFile
+   ``Yes`` initially checks **Clear log file?**; ``No`` appends to the final
+   log. This setting does not control output overwriting.
+
+Buffer and search-feature settings
+----------------------------------
+
+DefaultBufferSize
+   Initial buffer size. Blank or zero hides the size control and uses zero.
+   See :doc:`the running instructions <../execute/execute>` before configuring radii below one unit.
+
+BufferUnitOptions
+   Display-name and MapInfo-unit pairs separated by ``$``, with ``;`` between
+   each name and abbreviation, for example ``Metres;m$Kilometres;km$``.
+
+DefaultBufferUnit
+   One-based position in ``BufferUnitOptions``. Blank hides the control; the
+   code then uses position 3 internally, so retain a valid third option.
+
+KeepBufferArea, KeepSearchFeature
+   ``Yes`` retains the buffer or selected search features as TAB files and adds
+   them to map windows. ``No`` removes the corresponding temporary table.
+   These are separate from the data-layer retention and mapping choices.
+
+BufferSaveName, SearchFeatureName
+   Retained table names without extensions. Supports naming variables.
+
+BufferSymbology, SearchAreaSymbology
+   MapBasic global display styles for the buffer and search-feature layers,
+   applied for **Layers only** or **Layers and tables**. Follow the example
+   profile's syntax.
+
+Buffer, SearchArea
+   Optional sections with ``Symbology`` rules for saved object styles. Each
+   ``Symbol`` rule has ``Clause`` (filter, or blank for all), ``Object``
+   (``Region``, ``Line`` or ``Point``), and the appropriate ``Pen`` and ``Brush``,
+   ``Pen``, or ``Symbol`` values. Each value uses a ``value`` child element.
+   Rules apply to saved buffer and search-feature objects for **Layers and tables**.
+
+CoordinateSystem
+   Existing profiles may contain this setting. The current source reads it
+   but does not apply a coordinate-system command. Configure source tables
+   appropriately rather than relying on this setting to reproject output.
+
+RecMax
+   Maximum spatially selected record count for each layer. Exceeding it skips
+   the whole layer and logs the reason; it does not truncate the selection.
+   Set a positive limit suited to your data and MapInfo's table-size limits.
+
+Form defaults and map display
+-----------------------------
+
+Options are positional. Keep their order as shown; changing the wording does
+not change the behaviour assigned to each position. Defaults are one-based.
+
+AddSelectedTablesOptions, DefaultAddSelectedTables
+   ``No;Yes - Without labels;Yes - With labels``. Blank default hides the
+   control and uses **No**.
+
+KeepSelectedTablesOptions, DefaultKeepSelectedTables
+   ``None;TAB;SHP;BOTH``. Blank default hides the control and uses **None**.
+   The layer also needs ``KeepLayer=Yes``. Requesting map display retains its
+   TAB file even for **None** or **SHP**.
+
+ApplySymbologyOptions, DefaultApplySymbology
+   ``None;Layers only;Layers and tables``. Blank default hides the control
+   and uses **None**. Layer styles affect displayed results; table styles
+   affect saved buffer and search-feature objects.
+
+GroupLayerName
+   Results group name in map windows. Supports naming variables.
+
+OverwriteLabelOptions, DefaultOverwriteLabels
+   ``No;Yes - Reset Each Layer;Yes - Reset Each Group;Yes - Do Not Reset``.
+   Blank default hides the control and uses **No**. Numbering also affects
+   output attributes, subject to each layer's ``OverwriteLabels`` setting.
+
+CombinedSitesOptions, DefaultCombinedSitesTable
+   ``None;Append to existing table;Overwrite existing table``. Blank default
+   hides the control and uses **None**. Configure a separate ``WorkingDir``
+   before appending to an existing table; see :doc:`the running instructions <../execute/execute>`.
+
+CombinedSitesTable
+   Defines the combined sites TAB table and its tabular export:
+
+   TableName
+      Internal TAB name, without extension, for example ``Sites``. Keep it
+      distinct from source and other output table names.
+   Columns
+      Ordered MapBasic column definitions with types and lengths, for example
+      ``Site_Type Char(20), Site_Name Char(100), Map_Label Char(10)``.
+   TableOutputName
+      Export base name, supporting naming variables, for example ``%subref%_sites``.
+      The former ``Suffix`` setting is not read.
+   Format
+      ``csv``, ``txt`` or ``dbf``. CSV has headings; TXT is comma-delimited
+      without headings. The TAB table is retained for future appends.
+
+UTPath, UTCommand
+   Folder and executable of the installed Universal Translator for SHP output,
+   for example the MapInfo ``UT`` folder and ``Fme.exe``. Older installations
+   may use ``Imut.exe``. Conversion errors are logged.
+
+.. index::
+   single: Map layer attributes
+
+Map layer settings
+==================
+
+Each child of ``MapTables`` defines a search. ``Sites_-_SSSIs`` appears as
+**Sites - SSSIs**: underscores become spaces. The part before a hyphen supplies
+the logical group for label numbering. Several definitions can use the same
+source table with different filters. :numref:`figXMLExample` illustrates
+the current XML structure for one definition.
+
+.. _figXMLExample:
+
+.. figure:: figures/DataLayerXMLExample.png
+   :align: center
+
+   Annotated MapInfo MapTables configuration example
+
+
+TableName
+   Source table name as it is open in MapInfo, without path or extension.
+
+GISOutputName
+   GIS file base name for TAB and SHP output. Supports naming variables.
+   The former ``Prefix`` setting is not read.
+
+TableOutputName
+   Tabular export base name without extension. Supports naming variables.
+   The former ``Suffix`` setting is not read.
+
+Columns
+   Comma-separated MapInfo SQL expressions for export, including source fields,
+   calculated expressions, aggregates with aliases and :ref:`export_expressions`.
+   Blank ``Columns`` or ``Format`` skips tabular export without preventing
+   GIS or combined sites output.
+
+SelectCriteria
+   Optional condition applied with the spatial selection, for example
+   ``Year > 2010 And Confidential <> "Y"``. Omit any leading ``Where`` or
+   ``And``: the tool adds ``And (...)``. Escape XML special characters.
+
+ExportCriteria
+   Extra SQL after the export spatial condition, commonly
+   ``Group By ... Order By ...``. Further filters must begin with ``And``.
+
+KeyColumn
+   Optional source column for ordering and assigning consistent label numbers
+   to records sharing a key. Numeric keys are supported.
+
+Format
+   ``csv``, ``txt`` or ``dbf``. CSV has column headings; TXT is comma-delimited
+   without headings. Exports use the WindowsLatin1 character set.
+
+Macro
+   Optional full path to a Windows Script Host script run after export. It
+   receives the working folder, exported file name and expected XLSX file name
+   as three arguments. A non-zero exit or missing XLSX is reported. Leave blank
+   if no script is required.
+
+KeepLayer
+   ``Yes`` allows GIS retention and mapping; ``No`` removes GIS output after
+   tabular export and combined sites processing. Formats follow **Keep Selected
+   Tables**. Empty or over-limit selections do not produce new outputs.
+
+LoadWarning
+   ``No`` suppresses warnings for a source table that is not open. It remains
+   excluded from the form.
+
+PreselectLayer
+   ``Yes`` highlights this definition on opening the form. Users can change it.
+
+OverwriteLabels
+   ``Yes`` allows the form's overwrite option to number the output label column.
+   ``No`` preserves existing values. Changes affect output, not source data.
+
+LabelColumn
+   Column used for labels; it must exist or be successfully created in output.
+   For sequential numbers, use ``OverwriteLabels=Yes`` and an overwrite option.
+   Do not rely on a missing column being numbered when overwriting is disabled.
+
+LabelClause
+   MapBasic label clause, for example
+   ``Font ("Arial",0,10,0) With Map_Label Auto On``. When blank and a valid
+   ``LabelColumn`` exists, the current tool uses ``With LabelColumn``. Use an
+   explicit clause to control appearance and visibility.
+
+Symbology
+   Global display style applied when the output is mapped and symbology is
+   enabled, for example
+   ``Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)``.
+   This is a single ``value``, unlike the ``Buffer`` and ``SearchArea`` rules.
+
+CombinedSitesColumns
+   Expressions inserted into ``CombinedSitesTable``. Their count, order and
+   types must match its ``Columns``. Blank excludes this layer. Quoted text
+   can identify the source, for example ``"SSSI", SiteName, Map_Label``.
+
+CombinedSitesCriteria
+   Extra SQL for combined sites selection, commonly ``Group By ...`` or
+   ``Order By ...``. Start additional filters with ``And``. This is independent
+   of ``ExportCriteria``.
+
+.. note::
+   Historical comments mention ``OutputType``, but the current profile reader
+   does not read it. Selected GIS features are copied in full when they
+   intersect the buffer; that setting does not clip their geometry. Overlap
+   expressions can report intersecting areas.
+
+.. _export_expressions:
+
+Export expressions and measurements
+===================================
+
+``Columns`` and ``CombinedSitesColumns`` accept the lower-case search variables
+listed under :ref:`naming_variables`. Variables become quoted values: do not
+quote the variable itself. Supply aliases where needed, for example
+``%radius% "Radius"`` or ``%ref% "SearchRef"``. Radius values here retain their
+decimal point, for example ``1.5km``.
+
+.. list-table::
+   :header-rows: 1
+   :widths: 28 72
+
+   * - Expression
+     - Result
+   * - ``%overlap%`` or ``%overlaparea%``
+     - Selected source-feature area overlapping the buffer, in hectares.
+   * - ``%searcharea%``
+     - Buffer/search area, in hectares.
+   * - ``%searchlen%``
+     - Buffer/search object length, in metres.
+   * - ``%inputarea%``
+     - Full selected data-layer feature area, in hectares.
+   * - ``%inputlen%``
+     - Selected data-layer feature length, in metres.
+   * - ``%searchlayer%``
+     - Buffer table name, for attribute expressions such as
+       ``%searchlayer%.EnquiryRef "SearchRef"``.
+
+For overlap length, use ``%overlapLen%`` in ``Columns`` and ``%overlaplen%`` in
+``CombinedSitesColumns``; the spellings differ in the current code. Measurements
+depend on geometry type. The ``input`` expressions refer to selected data-layer
+features, not the original search-site polygon.
+
+During ordinary export expressions the selected data table is ``Select_Table``
+and the buffer is ``Buffer_Area``. Qualify ambiguous field names. Preserve any
+buffer attributes needed by expressions through ``AggregateColumns``.
+
+.. caution::
+   Keep XML nodes and variables exactly as shown. Check profiles with
+   representative data, empty selections, repeated runs and combined sites
+   appends before making them available to users.

@@ -3,1521 +3,440 @@ Appendix
 ********
 
 .. index::
-	single: Example XML file; ArcGIS
+   single: Appendix; Change Log
+   single: Change Log
 
-Example XML file for ArcGIS
-===========================
+.. _change_log:
 
-Below is an example of XML that might be used to set up the Data Searches tool in ArcGIS. Note, many of the settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements. The XML below is compatible with version 2.1 of the tool.
+Change Log
+==========
 
-The first XML file is the launch configuration, ``DataSearches.xml``. The name of this file should not be changed.
+This history covers the MapInfo tool through version 1.4.47. It was
+reconstructed from ``DataSearches.mb`` version comments, historical source,
+and the `GitHub commits <https://github.com/LERCAutomation/DataSearches-MapInfo/commits/master/>`_
+and `tags <https://github.com/LERCAutomation/DataSearches-MapInfo/tags>`_.
+Entries describe the changes recorded at the time; the setup chapter describes
+the settings used by the current version.
 
-::
+Dates in code comments take precedence over commit or tag dates. Where only
+a revision month is recorded, no release day has been inferred. Version 1.4.46
+spans the July and September 2026 revision comments. Versions 1.4.40 and
+1.4.43 have no separately recorded dates. Version 1.4.47 includes the latest
+source changes. Older numbers such as 1.40 and 1.31 are shown in the later
+three-part form, 1.4.0 and 1.3.1.
 
+**1.4.47**
+(October 2026)
 
-    <?xml version="1.0" encoding="utf-8"?>
+Safer working folders, file transfers and failure recovery.
 
-    <!--
-    WARNING: This file should be changed carefully and a backup should be
-    taken before any changes so that they can be backed out.  Changed lines
-    can also be commented out as below.
-    -->
+    * **Changed:** Each search uses a fresh subfolder under ``WorkingDir``. Interrupted runs are retained and excluded from later runs.
+    * **Improved:** Working and final output folders are checked for overlap, and their paths are recorded in the log.
+    * **Improved:** Saved working tables are committed and closed before transfer. Matching destination outputs are replaced while unrelated files are retained.
+    * **Fixed:** Failed or partial transfers retain untransferred files and stop the mapping stage. Logging follows the temporary journal if it has already moved.
+    * **Fixed:** Messages are retained in memory if the final log cannot be written, and must be written before another search starts.
+    * **Improved:** External-process failures are detected more reliably, including failures to launch the Universal Translator.
 
-    <!--
-    This config file contains all the variables used by the DataSearches
-    ArcGIS Add-in tool.
+**1.4.46**
+(September 2026)
 
-    The 'configuration' node is the 'root' node and signifies the start of the
-    contents of the configuration file.
+Introduced working storage for output processing and improved file handling.
 
-    The 'InitialConfig' node contains the nodes relating to the initial setup of the tool.
+    * **New:** Optional ``WorkingDir`` creates outputs in temporary storage before moving them to the final output folder, reducing output traffic to network storage.
+    * **Improved:** Added retries and error handling around table opening, saving and combined sites processing.
+    * **Improved:** Checked external script results and expected XLSX output, and improved temporary and final logging.
+    * **Fixed:** Mapping distinguishes deliberately omitted GIS outputs from expected outputs that are missing.
 
-    Note a detailed XML profile file must also be set up in order for the tool to run.
+**1.4.45**
+(August 2025)
 
-    -->
+Configurable symbology application.
 
+    * **New:** Added choices to apply no symbology, layer display styles only, or layer and table styles.
 
+**1.4.44**
+(August 2025)
 
-    <configuration>
-    <InitialConfig>
-        <!-- Are we allowing the user to choose their own configuration file? Yes/No -->
-        <ChooseXML>
-            <value>Yes</value>
-        </ChooseXML>
+Further file-access improvements.
 
-        <!-- What is the default XML file called? If blank, the system looks for DefaultProfile.xml -->
-        <DefaultProfile>
-            <value>DefaultProfile.xml</value>
-        </DefaultProfile>
-    </InitialConfig>
-    </configuration>
+    * **Improved:** Reduced errors during file-access operations.
 
+**1.4.43**
+(August 2025)
 
-.. raw:: latex
+Broader file-access error handling.
 
-    \newpage
+    * **Improved:** Extended error handling across file-access operations.
 
-The second XML file for ArcGIS is the tool configuration file. The most used profile that is created should be called ``DefaultProfile.xml``, and this name should also be used if only one profile is used. This file provides the full configuration for the tool and its outputs.
+**1.4.42**
+(April 2025)
 
-::
+More reliable logging.
 
+    * **Improved:** Improved error handling when writing the log file.
 
-    <?xml version="1.0" encoding="utf-8"?>
+**1.4.41**
+(December 2021)
 
-    <!--
-    WARNING: This file should be changed carefully and a backup should be
-    taken before any changes so that they can be backed out.  Changed lines
-    can also be commented out as below.
-    -->
+Wildcard search references.
 
-    <!--
-    This config file contains all the variables used by the DataSearches
-    ArcGIS Add-in tool.
+    * **New:** Allowed search references to contain wildcard characters.
 
-    The 'configuration' node is the 'root' node and signifies the start of the
-    contents of the configuration file.
+**1.4.40**
+(December 2021)
 
-    The 'DataSearches' node contains all of the entries relating to the
-    Add-in tool variables.
+Additional search attributes in exports.
 
-    Each entry relates to a file, folder, table name, column name or other
-    variable used by the Add-in tool to select and export ArcMap data for
-    each data search.
-    -->
+    * **New:** Allowed search-area columns in exported files and the combined sites table.
+    * **Changed:** Increased the widths of the form and table list.
 
-    <configuration>
-    <!--- General attributes -->
-    <DataSearches>
-        <!-- The database where all the data search details are stored. This may be left blank. -->
-        <Database>
-            <value>H:\Access\DataSearchesDetails.mdb</value>
-        </Database>
+**1.4.39**
+(September 2021)
 
-        <!-- The field name of the search reference unique value in the database. -->
-        <RefColumn>
-            <value>EnquiryRef</value>
-        </RefColumn>
+Saved search and buffer styles.
 
-        <!-- The field name of the search reference site name in the database. -->
-        <SiteColumn>
-            <value>SiteName</value>
-        </SiteColumn>
+    * **New:** Added object symbology for search-area and buffer features.
 
-        <!-- Is a site name required? Yes/No -->
-        <RequireSiteName>
-            <value>No</value>
-        </RequireSiteName>
+**1.4.38**
+(March 2021)
 
-        <!-- The character(s) used to replace any special characters in folder
-             names. Space is allowed -->
-        <RepChar>
-            <value> </value><!-- Note in this case space is used -->
-        </RepChar>
+More flexible export column names.
 
-        <!-- The folder where the layer files are stored. -->
-        <LayerFolder>
-            <value>H:\DataSearches\LayerFiles</value>
-        </LayerFolder>
+    * **Changed:** Stopped assigning default output column names to search variables, allowing explicit aliases.
 
-        <!-- The file location where all data search output folders are stored. -->
-        <SaveRootDir>
-            <value>H:\DataSearches\Reports</value>
-        </SaveRootDir>
+**1.4.37**
+(March 2021)
 
-        <!-- The template for folders where the reports will be saved. -->
-        <SaveFolder>
-            <value>%ref%_%sitename%</value>
-        </SaveFolder>
+Search variables and output corrections.
 
-        <!-- The sub-folder where all data search extracts will be written to -->
-        <GISFolder>
-            <value>GIS</value>
-        </GISFolder>
+    * **New:** Allowed search variables in exported files and combined sites records.
+    * **Fixed:** Corrected area outputs in the combined sites table.
+    * **Changed:** Hid buffer controls when their defaults were blank and removed spaces from references used in table names.
 
-        <!-- The log file name created by the tool to output messages -->
-        <LogFileName>
-            <value>DataSearch_%subref%.log</value>
-        </LogFileName>
+**1.4.36**
+(29th January 2021)
 
-        <!-- By default, should an existing log file be cleared? -->
-        <DefaultClearLogFile>
-            <value>Yes</value>
-        </DefaultClearLogFile>
+Additional area measurements.
 
-        <!-- The default size to use for the buffer -->
-        <DefaultBufferSize>
-            <value>1</value>
-        </DefaultBufferSize>
+    * **New:** Added search/buffer area and input-feature area expressions for exports and combined sites records.
 
-        <!-- The options for the buffer units. It is not recommended that
-             these are changed -->
-        <!-- These are read as: unit to display; unit that ArcGIS uses
-             (American spelling); abbreviated unit -->
-        <BufferUnitOptions>
-            <value>Centimetres;Centimeters;cm$Metres;Meters;m$Kilometres;
-                   Kilometers;km$Feet;Feet;ft$Yards;Yards;yds$Miles;Miles;
-                   mi</value>
-        </BufferUnitOptions>
+**1.4.35**
+(24th July 2020)
 
-        <!-- The default option (position in the list) to use for the buffer
-             units -->
-        <DefaultBufferUnit>
-            <value>3</value>
-        </DefaultBufferUnit>
+Empty combined sites output.
 
-        <!-- Should the buffer be kept as a GIS file? Yes/No -->
-        <KeepBufferArea>
-            <value>Yes</value>
-        </KeepBufferArea>
+    * **Changed:** Added removal of an empty combined sites output table.
 
-        <!-- The output name for the buffer GIS file. The size of the buffer will be added automatically. -->
-        <BufferSaveName>
-            <value>Buffer_%subref%</value>
-        </BufferSaveName>
+**1.4.34**
+(15th December 2019)
 
-        <!-- The name of the buffer symbology layer file -->
-        <BufferLayerName>
-            <value>BufferOutline.lyr</value>
-        </BufferLayerName>
+Repeated runs from the same form.
 
-        <!-- The base name of the layer to use as the search area -->
-        <SearchLayer>
-            <value>SearchSites</value>
-        </SearchLayer>
+    * **Fixed:** Corrected a problem when running another search without closing the tool.
 
-        <!-- The extension names for point, polygon and line search area layers. 
-        Leave blank to just use the SearchLayer name -->
-        <SearchLayerExtensions>
-            <value>_point;_poly;_line</value>
-        </SearchLayerExtensions>
+**1.4.33**
+(31st October 2019)
 
-        <!-- The column name in the search area layer used to store the search
-             reference -->
-        <SearchColumn>
-            <value>ref</value>
-        </SearchColumn>
+Map display and export corrections.
 
-        <!-- Should the search feature be kept as a GIS layer? Yes/No -->
-        <KeepSearchFeature>
-            <value>Yes</value>
-        </KeepSearchFeature>
+    * **Fixed:** Corrected unintended labels with a blank label clause, handling when no map window was open, combined sites export errors and grouping of local output tables.
 
-        <!-- The name of the search feature output layer -->
-        <SearchFeatureName>
-            <value>%sitename%</value>
-        </SearchFeatureName>
+**1.4.32**
+(30th August 2019)
 
-        <!-- The base name of the search layer symbology file (without the .lyr). 
-        Note the relevant extension (from SearchLayerExtensions) and the .lyr will be added -->
-        <SearchSymbologyBase>
-            <value>FeatureSymbology</value>
-        </SearchSymbologyBase>
+Map labels.
 
-        <!-- The buffer aggregate column values. Delimited with semicolons -->
-        <AggregateColumns>
-            <value>ref;org;sitename</value>
-        </AggregateColumns>
+    * **Fixed:** Corrected map labels not being added.
 
-        <!-- The options for showing the selected tables -->
-        <AddSelectedLayersOptions>
-            <value>No;Yes - Without labels;Yes - With labels</value>
-                   <!-- do not change -->
-        </AddSelectedLayersOptions>
+**1.4.31**
+(5th August 2019)
 
-        <!-- The default option (position in the list) for whether selected map
-             layers should be added to the map window -->
-        <DefaultAddSelectedLayers>
-            <value>3</value>
-        </DefaultAddSelectedLayers>
+Shapefile translation.
 
-        <!-- The options for overwritting the map labels -->
-        <OverwriteLabelOptions>
-            <value>No;Yes - Reset Each Layer;Yes - Reset Each Group;Yes - Do Not Reset</value>
-                   <!-- do not change -->
-        </OverwriteLabelOptions>
+    * **Fixed:** Handled a missing Universal Translator mapping file.
 
-        <!-- Whether any map label columns should be overwritten (default setting) -->
-        <DefaultOverwriteLabels>
-            <value>3</value>
-        </DefaultOverwriteLabels>
+**1.4.30**
+(1st August 2019)
 
-        <!-- The units any area measurements will be done in. Choose from Ha, Km2, m2. Default is Ha if left blank. -->
-        <AreaMeasurementUnit>
-            <value>ha</value>
-        </AreaMeasurementUnit>
+64-bit profile support and output folders.
 
-        <!-- Options for filling out the Combined Sites table dropdown -->
-        <CombinedSitesTableOptions>
-            <value>None;Append to existing table;Overwrite existing table</value>
-                   <!-- (do not change) -->
-        </CombinedSitesTableOptions>
+    * **New:** Enabled XML profiles in the 64-bit tool.
+    * **Improved:** Created missing output paths and added funding details to the About box.
 
-        <!-- Whether a combined sites table should be created by default
-             (index of option) -->
-        <DefaultCombinedSitesTable>
-            <value>1</value> <!-- 1, 2, 3 -->
-        </DefaultCombinedSitesTable>
+**1.4.29**
+(2nd July 2019)
 
-        <!-- The column names of the combined sites table -->
-        <CombinedSitesTable>
-            <Name>
-                <value>Sites_%subref%</value> <!-- do not include .txt or .csv -->
-            </Name>
-            <Columns>
-                <value>Site_Type,Site_Name,Site_Area,Map_Label</value>
-            </Columns>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </CombinedSitesTable>
+Choice of configuration profile.
 
-        <!-- map layer attributes -->
-        <!-- The names, local names, suffixes, SQL clauses and formats of the
-             map tables -->
-        <MapLayers>
-            <Points_-_ExampleSpeciesPoints> <!-- This is the name of the map
-                    layer as it will be shown on the form -->
-                <!-- Example of a map layer where tabular data is grouped; the
-                    GIS data is kept; the GIS data is symbolised with a
-                    bespoke layer file; no data is written to the combined
-                    sites table -->
-                <LayerName> <!-- This is the name of the layer as it is show in
-                    the Table of Contents in ArcMap -->
-                    <value>ExampleSpeciesPoints</value>
-                </LayerName>
-                <GISOutputName> <!-- The name used for any GIS data extracts -->
-                    <value>%subref%_ExampleSpecies</value>
-                </GISOutputName>
-                <TableOutputName> <!-- The name used for any tabular extracts -->
-                    <value>%subref%_spp_pts</value>
-                </TableOutputName>
-                <Columns> <!-- The columns to be used in the tabular extracts -->
-                    <value>Species, Year, COUNT_Spec</value> <!-- Use commas to
-                        separate. NOTE case sensitive! -->
-                </Columns>
-                <GroupColumns> <!-- The columns that should be used for
-                    grouping results -->
-                    <value>Species, Year</value> <!-- Use commas to separate.
-                           NOTE case sensitive! -->
-                </GroupColumns>
-                <StatisticsColumns> <!-- Any statistics
-                    that should be generated. -->
-                    <value>Species;COUNT</value><!-- example: area_ha;SUM$
-                           Status;FIRST -->
-                </StatisticsColumns>
-                <OrderColumns> <!-- Overrides GroupColumns. Any columns by
-                    which the results should be ordered -->
-                    <value></value>
-                </OrderColumns>
-                <Criteria> <!-- Any criteria that should be applied to this
-                    layer before extracts are saved -->
-                    <value></value><!-- example: Name = 'myName' OR
-                        area_ha > 5 -->
-                </Criteria>
-                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. -->
-                    <value>No</value>
-                </IncludeArea>
-                <IncludeDistance> <!-- Yes / No attribute to define whether
-                    Distance field should be measured -->
-                    <value>Yes</value><!-- Yes / No -->
-                </IncludeDistance>
-                <IncludeRadius><!-- Yes / No attribute to define whether Radius
-                    field should available -->
-                    <value>Yes</value><!-- Yes / No -->
-                </IncludeRadius>
-                <KeyColumn> <!-- The column in this layer that contains the
-                    unique identifier -->
-                    <value>FID</value>
-                </KeyColumn>
-                <Format> <!-- The format that any tabular data will be saved as -->
-                    <value>Csv</value>
-                </Format>
-                <KeepLayer> <!-- A Yes/No attribute to define whether a GIS
-                    extract should be saved -->
-                    <value>Yes</value>
-                </KeepLayer>
-                <LoadWarning>
-                    <value>Yes</value>
-                </LoadWarning>
-                <PreSelectLayer>
-                    <value>No</value>
-                </PreSelectLayer>
-                <LayerFileName> <!-- The name of a layer file (*.lyr) that
-                    should be used to symbolise the extract -->
-                    <value>SpeciesPointsSymbology.lyr</value>
-                </LayerFileName>
-                <OverwriteLabels> <!-- A Yes/No attribute to define whether
-                    labels may be overwritten -->
-                    <value>Yes</value>
-                </OverwriteLabels>
-                <LabelColumn> <!-- The name of the label column in this layer
-                    (if any) -->
-                    <value></value>
-                </LabelColumn>
-                <LabelClause> <!-- The definition of the labels for this layer
-                    (if any) -->
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$
-                        Type:NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
-                        / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are
-                        applied -->
-                    <value></value>
-                </LabelClause>
-                <CombinedSitesColumns> <!-- The columns to be used in the
-                    combined sites table. -->
-                    <!-- Leave blank if the layer should not be included in
-                        the combined sites table -->
-                    <!-- Distance may be included as a keyword if
-                        IncludeDistance is set to Yes-->
-                    <!-- "SSSI", SSSI_NAME, SSSI_AREA, Map_Label -->
-                    <value></value>
-                </CombinedSitesColumns>
-                <CombinedSitesGroupColumns> <!-- Columns that should be used to
-                    group data before inclusion in the combined sites table, if
-                    any -->
-                    <value></value>
-                </CombinedSitesGroupColumns>
-                <CombinedSitesStatisticsColumns> <!-- Statistics columns and
-                    their required stats to be used for the combined sites table
-                    if CombinedSitesGroupColumns has been specified -->
-                    <value></value> <!-- Must include the remaining columns -->
-                </CombinedSitesStatisticsColumns>
-                <CombinedSitesOrderByColumns> <!-- Columns by which results
-                    should be ordered in the Combined Sites table -->
-                    <value></value> <!-- Overrides CombinedSitesGroupColumns -->
-                </CombinedSitesOrderByColumns>
-            </Points_-_ExampleSpeciesPoints>
-            <SACs> <!-- Example map layer: SACs -->
-                <!-- Example of a map layer where tabular data is grouped;
-                    distance is not included; the tabular extract is in txt format
-                    (no headers); a GIS extract is kept; a bespoke layer file is
-                    used for symbology; labels may be overwritten; labels are
-                    added in red and larger than the default; the combined sites
-                    data is grouped and statistics are extracted before
-                    inclusion -->
-                <LayerName>
-                    <value>SACs</value> <!-- Name in TOC -->
-                </LayerName>
-                <GISOutputName>
-                    <value>%subref%_SACs</value>
-                </GISOutputName>
-                <TableOutputName>
-                    <value>%subref%_sacs</value>
-                </TableOutputName>
-                <Columns>
-                    <value>SAC_NAME, SAC_CODE</value> <!-- Use commas to separate.
-                        NOTE case sensitive! Use Area, Distance and Radius keywords to include these fields. If an Area
-                        field already exists in the layer, use the capitalisation of this field (e.g. AREA). -->
-                </Columns>
-                <GroupColumns>
-                    <value>SAC_NAME</value> <!-- Use commas to separate. NOTE case
-                        sensitive! -->
-                </GroupColumns>
-                <StatisticsColumns> <!-- Note no statistics columns are included
-                    and so FIRST will be taken for SAC_CODE automatically-->
-                    <value></value><!-- example: area_ha;SUM$Status;FIRST -->
-                </StatisticsColumns>
-                <OrderColumns> <!-- Overrides GroupColumns -->
-                    <value></value>
-                </OrderColumns>
-                <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR
-                        area_ha > 5 -->
-                </Criteria>
-                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
-                            any existing Area field will be used for the calculation. -->
-                    <value>Yes</value>
-                </IncludeArea>
-                <IncludeDistance>
-                    <value>No</value><!-- Yes / No -->
-                </IncludeDistance>
-                <KeyColumn>
-                    <value>SAC_NAME</value>
-                </KeyColumn>
-                <Format>
-                    <value>Txt</value>
-                </Format>
-                <KeepLayer>
-                    <value>Yes</value>
-                </KeepLayer>
-                <LoadWarning>
-                    <value>Yes</value>
-                </LoadWarning>
-                <PreSelectLayer>
-                    <value>No</value>
-                </PreSelectLayer>
-                <LayerFileName>
-                    <value>SACsSymbology.lyr</value>
-                </LayerFileName>
-                <OverwriteLabels>
-                    <value>Yes</value>
-                </OverwriteLabels>
-                <LabelColumn>
-                    <value>Map_Label</value>
-                </LabelColumn>
-                <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
-                        NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
-                        / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are
-                        applied -->
-                    <value>Font:Arial$Size:11$Red:255$Green:0$Blue:0$Type:
-                        OnePerShape</value> <!-- Labels are red -->
-                </LabelClause>
-                <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if
-                        IncludeDistance is set to Yes-->
-                    <value>"SAC", SAC_NAME, SUM_SAC_AR, Map_Label</value>
-                </CombinedSitesColumns>
-                <CombinedSitesGroupColumns>
-                    <value>SAC_NAME</value>
-                </CombinedSitesGroupColumns>
-                <CombinedSitesStatisticsColumns>
-                    <value>SAC_AREA;SUM</value> <!-- Note that the combined sum
-                        of polygon areas is used -->
-                </CombinedSitesStatisticsColumns>
-                <CombinedSitesOrderByColumns>
-                    <value></value> 
-                </CombinedSitesOrderByColumns>
-            </SACs>
-            <SPAs>
-                <!-- Example of a map layer where tabular data is grouped;
-                    distance is not included; the tabular data is in CSV format
-                    (including headers); a GIS extract is not kept; the
-                    combined sites data is grouped and statistics are extracted
-                    before inclusion -->
-                <LayerName>
-                    <value>SPAs</value>
-                </LayerName>
-                <GISOutputName>
-                    <value>%subref%_SPAs</value>
-                </GISOutputName>
-                <TableOutputName>
-                    <value>%subref%_spas</value>
-                </TableOutputName>
-                <Columns>
-                    <value>SPA_NAME</value> <!-- Use commas to separate. NOTE case sensitive! 
-                    Use Area, Distance and Radius keywords to include these fields. If an Area
-                    field already exists in the layer, use the capitalisation of this field (e.g. AREA).-->
-                </Columns>
-                <GroupColumns>
-                    <value>SPA_NAME</value> <!-- Use commas to separate.
-                        NOTE case sensitive! -->
-                </GroupColumns>
-                <StatisticsColumns>
-                    <value></value><!-- example: area_ha;SUM$Status;FIRST -->
-                </StatisticsColumns>
-                <OrderColumns> <!-- Overrides GroupColumns -->
-                    <value></value>
-                </OrderColumns>
-                <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR
-                        area_ha > 5 -->
-                </Criteria>
-                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
-                            any existing Area field will be used for the calculation. -->
-                    <value>Yes</value>
-                <IncludeDistance>
-                    <value>No</value><!-- Yes / No -->
-                </IncludeDistance>
-                <IncludeRadius>
-                    <value>No</value><!-- Yes / No -->
-                </IncludeRadius>
-                <KeyColumn>
-                    <value>SPA_NAME</value>
-                </KeyColumn>
-                <Format>
-                    <value>csv</value>
-                </Format>
-                <KeepLayer>
-                    <value>No</value>
-                </KeepLayer>
-                <LoadWarning>
-                    <value>Yes</value>
-                </LoadWarning>
-                <PreSelectLayer>
-                    <value>Yes</value>
-                </PreSelectLayer>
-                <LayerFileName>
-                    <value></value>
-                </LayerFileName>
-                <OverwriteLabels>
-                    <value>Yes</value>
-                </OverwriteLabels>
-                <LabelColumn>
-                    <value>Map_Label</value>
-                </LabelColumn>
-                <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
-                        NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
-                        / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are
-                        applied -->
-                    <value></value>
-                </LabelClause>
-                <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if
-                        IncludeDistance is set to Yes-->
-                    <value>"SPA", SPA_NAME, FIRST_SPA_, "Not on map"</value>
-                        <!-- Note that the actual name of the FIRST_SPA_Area
-                            column has been worked out to be FIRST_SPA_
-                            (10 letters). Also note that, since this layer
-                            is not being kept, a tag of 'Not on map' has been
-                            added to the labels column. -->
-                </CombinedSitesColumns>
-                <CombinedSitesGroupColumns>
-                    <value>SPA_NAME, Map_Label</value>
-                </CombinedSitesGroupColumns>
-                <CombinedSitesStatisticsColumns>
-                    <value>SPA_AREA;FIRST</value> <!-- Note that 'First' is
-                        used as the statistic -->
-                </CombinedSitesStatisticsColumns>
-                <CombinedSitesOrderByColumns>
-                    <value></value> <!-- Overrides CombinedSitesGroupColumns -->
-                </CombinedSitesOrderByColumns>
-            </SPAs>
-            <NNRs>
-                <!-- This layer does not allow the overwrite of labels, and so
-                    the name column is included twice in the combined sites
-                    table, the second time as a label column. A new Area field is included in the table output. -->
-                <LayerName>
-                    <value>NNRs</value>
-                </LayerName>
-                <GISOutputName>
-                    <value>%subref%_NNRs</value>
-                </GISOutputName>
-                <TableOutputName>
-                    <value>%subref%_nnrs</value>
-                </TableOutputName>
-                <Columns>
-                    <value>NNR_NAME, Area</value> <!-- Use commas to separate. NOTE case sensitive! 
-                    Use Area, Distance and Radius keywords to include these fields. If an Area
-                    field already exists in the layer, use the capitalisation of this field (e.g. AREA).-->
-                </Columns>
-                <GroupColumns>
-                    <value>NNR_NAME</value> <!-- Use commas to separate.
-                        NOTE case sensitive! -->
-                </GroupColumns>
-                <StatisticsColumns>
-                    <value></value><!-- example: area_ha;SUM$Status;FIRST -->
-                </StatisticsColumns>
-                <OrderColumns> <!-- Overrides GroupColumns -->
-                    <value></value>
-                </OrderColumns>
-                <Criteria>
-                    <value></value><!-- example: Name = 'myName' OR
-                        area_ha > 5 -->
-                </Criteria>
-                <IncludeArea> <!-- Yes / No attribute to define whether an Area field should be included. Ignored for points. NOTE
-                            any existing Area field will be used for the calculation. -->
-                    <value>Yes</value>
-                <IncludeDistance>
-                    <value>No</value><!-- Yes / No -->
-                </IncludeDistance>
-                <IncludeRadius>
-                    <value>No</value><!-- Yes / No -->
-                </IncludeRadius>
-                <KeyColumn>
-                    <value>NNR_NAME</value>
-                </KeyColumn>
-                <Format>
-                    <value>Txt</value>
-                </Format>
-                <KeepLayer>
-                    <value>Yes</value>
-                </KeepLayer>
-                <LoadWarning>
-                    <value>No</value>
-                </LoadWarning>
-                <PreSelectLayer>
-                    <value>No</value>
-                </PreSelectLayer>
-                <LayerFileName>
-                    <value>NNRSymbology.lyr</value>
-                </LayerFileName>
-                <OverwriteLabels>
-                    <value>No</value>
-                </OverwriteLabels>
-                <LabelColumn>
-                    <value>NNR_Name</value>
-                </LabelColumn>
-                <LabelClause>
-                    <!-- format: Font:Arial$Size:10$Red:0$Green:0$Blue:0$Type:
-                        NoRestrictions -->
-                    <!-- Types: NoRestrictions / OnePerName / OnePerPart
-                        / OnePerShape -->
-                    <!-- If no clause is filled in the above settings are
-                        applied -->
-                    <value></value>
-                </LabelClause>
-                <CombinedSitesColumns>
-                    <!-- Distance may be included as a keyword if
-                        IncludeDistance is set to Yes-->
-                    <value>"NNR", NNR_NAME, NNR_AREA, NNR_NAME</value>
-                </CombinedSitesColumns>
-                <CombinedSitesGroupColumns>
-                    <value>NNR_NAME, NNR_AREA</value>
-                </CombinedSitesGroupColumns>
-                <CombinedSitesStatisticsColumns>
-                    <value></value>
-                </CombinedSitesStatisticsColumns>
-                <CombinedSitesOrderByColumns>
-                    <value></value> <!-- Overrides CombinedSitesGroupColumns -->
-                </CombinedSitesOrderByColumns>
-            </NNRs>
-        </MapLayers>
-    </DataSearches>
-    </configuration>
+    * **New:** Allowed users to select the XML profile to use.
 
+**1.4.28**
+(27th February 2019)
+
+GIS output formats.
+
+    * **New:** Added choices to keep TAB files, SHP files or both.
+
+**1.4.27**
+(22nd October 2018)
+
+64-bit interface.
+
+    * **New:** Added tool buttons for 64-bit MapInfo Pro.
+
+**1.4.26**
+(4th October 2018)
+
+Partner details and logging.
+
+    * **New:** Added ``%partner%`` naming variables and optional updates of partner details in the search layer.
+    * **Improved:** Recorded the selected options in the log.
+
+**1.4.25**
+(21st September 2018)
+
+Buffer creation.
+
+    * **Changed:** Returned to using the search layer rather than the cosmetic layer to create buffers.
+
+**1.4.24**
+(30th July 2018)
+
+Layer styles and additional profile options.
+
+    * **New:** Added output-layer symbology, numeric keys, default log clearing, search-feature naming and search-radius variables.
+    * **New:** Recorded coordinate-system setup and Copy/Clip/Overlap/Intersect output options in the version comments; see the current configuration limitations below.
+    * **Changed:** Revised label resetting by layer/group and allowed optional radius updates in the search layer.
+
+**1.4.23**
+(9th March 2018)
+
+Zero-radius searches.
+
+    * **New:** Allowed a zero buffer for point and line search sites.
+
+**1.4.22**
+(20th February 2018)
+
+Long table names.
+
+    * **Fixed:** Corrected handling when local file names were too long.
+
+**1.4.21**
+(24th January 2018)
+
+Clearer configuration names.
+
+    * **Changed:** Renamed XML nodes to make their purpose clearer and align naming across tool versions.
+
+**1.4.20**
+(15th June 2017)
+
+Naming variables and optional site names.
+
+    * **New:** Allowed variables in output name prefixes and suffixes and made site names configurable as required or optional.
+
+**1.4.19**
+(17th May 2017)
+
+Optional updates and retained search geometry.
+
+    * **New:** Added options to retain search and buffer areas and run a formatting macro/script.
+    * **Changed:** Made site-name and organisation updates optional and removed hard-coded column names.
+
+**1.4.18**
+(15th March 2017)
+
+Selection error handling.
+
+    * **Improved:** Handled errors when selecting objects for export.
+
+**1.4.17**
+(3rd January 2017)
+
+Search-layer attributes.
+
+    * **New:** Added updates of site name and organisation in the search layer.
+
+**1.4.16**
+(15th November 2016)
+
+Group-layer handling.
+
+    * **Fixed:** Corrected a subscript-out-of-range error involving a group layer.
+
+**1.4.15**
+(2nd November 2016)
+
+Missing group layers.
+
+    * **Fixed:** Corrected a problem when a group layer was not added to a map window.
+
+**1.4.14**
+(1st November 2016)
+
+Buffer creation.
+
+    * **Changed:** Used the cosmetic layer to create the search buffer. This was subsequently reversed in version 1.4.25.
+
+**1.4.13**
+(24th October 2016)
+
+Layer defaults and label controls.
+
+    * **New:** Added layer preselection, per-layer label resetting and suppression of missing-layer warnings.
+    * **Changed:** Hid the search layer before searching.
+
+**1.4.12**
+(20th October 2016)
+
+Decimal buffer sizes.
+
+    * **Fixed:** Corrected a problem with decimal buffer values.
+
+**1.4.11**
+(16th August 2016)
+
+Layer grouping and overlap areas.
+
+    * **New:** Added map-window grouping, overlap-area expressions and retained search features with configured symbology.
+    * **Changed:** Removed the requirement to include ``Where`` in selection criteria.
+
+**1.4.10**
+(14th August 2016)
+
+Search-table validation.
+
+    * **Improved:** Checked that the search-sites table was open.
+
+**1.4.9**
+(14th July 2016)
+
+Multiple tool instances.
+
+    * **New:** Allowed separate instances to use different titles in the Tools menu.
+
+**1.4.8**
+(27th June 2016)
+
+Radius values and combined sites handling.
+
+    * **New:** Allowed the search radius in exports and combined sites records, and added append/overwrite choices for the combined table.
+
+**1.4.7**
+(30th May 2016)
+
+Display names and version numbering.
+
+    * **Changed:** Converted underscores to spaces in displayed layer names and introduced three-part version numbers.
+    * **New:** Added a configuration attribute for saved GIS layer prefixes.
+
+**1.4.6**
+(5th May 2016)
+
+CSV headings.
+
+    * **New:** Included column titles in CSV exports.
+
+**1.4.5**
+(11th April 2016)
+
+Lookup controls and optional form fields.
+
+    * **New:** Added the site-name lookup button.
+    * **Changed:** Hid controls when their default values were blank.
+
+**1.4.4**
+(24th March 2016)
+
+Separate selection and export criteria.
+
+    * **New:** Split SQL criteria into selection and export stages and logged separate counts.
+    * **Changed:** Removed GIS layers that were not needed for map display.
+
+**1.4.3**
+(14th March 2016)
+
+Tabular export formats.
+
+    * **New:** Added CSV, DBF and TXT output choices.
+
+**1.4.2**
+(9th March 2016)
+
+End-of-run controls.
+
+    * **New:** Added a choice to keep the form open and displayed the log using Notepad.
+
+**1.4.1**
+(17th January 2016)
+
+Missing-table reporting.
+
+    * **Improved:** Counted source tables that were not already open in MapInfo.
+
+**1.4.0**
+(19th October 2015)
+
+Expanded search and reporting workflow.
+
+    * **New:** Added site-name lookup or entry, selectable buffer units, retained and labelled map results, sequential labels and combined sites reporting.
+    * **New:** Added naming variables and configurable buffer symbology.
+
+**1.3.1**
+(April 2013)
+
+Earliest version of MapInfo version.
+
+    * **New:** Listed configured MapInfo layers and extracted selected data within a radius of a search location.
+    * **Changed:** The source was first uploaded to GitHub in January 2015; its own revision comment dates this version to April 2013.
 
 .. raw:: latex
 
-    \newpage
+   \newpage
 
 .. index::
-    single: Example XML file; MapInfo
+   single: Example XML files
 
-Example XML file for MapInfo
-============================
+.. _example_xml:
 
-Below is an example XML setup for a MapInfo implementation of the tool. Whilst this setup is currently in use by a LERC for daily searches, these settings have been included for illustration only and it is up to each user or LERC to ensure the system is configured to their requirements.
+Example XML files
+=================
 
-::
+These examples use the current MapInfo configuration structure. Replace the
+paths and table/column names with those used by your organisation. The example
+search table ``SearchSites`` must contain ``EnquiryRef`` and ``SiteName``;
+the data table ``SSSIs`` must contain ``SiteRef`` and ``SiteName``. Its label
+column can be created in the output when numbering is enabled.
 
-    <?xml version="1.0" encoding="utf-8"?>
+The default example runs without Access lookup or a formatting script and
+keeps TAB results. Its working root is deliberately blank, so processing writes
+directly to the final folder. To enable local working storage, set
+``WorkingDir`` to a writable root separate from the final output path.
+Profiles are installation-specific: validate them with representative data
+before use.
 
-    <!--
-    WARNING: This file should be changed carefully and a backup should be
-    taken before any changes so that they can be backed out.  Changed lines
-    can also be commented out as below.
-    -->
+Launch configuration
+--------------------
 
-    <!--
-    This config file contains all the variables used by the DataSearches
-    MapBasic tool.
+Save as :download:`DataSearches.xml <examples/DataSearches.xml>` beside the application.
 
-    The 'configuration' node is the 'root' node and signifies the start of the
-    contents of the configuration file.
+.. literalinclude:: examples/DataSearches.xml
+   :language: xml
 
-    The 'DataSearches' node contains all of the entries relating to the
-    MapBasic tool variables.
+Profile configuration
+---------------------
 
-    Each entry relates to a file, folder, table name, column name or other
-    variable used by the MapBasic tool to select and export MapInfo data for
-    each data search.
-    -->
+Save as :download:`DefaultProfile.xml <examples/DefaultProfile.xml>` in the same folder.
+The example makes the main choices visible. A blank optional default hides
+its control; a value of 1 selects the first choice and keeps it visible.
 
-    <configuration>
-    <DataSearches>
-
-      <!-- The database where all the data search details are stored. -->
-      <Database>
-        <value>G:\Data search\Data Searches - Data.mdb</value>
-      </Database>
-
-      <!-- The file location where the enquiries table will be stored. -->
-      <EnquiriesDir>
-        <value>G:\Data search\Enquiries</value>
-      </EnquiriesDir>
-
-      <!-- The field name of the search reference unique value. -->
-      <RefColumn>
-        <value>EnquiryRef</value>
-      </RefColumn>
-
-      <!-- The field name of the search reference site name. -->
-      <SiteColumn>
-        <value>SiteName</value>
-      </SiteColumn>
-
-      <!-- The character(s) used to replace any special characters in folder
-        names. -->
-      <RepChar>
-        <value>.</value>
-      </RepChar>
-
-      <!-- The file location where all data search folders are stored. -->
-      <SaveRootDir>
-        <value>G:\Data search\Data Search Folders\2016-2017</value>
-      </SaveRootDir>
-
-      <!-- The folder where the report will be saved. -->
-      <SaveFolder>
-        <value>%ref% %sitename%</value>
-      </SaveFolder>
-
-      <!-- The sub-folder where all data search extracts will be created -->
-      <GISFolder>
-        <value>GIS</value>
-      </GISFolder>
-
-      <!-- The log file name created by the tool to output messages -->
-      <LogFileName>
-        <value>DataSearch_%subref%.log</value>
-      </LogFileName>
-
-      <!-- The default size to use for the buffer -->
-      <DefaultBufferSize>
-        <value>1</value>
-      </DefaultBufferSize>
-
-      <!-- The default option (position in the list) to use for the buffer
-        units -->
-      <DefaultBufferUnit>
-        <value>3</value>
-      </DefaultBufferUnit>
-
-      <!-- The options for the buffer units -->
-      <BufferUnitOptions>
-        <value>Centimetres;cm$Metres;m$Kilometres;km$Feet;ft$Yards;yd$
-            Miles;mi$</value>
-      </BufferUnitOptions>
-
-      <!-- The symbology for the buffer features -->
-      <BufferSymbology>
-        <value>Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)
-        </value>
-      </BufferSymbology>
-
-      <!-- The maximum number of records what will be extracted in any one
-        search extract -->
-      <RecMax>
-        <value>1000000</value>
-      </RecMax>
-
-      <!-- The name of the table to use as the search area -->
-      <SearchTable>
-        <value>SearchSites</value>
-      </SearchTable>
-
-      <!-- The column name in the search area table used to store the search
-        reference -->
-      <SearchColumn>
-        <value>ref</value>
-      </SearchColumn>
-
-      <!-- The buffer aggregate column values -->
-      <AggregateColumns>
-        <value>ref=ref,organisation=organisation,sitename=sitename</value>
-      </AggregateColumns>
-
-      <!-- The options for showing the selected tables -->
-      <AddSelectedTablesOptions>
-        <value>No;Yes - Without labels;Yes - With labels</value>
-      </AddSelectedTablesOptions>
-
-      <!-- The default option (position in the list) for whether selected map
-        tables should be added to the map window -->
-      <DefaultAddSelectedTables>
-        <value>3</value>
-      </DefaultAddSelectedTables>
-
-      <!-- The options for overwritting the map labels -->
-      <OverwriteLabelOptions>
-        <value>No;Yes - Reset Counter;Yes - Increment Counter</value>
-      </OverwriteLabelOptions>
-
-      <!-- Whether any map label columns should be overwritten -->
-      <DefaultOverwriteLabels>
-        <value>3</value>
-      </DefaultOverwriteLabels>
-
-      <!-- Whether a combined sites table should be created -->
-      <DefaultCombinedSitesTable>
-        <value>Yes</value>
-      </DefaultCombinedSitesTable>
-
-      <!-- The column names of the combined sites table -->
-      <CombinedSitesTable>
-        <TableName>
-            <value>Sites</value>
-        </TableName>
-        <Columns>
-            <value>Site_Type Char(10), Site_Name Char(50), Site_Area Float,
-                Map_Label Char(50)</value>
-        </Columns>
-        <Suffix>
-            <value>_sites</value>
-        </Suffix>
-        <Format>
-            <value>csv</value>
-        </Format>
-      </CombinedSitesTable>
-
-      <!-- The names, local names, suffixes, SQL clauses and formats of the
-        map tables -->
-      <MapTables>
-        <Sites_-_SACs>
-            <TableName>
-                <value>SAC</value>
-            </TableName>
-            <Prefix>
-                <value>SAC</value>
-            </Prefix>
-            <Suffix>
-                <value>_sacs</value>
-            </Suffix>
-            <Columns>
-                <value>SAC_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SAC_Name Order By SAC_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SAC_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"SAC", SAC_Name, SAC_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SAC_Name, Map_Label Order By SAC_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_SACs>
-        <Sites_-_SPAs>
-            <TableName>
-                <value>SPA</value>
-            </TableName>
-            <Prefix>
-                <value>SPA</value>
-            </Prefix>
-            <Suffix>
-                <value>_spas</value>
-            </Suffix>
-            <Columns>
-                <value>SPA_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SPA_Name Order By SPA_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SPA_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"SPA", SPA_Name, SPA_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SPA_Name, Map_Label Order By SPA_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_SPAs>
-        <Sites_-_NNRs>
-            <TableName>
-                <value>NNR</value>
-            </TableName>
-            <Prefix>
-                <value>NNR</value>
-            </Prefix>
-            <Suffix>
-                <value>_nnrs</value>
-            </Suffix>
-            <Columns>
-                <value>NNR_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By NNR_Name Order By NNR_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>NNR_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"NNR", NNR_Name, NNR_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By NNR_Name, Map_Label Order By NNR_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_NNRs>
-        <Sites_-_Ramsars>
-            <TableName>
-                <value>RAMSAR</value>
-            </TableName>
-            <Prefix>
-                <value>RAMSAR</value>
-            </Prefix>
-            <Suffix>
-                <value>_ramsars</value>
-            </Suffix>
-            <Columns>
-                <value>Ramsar_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Ramsar_Name Order By Ramsar_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Ramsar_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Ramsar", Ramsar_Name, Ramsar_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By Ramsar_Name, Map_Label Order By Ramsar_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_Ramsars>
-        <Sites_-_SSSIs>
-            <TableName>
-                <value>SSSI</value>
-            </TableName>
-            <Prefix>
-                <value>SSSI</value>
-            </Prefix>
-            <Suffix>
-                <value>_sssis</value>
-            </Suffix>
-            <Columns>
-                <value>SSSI_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SSSI_Name Order By SSSI_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SSSI_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"SSSI", SSSI_Name, SSSI_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SSSI_Name, Map_Label Order By SSSI_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_SSSIs>
-        <Sites_-_LNRs>
-            <TableName>
-                <value>LNR_2015</value>
-            </TableName>
-            <Prefix>
-                <value>LNR</value>
-            </Prefix>
-            <Suffix>
-                <value>_lnrs</value>
-            </Suffix>
-            <Columns>
-                <value>LNR_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By LNR_Name Order By LNR_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>LNR_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"LNR", LNR_Name, LNR_Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By LNR_Name, Map_Label Order By LNR_Name,
-                Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_LNRs>
-        <Sites_-_OxonLWS>
-            <TableName>
-                <value>Oxfordshire_Local_Wildlife_Sit</value>
-            </TableName>
-            <Prefix>
-                <value>OxonLWS</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxonlws</value>
-            </Suffix>
-            <Columns>
-                <value>SiteCode + " " + Name "SiteDetails"</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SiteDetails Order By SiteDetails</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>SiteCode</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Oxon LWS", SiteCode + " " + Name "SiteDetails", Area,
-                    Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxonLWS>
-        <Sites_-_BerksLWS>
-            <TableName>
-                <value>Berkshire_Local_Wildlife_Sites</value>
-            </TableName>
-            <Prefix>
-                <value>BerksLWS</value>
-            </Prefix>
-            <Suffix>
-                <value>_berkslws</value>
-            </Suffix>
-            <Columns>
-                <value>Sitecode + " " + Sitename "SiteDetails"</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By SiteDetails Order By SiteDetails</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Sitecode</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Berks LWS", Sitecode + " " + Sitename "SiteDetails",
-                    Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By SiteDetails, Map_Label Order By SiteDetails,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_BerksLWS>
-        <Sites_-_OxonLGS>
-            <TableName>
-                <value>Oxfordshire_Local_Geological_S</value>
-            </TableName>
-            <Prefix>
-                <value>OxonLGS</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxonlgs</value>
-            </Suffix>
-            <Columns>
-                <value>Site_Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Site_Name Order By Site_Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Site_Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Oxon LGS", Site_Name, Area, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By Site_Name, Map_Label Order By Site_Name,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxonLGS>
-        <Sites_-_BerksLGS>
-            <TableName>
-                <value>Berkshire_Local_Geological_Sit</value>
-            </TableName>
-            <Prefix>
-                <value>BerksLGS</value>
-            </Prefix>
-            <Suffix>
-                <value>_berkslgs</value>
-            </Suffix>
-            <Columns>
-                <value>Sitename</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Sitename Order By Sitename</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Sitename</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>Yes</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Map_Label</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Map_Label
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value>"Berks LGS", Sitename, Area_ha, Map_Label</value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value>Group By Sitename, Map_Label Order By Sitename,
-                    Map_Label</value>
-            </CombinedSitesCriteria>
-        </Sites_-_BerksLGS>
-        <Sites_-_OxonOther>
-            <TableName>
-                <value>Other_Sites_Oxon_Sept_2012</value>
-            </TableName>
-            <Prefix>
-                <value>OxonOther</value>
-            </Prefix>
-            <Suffix>
-                <value>_oxonother</value>
-            </Suffix>
-            <Columns>
-                <value>Name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Name Order By Name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>No</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Name</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Name
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value></value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value></value>
-            </CombinedSitesCriteria>
-        </Sites_-_OxonOther>
-        <Sites_-_BerksOther>
-            <TableName>
-                <value>Other_Sites_Berkshire</value>
-            </TableName>
-            <Prefix>
-                <value>BerksOther</value>
-            </Prefix>
-            <Suffix>
-                <value>_berksother</value>
-            </Suffix>
-            <Columns>
-                <value>Site_name</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value>Group By Site_name Order By Site_name</value>
-            </ExportCriteria>
-            <KeyColumn>
-                <value>Site_name</value>
-            </KeyColumn>
-            <Format>
-                <value>txt</value>
-            </Format>
-            <KeepLayer>
-                <value>Yes</value>
-            </KeepLayer>
-            <OverwriteLabels>
-                <value>No</value>
-            </OverwriteLabels>
-            <LabelColumn>
-                <value>Site_name</value>
-            </LabelColumn>
-            <LabelClause>
-                <value>Font ("Arial",256,10,16711680,16777215) With Site_name
-                    Auto On</value>
-            </LabelClause>
-            <CombinedSitesColumns>
-                <value></value>
-            </CombinedSitesColumns>
-            <CombinedSitesCriteria>
-                <value></value>
-            </CombinedSitesCriteria>
-        </Sites_-_BerksOther>
-        <Species_-_ProtNotable>
-            <TableName>
-                <value>PN_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppProtectedNotable</value>
-            </Prefix>
-            <Suffix>
-                <value>_spppn</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance, Date,
-                    Grid_Reference, Grid_Reference_Qualifier, Location,
-                    Type_of_Record, Data_Origin, European_Directives,
-                    UK_Legislation, Priority_NERC_S41, Other_Designations,
-                    Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_ProtNotable>
-        <Species_-_Bat>
-            <TableName>
-                <value>Bats_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppBat</value>
-            </Prefix>
-            <Suffix>
-                <value>_sppbat</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance, Date,
-                Grid_Reference, Grid_Reference_Qualifier, Location,
-                Type_of_Record, Data_Origin, European_Directives,
-                UK_Legislation, Priority_NERC_S41, Other_Designations,
-                Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_Bat>
-        <Species_-_GCN>
-            <TableName>
-                <value>GCNs_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppGCN</value>
-            </Prefix>
-            <Suffix>
-                <value>_sppgcn</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance, Date,
-                Grid_Reference, Grid_Reference_Qualifier, Location,
-                Type_of_Record, Data_Origin, European_Directives,
-                UK_Legislation, Priority_NERC_S41, Other_Designations,
-                Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_GCN>
-        <Species_-_INNS>
-            <TableName>
-                <value>INNS_Data_Searches_Jan2016</value>
-            </TableName>
-            <Prefix>
-                <value>SppINNS</value>
-            </Prefix>
-            <Suffix>
-                <value>_sppinns</value>
-            </Suffix>
-            <Columns>
-                <value>Scientific_name, Common_name, Abundance, Date,
-                Grid_Reference, Grid_Reference_Qualifier, Location,
-                Type_of_Record, Data_Origin, INNS_Designations,
-                Easting, Northing, Taxon_Group</value>
-            </Columns>
-            <SelectCriteria>
-                <value></value>
-            </SelectCriteria>
-            <ExportCriteria>
-                <value></value>
-            </ExportCriteria>
-            <Format>
-                <value>csv</value>
-            </Format>
-        </Species_-_INNS>
-      </MapTables>
-
-    </DataSearches>
-    </configuration>
-
+.. literalinclude:: examples/DefaultProfile.xml
+   :language: xml
 
 .. raw:: latex
 
-	\newpage
+   \newpage
 
 GNU Free Documentation License
 ==============================
