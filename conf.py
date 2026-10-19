@@ -194,6 +194,9 @@ latex_elements = {
 # The font size ('10pt', '11pt' or '12pt').
 'pointsize': '11pt',
 
+# Reserve enough vertical space for the PDF page headers.
+'geometry': r'\usepackage[headheight=14pt]{geometry}',
+
 # Additional stuff for the LaTeX preamble.
 #'preamble': '',
 }
@@ -203,7 +206,7 @@ latex_elements = {
 #  author, documentclass [howto/manual]).
 latex_documents = [
   ('index', 'DataSearches-UserGuide.tex', u'Data Searches for MapInfo - User Guide',
-   u'Hester Lyons & Andy Foy', 'manual'),
+   r'Hester Lyons \& Andy Foy', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
