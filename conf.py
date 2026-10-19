@@ -49,7 +49,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Data Searches for MapInfo User Guide'
+project = u'DataSearches for MapInfo User Guide'
 copyright = u'2016 GiGL, TVERC, SxBRC, DERC; 2026 Andy Foy Consulting'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -119,7 +119,7 @@ html_theme = 'default'
 #html_title = None
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = 'Data Searches User Guide'
+html_short_title = 'DataSearches User Guide'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
@@ -205,7 +205,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'DataSearches-UserGuide.tex', u'Data Searches for MapInfo - User Guide',
+  ('index', 'DataSearches-UserGuide.tex', u'DataSearches for MapInfo - User Guide',
    r'Hester Lyons \& Andy Foy', 'manual'),
 ]
 
@@ -235,7 +235,7 @@ latex_show_urls = 'footnote'
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'Data Searches-UserGuide', u'Data Searches for MapInfo - User Guide',
+    ('index', 'DataSearches-UserGuide', u'DataSearches for MapInfo - User Guide',
      [u'Hester Lyons & Andy Foy'], 1)
 ]
 
@@ -249,8 +249,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'DataSearches-UserGuide', u'Data Searches for MapInfo - User Guide',
-   u'Hester Lyons & Andy Foy', 'DataSearches-UserGuide', 'Data Searches - User Guide.',
+  ('index', 'DataSearches-UserGuide', u'DataSearches for MapInfo - User Guide',
+   u'Hester Lyons & Andy Foy', 'DataSearches-UserGuide', 'DataSearches - User Guide.',
    'Miscellaneous'),
 ]
 
