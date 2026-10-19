@@ -2,8 +2,6 @@
 Preface
 *******
 
-.. Screenshot refresh: see FIGURE-CHECKLIST.md before publication.
-
 The most up to date version of this documentation can be found in **HTML** and **PDF** form on `ReadTheDocs <https://readthedocs.org/projects/datasearches-userguide/>`_.
 
 .. index::
@@ -15,7 +13,7 @@ Recommended User Knowledge
 Users
 -----
 
-This guide covers Data Searches for MapInfo version 1.4.47. A separate
+This guide covers Data Searches for MapInfo version |release|. A separate
 `ArcGIS Pro version <https://github.com/LERCAutomation/DataSearches-ArcPro>`_
 has its own
 `user guide <https://readthedocs.org/projects/datasearches-arcpro-userguide/>`_.
@@ -26,6 +24,9 @@ This user guide assumes that users of the MapInfo tool have:
 * Experience in the use of MapInfo, including selecting and querying features and attributes.
 * An understanding of the data layers (species, designated sites and other relevant datasets) that are used by the Data Searches tool.
 
+
+.. index::
+   single: Administrators; Recommended knowledge
 
 Administrators
 --------------
@@ -54,17 +55,21 @@ This Preface explains a little about the Data Searches tool, the community of pe
 
 :doc:`Anatomy of a data search <../anatomy/anatomy>` \ is a brief outline of the key stages of a data search, and how the Data Searches tool addresses these.
 
-:doc:`Setting up the tool <../setup/setup>` \ describes how to install and set up the Data Searches tool.
+:doc:`Quick start <../quickstart/quickstart>` \ covers routine searches with a prepared workspace and profile, followed by a worked example.
 
-:doc:`Running the tool <../execute/execute>` \ describes how to run the Data Searches tool.
+:doc:`Setting up the tool <../setup/setup>` \ starts with an administrator checklist for installation and upgrades, followed by the detailed configuration reference.
+
+:doc:`Running the tool <../execute/execute>` \ explains the form options,
+output-format reference, logs, diagnostics and recovery.
 
 :doc:`FAQs <../faq/faq>` \ has a list of commonly asked questions and their answers.
 
-:doc:`../appendix/appendix` \ contains the MapInfo change log, current configuration examples, known limitations and a copy of the GNU Free Documentation License v1.3 covering this guide.
+:doc:`../appendix/appendix` \ contains the MapInfo change log, current configuration examples and a copy of the GNU Free Documentation License v1.3 covering this guide.
 
 
 .. index::
 	single: Licensing
+   single: GNU General Public License
 
 Licensing
 =========
@@ -73,7 +78,6 @@ The code for the Data Searches tool is 'open source' and is released under the `
 
 This guide is released under the `GNU Free Documentation License (FDL) v1.3 <http://www.gnu.org/licenses/fdl.html>`_. Permission is granted to copy, distribute and/or modify this document under the terms of the license.
 
-Please remember, however, that the tool cost a lot of money to develop and still requires further development and ongoing support. Hence any contributions towards costs would be gratefully received. Enquiries can be made via email to either `Hester <mailto:Hester@HesterLyonsConsulting.co.uk>`_ or `Andy <mailto:Andy@AndyFoyConsulting.co.uk>`_.
 
 
 .. index::

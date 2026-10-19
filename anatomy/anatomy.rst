@@ -22,6 +22,10 @@ The Data Searches tool automates these steps using saved configuration.
 Users still need to check that the location, datasets, filters and results
 are appropriate for the request.
 
+.. index::
+   single: Workspace; Preparing
+   single: Search table; Geometry
+
 The Data Searches tool
 ======================
 
@@ -67,6 +71,12 @@ With ``WorkingDir`` configured, a fresh working subfolder holds the run's
 outputs until they are moved to the final folder. Without it, files are
 created directly in the final folder. Results are mapped after transfer.
 
+.. index::
+   single: Outputs; Overview
+   pair: Outputs; GIS files
+   pair: Outputs; Tabular exports
+   single: Combined sites table; Overview
+
 Tool outputs
 ============
 
@@ -91,8 +101,9 @@ Combined sites table
 
 Log
    Records the profile, choices, processing steps, counts and errors. It is
-   saved with the final outputs and opened in Notepad. A temporary journal
-   can help recover information after interruption or a transfer failure.
+   published with the final outputs at the reporting stage and opened in
+   Notepad. During processing, messages go to a temporary journal. See
+   :ref:`run_logs` for locations and recovery.
 
 Example map and output folder
 -----------------------------
@@ -108,10 +119,13 @@ Example map and output folder
 
    Final output folder and its MapInfo search files
 
+.. index::
+   single: Outputs; Checking current results
+
 Checking the outputs
 --------------------
 
 No new layer output is generated for an empty or over-limit selection. Old
 output files can remain from earlier runs, so use the current log to establish
-which files were produced. The next chapters describe
-:doc:`../setup/setup` and :doc:`../execute/execute` in detail.
+which files were produced. Follow :doc:`../quickstart/quickstart` for a routine search. The later chapters
+describe :doc:`../setup/setup` and :doc:`../execute/execute` in detail.

@@ -2,12 +2,92 @@
 Setting up the tool
 *******************
 
-This chapter describes Data Searches for MapInfo version 1.4.47. Configure
+This chapter describes Data Searches for MapInfo version |release|. Configure
 the tool before making it available to users, and back up existing profiles
 when upgrading.
 
 .. index::
+   single: Administrators; Installation and upgrades
+   single: Upgrading the tool
+   pair: Profiles; Backups
+
+.. _administrator_checklist:
+
+Administrator checklist
+=======================
+
+Use this checklist when preparing an installation or upgrading an existing one.
+
+1. **Back up the installation and profiles.** Keep a copy of the current
+   application, launch file, profiles and support files before replacing them.
+   Read the :ref:`change_log` for changes since the installed version.
+#. **Install the matching application and support files.** Use the compiled
+   application supplied for the MapInfo version and its 32-bit or 64-bit edition.
+   Keep the launch file, profiles and supplied icons together, and load the
+   application using Tool Manager or the Tools window as described below.
+#. **Check the configuration.** Review source and search-table names, reference
+   and label columns, output paths and form defaults against :ref:`configuration`.
+   Use the :ref:`profile migration table <profile_migration>` for older
+   settings. Preserve XML node names, case and positional option order.
+#. **Check access and optional components.** Users need access to source data
+   and writable search tables and output folders. Check working-folder access
+   and separation from final output when using ``WorkingDir``. If enabled,
+   check the Access database, drivers and writable ``EnquiriesDir``, Universal
+   Translator for SHP output, and any formatting script and its dependencies.
+   Avoid concurrent searches writing the same final output names.
+#. **Validate a representative search.** Use a separate test output folder.
+   Check the log for errors, skipped layers and counts, then compare exported
+   fields, filenames, retained GIS data, label values and map display with the
+   request. Test lookup, working-folder transfer, SHP conversion, formatting
+   scripts and combined sites append or overwrite where the installation uses
+   them. Check an empty selection too; existing output files can remain.
+#. **Prepare the routine workflow.** Save a workspace containing the required
+   search and source tables. Give users the appropriate profile, output
+   location and :ref:`quick_start` instructions once validation is complete.
+
+.. index::
+   single: Profiles; Migrating older settings
+   single: Prefix
+   single: Suffix
+
+.. _profile_migration:
+
+Migrating older profiles
+------------------------
+
+The current tool does not read the old naming settings below. Check the
+:ref:`example_xml` when upgrading, and test the resulting filenames.
+
+.. list-table:: Naming-setting replacements
+   :header-rows: 1
+   :widths: 28 28 44
+
+   * - Location and old setting
+     - Current setting
+     - What to supply
+   * - MapTables layer: ``Prefix``
+     - :ref:`GISOutputName <setting_gisoutputname>`
+     - Complete GIS base name, without extension.
+   * - MapTables layer: ``Suffix``
+     - :ref:`TableOutputName <setting_tableoutputname>`
+     - Complete tabular-export base name, without extension.
+   * - CombinedSitesTable: ``Suffix``
+     - ``TableOutputName`` within :ref:`CombinedSitesTable <setting_combinedsitestable>`
+     - Complete combined-sites export base name, without extension.
+
+The reference is not added automatically. For example, use
+``SSSIs_%subref%_%radius%`` as ``GISOutputName`` and
+``%subref%_SSSIs_%radius%`` as the layer's ``TableOutputName``. With reference
+``001`` and a 1 km buffer, these produce ``SSSIs_001_1km.tab`` and
+``001_SSSIs_1km.csv`` when TAB and CSV outputs are enabled. Use
+``%subref%_sites`` for the combined-sites export to produce ``001_sites.csv``.
+The retained combined TAB name is configured separately by its ``TableName``.
+
+.. index::
    single: Installation
+   single: MapInfo; Loading the tool
+   single: Tool Manager
+   single: AutoLoad
 
 Installing the tool
 ===================
@@ -19,54 +99,34 @@ supplied ribbon icons with the application. Source files alone are not a
 runnable installation.
 
 Load the application using MapInfo's **Tool Manager** or **Tools** window.
-In the classic interface, choose **Tools --> Tool Manager**, select
-**Add Tool**, browse to the application and enter a title. Select **Loaded**
-to load it now and **AutoLoad** to load it whenever MapInfo starts. These
-illustrations show the classic interface; ribbon editions have a different layout.
-See :numref:`figToolManager` for Tool Manager and :numref:`figAddTool` for
-the Add Tool dialog.
-
-.. _figToolManager:
-
-.. figure:: figures/ToolManager.png
-   :align: center
-
-   Tool Manager in the classic MapInfo interface
+In the classic interface, choose **Tools --> Tool Manager**, select **Add Tool**,
+browse to the application and enter a title. Select **Loaded** to load it now
+and **AutoLoad** to load it whenever MapInfo starts. Ribbon editions have
+equivalent tool-management controls with a different layout.
+:numref:`figAddTool` identifies the adding and loading steps.
 
 .. _figAddTool:
 
 .. figure:: figures/AddToolDialog.png
    :align: center
 
-   Adding the Data Searches application
-
-After adding the application, check its **Loaded** and **AutoLoad** settings
-as shown in :numref:`figToolAdded`.
-
-.. _figToolAdded:
-
-.. figure:: figures/DataSearchesLoaded.png
-   :align: center
-
-   Data Searches loaded in the classic Tool Manager
+   Adding and loading the Data Searches application in MapInfo
 
 The classic interface adds a **Data Searches** menu under **Tools**, with
 **Run**, **About** and **Exit** commands. The 64-bit ribbon interface adds a
-button in the **Home** tab's **Tools** group. Its title comes from ``ToolTitle``
-in the launch configuration. The classic menu is shown in
-:numref:`figToolMenu`.
-
-.. _figToolMenu:
-
-.. figure:: figures/DataSearchesToolMenu.png
-   :align: center
-
-   Data Searches commands in the classic Tools menu
+button in the **Home** tab's **Tools** group, illustrated in
+:numref:`figLaunchRibbon`. Its title comes from :ref:`ToolTitle <setting_tooltitle>`
+in the launch configuration.
 
 .. tip::
    Save a workspace containing the search-sites table and all source tables
    required by the profiles. Open these before opening the search form, and
    include the search-sites table in a map window.
+
+.. index::
+   single: Requirements
+   pair: Folders; Permissions
+   single: Search table; Write access
 
 Requirements and folder access
 ------------------------------
@@ -85,11 +145,19 @@ export ``Macro`` requires Windows Script Host and any software used by the scrip
 .. index::
    single: Configuring the tool
    single: XML; Profiles
+   pair: XML; Configuration
+   single: Profiles; Creating and choosing
+   single: DataSearches.xml
+   single: DefaultProfile.xml
+   single: DefaultProfile
+   single: ToolTitle
 
 .. _configuration:
 
 Configuring the tool
 ====================
+
+.. _setting_tooltitle:
 
 Keep both parts of the configuration alongside the compiled application:
 
@@ -97,6 +165,8 @@ Keep both parts of the configuration alongside the compiled application:
   contains ``ToolTitle`` and ``DefaultProfile``.
 * A profile, usually ``DefaultProfile.xml``, contains the general settings and
   ``MapTables`` definitions under its own ``DataSearches`` node.
+
+.. _setting_defaultprofile:
 
 One profile is used automatically. With several XML files other than
 ``DataSearches.xml``, the tool asks the user to choose. Keep unrelated XML files
@@ -114,6 +184,9 @@ Check the XML for well-formedness after editing; valid XML can still contain
 incorrect paths, table names or SQL. The appendix provides
 :ref:`downloadable examples <example_xml>`.
 
+.. index::
+   pair: XML; Special characters
+
 Special characters in XML
 -------------------------
 
@@ -129,6 +202,8 @@ MapInfo. Double quotes within element text do not need escaping.
 
 .. index::
    single: XML; Variables
+   pair: File names; Variables
+   single: Variables; Search details
 
 .. _naming_variables:
 
@@ -162,60 +237,155 @@ These variables work in ``SaveFolder``, ``GISFolder``, ``LogFileName``,
      - Buffer size and unit abbreviation; decimal points become underscores
        in names, for example ``1_5km``.
 
-For ``XYBRC/2026/001``, ``%subref%`` normally gives ``001``. ``%shortref%``
-depends on ``RepChar`` and separator processing: check representative names.
+The reference variables depend on :ref:`RepChar <setting_repchar>`.
+For ``XYBRC/2026/001``, the current processing gives:
+
+.. list-table:: Reference-variable examples
+   :header-rows: 1
+   :widths: 34 33 33
+
+   * - RepChar
+     - %shortref%
+     - %subref%
+   * - Space, as in the appendix profile
+     - ``2026_001``
+     - ``2026_001``
+   * - Underscore (``_``)
+     - ``2026_001``
+     - ``001``
+   * - Blank
+     - ``2026001``
+     - ``2026001``
+
+The tool converts spaces to underscores before looking for the final
+``RepChar`` separator. With a space replacement, that separator is no longer
+present, so ``%subref%`` keeps the whole processed reference. Check your own
+reference patterns before changing an existing profile. The worked example's
+reference ``001`` gives ``001`` for both variables with all three settings.
+
 Special characters are replaced and spaces in GIS table names become underscores.
 Specify complete output names; a reference is not added automatically.
 Variables are not expanded in ``WorkingDir`` or ``SaveRootDir``.
 
+.. index::
+   single: Profiles; General settings
+
 General profile settings
 ========================
+
+.. index::
+   pair: Access database; Configuration
+   single: Search table; Configuration
 
 Database and search tables
 --------------------------
 
+.. index::
+   single: Debug
+   single: Log files; Diagnostic messages
+
+.. _setting_debug:
+
 Debug
    ``Yes`` adds diagnostic messages to the log.
+
+.. index::
+   single: Database
+
+.. _setting_database:
 
 Database
    Full Access database path, including its extension. Leave blank to run
    without lookup and enter the site name manually.
 
+.. index::
+   single: EnquiriesDir
+   single: EnquiriesTable
+
+.. _setting_enquiriesdir:
+
 EnquiriesDir
    Writable folder for the Access table's ``Enquiries.tab`` registration.
 
+.. _setting_enquiriestable:
+
 EnquiriesTable
    Table inside the Access database, for example ``Enquiries``.
+
+.. index::
+   single: RefColumn
+   single: Search reference; Configuration
+
+.. _setting_refcolumn:
 
 RefColumn
    Reference column used in both the Access table and ``SearchTable``. Use
    the same column name in both. Text references support MapInfo ``LIKE`` patterns.
 
+.. index::
+   single: SiteColumn
+   single: OrgColumn
+   single: PartnerColumn
+
+.. _setting_sitecolumn:
+
+.. _setting_orgcolumn:
+
+.. _setting_partnercolumn:
+
 SiteColumn, OrgColumn, PartnerColumn
    Access columns holding the site name, requester organisation and partner.
    Leave unused names blank. The optional search-table update uses these names too.
+
+.. index::
+   single: RadiusColumn
+
+.. _setting_radiuscolumn:
 
 RadiusColumn
    Search-table column intended to receive the buffer size and units during
    an optional update. It does not retrieve a radius from Access. Leave blank
    if unused.
 
+.. index::
+   single: RequireSiteName
+   single: Site name; Required or optional
+
 .. _requiresitename:
+
+.. _setting_requiresitename:
 
 RequireSiteName
    ``Yes`` requires a site name; ``No`` permits a blank. With lookup enabled,
    the site-name control is disabled and **Find** retrieves the name. Without
    lookup the field is editable.
 
+.. index::
+   single: SearchTable
+
+.. _setting_searchtable:
+
 SearchTable
    Open MapInfo table containing the search locations. One profile uses one
    search table; several matching features can be selected. Its reference
    column is ``RefColumn``. ``SearchColumn`` is not read by the current tool.
 
+.. index::
+   single: AggregateColumns
+   single: Buffer; Preserving attributes
+
+.. _setting_aggregatecolumns:
+
 AggregateColumns
    MapBasic ``Data`` assignments used when creating the buffer, for example
    ``EnquiryRef=EnquiryRef, SiteName=SiteName``. Preserve fields needed by
    buffer-based export expressions. This is not just a list of field names.
+
+.. index::
+   single: UpdateTable
+   single: Search table; Updating attributes
+
+.. _setting_updatetable:
 
 UpdateTable
    Controls the optional attempt to update search-table attributes from lookup
@@ -223,25 +393,53 @@ UpdateTable
    been checked for your installation; see :doc:`the running instructions <../execute/execute>`. It does
    not make the table read-only during buffering.
 
+.. index::
+   pair: Outputs; Folders
+   single: Log files; Configuration
+
 Output folders and logging
 --------------------------
+
+.. index::
+   single: RepChar
+   single: File names; Special characters
+
+.. _setting_repchar:
 
 RepChar
    Replacement for special characters in generated names. A space is allowed.
    Choose a character suitable for Windows file names and MapInfo table names.
 
+.. index::
+   single: SaveRootDir
+   single: SaveFolder
+   single: GISFolder
+
+.. _setting_saverootdir:
+
 SaveRootDir
    Full final output root, such as ``D:\DataSearches\Reports`` or a UNC path.
+
+.. _setting_savefolder:
 
 SaveFolder
    Request folder beneath the root. Supports :ref:`naming_variables`.
    Leave blank to use the root directly.
 
+.. _setting_gisfolder:
+
 GISFolder
    Output folder beneath the request folder. Supports naming variables.
    Leave blank to use the request folder directly.
 
+.. index::
+   single: WorkingDir
+   pair: Folders; Working storage
+   single: Robocopy
+
 .. _working_directory:
+
+.. _setting_workingdir:
 
 WorkingDir
    Optional working root, preferably local when final outputs are on a network.
@@ -260,41 +458,98 @@ WorkingDir
    can leave files in both locations. The log identifies both folders. See
    :ref:`transfer_recovery` before retrying.
 
+.. index::
+   single: LogFileName
+   single: Log files; Temporary journal
+
+.. _setting_logfilename:
+
 LogFileName
    Final log name, including an extension such as ``.log``. Supports naming
    variables. A temporary journal adds ``_tmp`` before the extension.
+
+.. index::
+   single: DefaultClearLogFile
+
+.. _setting_defaultclearlogfile:
 
 DefaultClearLogFile
    ``Yes`` initially checks **Clear log file?**; ``No`` appends to the final
    log. This setting does not control output overwriting.
 
+.. index::
+   single: Buffer; Configuration
+   single: Search features; Configuration
+
 Buffer and search-feature settings
 ----------------------------------
+
+.. index::
+   single: DefaultBufferSize
+
+.. _setting_defaultbuffersize:
 
 DefaultBufferSize
    Initial buffer size. Blank or zero hides the size control and uses zero.
    See :doc:`the running instructions <../execute/execute>` before configuring radii below one unit.
 
+.. index::
+   single: BufferUnitOptions
+   single: DefaultBufferUnit
+
+.. _setting_bufferunitoptions:
+
 BufferUnitOptions
    Display-name and MapInfo-unit pairs separated by ``$``, with ``;`` between
    each name and abbreviation, for example ``Metres;m$Kilometres;km$``.
 
+.. _setting_defaultbufferunit:
+
 DefaultBufferUnit
    One-based position in ``BufferUnitOptions``. Blank hides the control; the
    code then uses position 3 internally, so retain a valid third option.
+
+.. index::
+   single: KeepBufferArea
+   single: KeepSearchFeature
+
+.. _setting_keepbufferarea:
+
+.. _setting_keepsearchfeature:
 
 KeepBufferArea, KeepSearchFeature
    ``Yes`` retains the buffer or selected search features as TAB files and adds
    them to map windows. ``No`` removes the corresponding temporary table.
    These are separate from the data-layer retention and mapping choices.
 
+.. index::
+   single: BufferSaveName
+   single: SearchFeatureName
+
+.. _setting_buffersavename:
+
+.. _setting_searchfeaturename:
+
 BufferSaveName, SearchFeatureName
    Retained table names without extensions. Supports naming variables.
+
+.. index::
+   single: BufferSymbology
+   single: SearchAreaSymbology
+   single: Symbology; Buffer and search features
+
+.. _setting_buffersymbology:
+
+.. _setting_searchareasymbology:
 
 BufferSymbology, SearchAreaSymbology
    MapBasic global display styles for the buffer and search-feature layers,
    applied for **Layers only** or **Layers and tables**. Follow the example
    profile's syntax.
+
+.. _setting_buffer:
+
+.. _setting_searcharea:
 
 Buffer, SearchArea
    Optional sections with ``Symbology`` rules for saved object styles. Each
@@ -303,15 +558,35 @@ Buffer, SearchArea
    ``Pen``, or ``Symbol`` values. Each value uses a ``value`` child element.
    Rules apply to saved buffer and search-feature objects for **Layers and tables**.
 
+.. index::
+   single: CoordinateSystem
+   single: Coordinate systems
+
+.. _coordinate_system:
+
+.. _setting_coordinatesystem:
+
 CoordinateSystem
    Existing profiles may contain this setting. The current source reads it
    but does not apply a coordinate-system command. Configure source tables
    appropriately rather than relying on this setting to reproject output.
 
+.. index::
+   single: RecMax
+   pair: Selection; Record limit
+
+.. _setting_recmax:
+
 RecMax
    Maximum spatially selected record count for each layer. Exceeding it skips
    the whole layer and logs the reason; it does not truncate the selection.
    Set a positive limit suited to your data and MapInfo's table-size limits.
+
+.. index::
+   pair: Profiles; Form defaults
+   single: Map display; Configuration
+
+.. _form_defaults:
 
 Form defaults and map display
 -----------------------------
@@ -319,32 +594,84 @@ Form defaults and map display
 Options are positional. Keep their order as shown; changing the wording does
 not change the behaviour assigned to each position. Defaults are one-based.
 
+.. index::
+   single: AddSelectedTablesOptions
+   single: DefaultAddSelectedTables
+
+.. _setting_addselectedtablesoptions:
+
+.. _setting_defaultaddselectedtables:
+
 AddSelectedTablesOptions, DefaultAddSelectedTables
    ``No;Yes - Without labels;Yes - With labels``. Blank default hides the
    control and uses **No**.
+
+.. index::
+   single: KeepSelectedTablesOptions
+   single: DefaultKeepSelectedTables
+
+.. _setting_keepselectedtablesoptions:
+
+.. _setting_defaultkeepselectedtables:
 
 KeepSelectedTablesOptions, DefaultKeepSelectedTables
    ``None;TAB;SHP;BOTH``. Blank default hides the control and uses **None**.
    The layer also needs ``KeepLayer=Yes``. Requesting map display retains its
    TAB file even for **None** or **SHP**.
 
+.. index::
+   single: ApplySymbologyOptions
+   single: DefaultApplySymbology
+
+.. _setting_applysymbologyoptions:
+
+.. _setting_defaultapplysymbology:
+
 ApplySymbologyOptions, DefaultApplySymbology
    ``None;Layers only;Layers and tables``. Blank default hides the control
    and uses **None**. Layer styles affect displayed results; table styles
    affect saved buffer and search-feature objects.
 
+.. index::
+   single: GroupLayerName
+   single: Map display; Results group
+
+.. _setting_grouplayername:
+
 GroupLayerName
    Results group name in map windows. Supports naming variables.
+
+.. index::
+   single: OverwriteLabelOptions
+   single: DefaultOverwriteLabels
+
+.. _setting_overwritelabeloptions:
+
+.. _setting_defaultoverwritelabels:
 
 OverwriteLabelOptions, DefaultOverwriteLabels
    ``No;Yes - Reset Each Layer;Yes - Reset Each Group;Yes - Do Not Reset``.
    Blank default hides the control and uses **No**. Numbering also affects
    output attributes, subject to each layer's ``OverwriteLabels`` setting.
 
+.. index::
+   single: CombinedSitesOptions
+   single: DefaultCombinedSitesTable
+
+.. _setting_combinedsitesoptions:
+
+.. _setting_defaultcombinedsitestable:
+
 CombinedSitesOptions, DefaultCombinedSitesTable
    ``None;Append to existing table;Overwrite existing table``. Blank default
    hides the control and uses **None**. Configure a separate ``WorkingDir``
    before appending to an existing table; see :doc:`the running instructions <../execute/execute>`.
+
+.. index::
+   single: CombinedSitesTable
+   single: Combined sites table; Configuration
+
+.. _setting_combinedsitestable:
 
 CombinedSitesTable
    Defines the combined sites TAB table and its tabular export:
@@ -362,6 +689,15 @@ CombinedSitesTable
       ``csv``, ``txt`` or ``dbf``. CSV has headings; TXT is comma-delimited
       without headings. The TAB table is retained for future appends.
 
+.. index::
+   single: UTPath
+   single: UTCommand
+   pair: Shapefiles; Universal Translator
+
+.. _setting_utpath:
+
+.. _setting_utcommand:
+
 UTPath, UTCommand
    Folder and executable of the installed Universal Translator for SHP output,
    for example the MapInfo ``UT`` folder and ``Fme.exe``. Older installations
@@ -369,6 +705,10 @@ UTPath, UTCommand
 
 .. index::
    single: Map layer attributes
+   pair: Profiles; Map layer settings
+   single: MapTables
+
+.. _map_layer_settings:
 
 Map layer settings
 ==================
@@ -376,27 +716,41 @@ Map layer settings
 Each child of ``MapTables`` defines a search. ``Sites_-_SSSIs`` appears as
 **Sites - SSSIs**: underscores become spaces. The part before a hyphen supplies
 the logical group for label numbering. Several definitions can use the same
-source table with different filters. :numref:`figXMLExample` illustrates
-the current XML structure for one definition.
+source table with different filters. The :ref:`downloadable profile
+<example_xml>` shows the current XML structure for one definition.
 
-.. _figXMLExample:
 
-.. figure:: figures/DataLayerXMLExample.png
-   :align: center
+.. index::
+   single: TableName
 
-   Annotated MapInfo MapTables configuration example
-
+.. _setting_tablename:
 
 TableName
    Source table name as it is open in MapInfo, without path or extension.
+
+.. index::
+   single: GISOutputName
+
+.. _setting_gisoutputname:
 
 GISOutputName
    GIS file base name for TAB and SHP output. Supports naming variables.
    The former ``Prefix`` setting is not read.
 
+.. index::
+   single: TableOutputName
+
+.. _setting_tableoutputname:
+
 TableOutputName
    Tabular export base name without extension. Supports naming variables.
    The former ``Suffix`` setting is not read.
+
+.. index::
+   single: Columns
+   single: Tabular exports; Columns
+
+.. _setting_columns:
 
 Columns
    Comma-separated MapInfo SQL expressions for export, including source fields,
@@ -404,22 +758,56 @@ Columns
    Blank ``Columns`` or ``Format`` skips tabular export without preventing
    GIS or combined sites output.
 
+.. index::
+   single: SelectCriteria
+   pair: Selection; Filters
+
+.. _setting_selectcriteria:
+
 SelectCriteria
    Optional condition applied with the spatial selection, for example
    ``Year > 2010 And Confidential <> "Y"``. Omit any leading ``Where`` or
    ``And``: the tool adds ``And (...)``. Escape XML special characters.
 
+.. index::
+   single: ExportCriteria
+   single: Tabular exports; Grouping and sorting
+
+.. _setting_exportcriteria:
+
 ExportCriteria
    Extra SQL after the export spatial condition, commonly
    ``Group By ... Order By ...``. Further filters must begin with ``And``.
+
+.. index::
+   single: KeyColumn
+   single: Labels; Ordering by key
+
+.. _setting_keycolumn:
 
 KeyColumn
    Optional source column for ordering and assigning consistent label numbers
    to records sharing a key. Numeric keys are supported.
 
+.. index::
+   single: Format
+   single: CSV files
+   single: TXT files
+   single: DBF files
+   single: Tabular exports; Formats
+
+.. _setting_format:
+
 Format
    ``csv``, ``txt`` or ``dbf``. CSV has column headings; TXT is comma-delimited
    without headings. Exports use the WindowsLatin1 character set.
+
+.. index::
+   single: Macro
+   pair: Tabular exports; Formatting scripts
+   single: XLSX files
+
+.. _setting_macro:
 
 Macro
    Optional full path to a Windows Script Host script run after export. It
@@ -427,26 +815,56 @@ Macro
    as three arguments. A non-zero exit or missing XLSX is reported. Leave blank
    if no script is required.
 
+.. index::
+   single: KeepLayer
+
+.. _setting_keeplayer:
+
 KeepLayer
    ``Yes`` allows GIS retention and mapping; ``No`` removes GIS output after
    tabular export and combined sites processing. Formats follow **Keep Selected
    Tables**. Empty or over-limit selections do not produce new outputs.
 
+.. index::
+   single: LoadWarning
+
+.. _setting_loadwarning:
+
 LoadWarning
    ``No`` suppresses warnings for a source table that is not open. It remains
    excluded from the form.
 
+.. index::
+   single: PreselectLayer
+   single: Tables; Preselection
+
+.. _setting_preselectlayer:
+
 PreselectLayer
    ``Yes`` highlights this definition on opening the form. Users can change it.
+
+.. index::
+   single: OverwriteLabels
+
+.. _setting_overwritelabels:
 
 OverwriteLabels
    ``Yes`` allows the form's overwrite option to number the output label column.
    ``No`` preserves existing values. Changes affect output, not source data.
 
+.. index::
+   single: LabelColumn
+   single: LabelClause
+   single: Labels; Configuration
+
+.. _setting_labelcolumn:
+
 LabelColumn
    Column used for labels; it must exist or be successfully created in output.
    For sequential numbers, use ``OverwriteLabels=Yes`` and an overwrite option.
    Do not rely on a missing column being numbered when overwriting is disabled.
+
+.. _setting_labelclause:
 
 LabelClause
    MapBasic label clause, for example
@@ -454,16 +872,29 @@ LabelClause
    ``LabelColumn`` exists, the current tool uses ``With LabelColumn``. Use an
    explicit clause to control appearance and visibility.
 
+.. index::
+   single: Symbology; Data layers
+
+.. _setting_symbology:
+
 Symbology
    Global display style applied when the output is mapped and symbology is
    enabled, for example
    ``Global Pen (2,2,16711680) Global Brush (1,16777215,16777215)``.
    This is a single ``value``, unlike the ``Buffer`` and ``SearchArea`` rules.
 
+.. index::
+   single: CombinedSitesColumns
+   single: CombinedSitesCriteria
+
+.. _setting_combinedsitescolumns:
+
 CombinedSitesColumns
    Expressions inserted into ``CombinedSitesTable``. Their count, order and
    types must match its ``Columns``. Blank excludes this layer. Quoted text
    can identify the source, for example ``"SSSI", SiteName, Map_Label``.
+
+.. _setting_combinedsitescriteria:
 
 CombinedSitesCriteria
    Extra SQL for combined sites selection, commonly ``Group By ...`` or
@@ -475,6 +906,12 @@ CombinedSitesCriteria
    does not read it. Selected GIS features are copied in full when they
    intersect the buffer; that setting does not clip their geometry. Overlap
    expressions can report intersecting areas.
+
+.. index::
+   pair: Tabular exports; Expressions
+   single: Measurements; Area and length
+   single: Overlap; Area and length
+   single: Variables; Measurements
 
 .. _export_expressions:
 

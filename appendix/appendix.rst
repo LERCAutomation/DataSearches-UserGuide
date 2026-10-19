@@ -5,13 +5,14 @@ Appendix
 .. index::
    single: Appendix; Change Log
    single: Change Log
+   single: Releases; History
 
 .. _change_log:
 
 Change Log
 ==========
 
-This history covers the MapInfo tool through version 1.4.47. It was
+This history covers the MapInfo tool through version |release|. It was
 reconstructed from ``DataSearches.mb`` version comments, historical source,
 and the `GitHub commits <https://github.com/LERCAutomation/DataSearches-MapInfo/commits/master/>`_
 and `tags <https://github.com/LERCAutomation/DataSearches-MapInfo/tags>`_.
@@ -205,7 +206,7 @@ Buffer creation.
 Layer styles and additional profile options.
 
     * **New:** Added output-layer symbology, numeric keys, default log clearing, search-feature naming and search-radius variables.
-    * **New:** Recorded coordinate-system setup and Copy/Clip/Overlap/Intersect output options in the version comments; see the current configuration limitations below.
+    * **New:** Recorded coordinate-system setup and Copy/Clip/Overlap/Intersect output options in the version comments; see the current :ref:`coordinate-system <coordinate_system>` and :ref:`map-layer settings <map_layer_settings>` for their supported behaviour.
     * **Changed:** Revised label resetting by layer/group and allowed optional radius updates in the search layer.
 
 **1.4.23**
@@ -386,7 +387,7 @@ Expanded search and reporting workflow.
 **1.3.1**
 (April 2013)
 
-Earliest version of MapInfo version.
+Earliest recorded MapInfo release.
 
     * **New:** Listed configured MapInfo layers and extracted selected data within a radius of a search location.
     * **Changed:** The source was first uploaded to GitHub in January 2015; its own revision comment dates this version to April 2013.
@@ -397,6 +398,8 @@ Earliest version of MapInfo version.
 
 .. index::
    single: Example XML files
+   pair: XML; Examples
+   single: Profiles; Examples
 
 .. _example_xml:
 
@@ -416,6 +419,9 @@ directly to the final folder. To enable local working storage, set
 Profiles are installation-specific: validate them with representative data
 before use.
 
+.. index::
+   single: DataSearches.xml; Example
+
 Launch configuration
 --------------------
 
@@ -423,6 +429,9 @@ Save as :download:`DataSearches.xml <examples/DataSearches.xml>` beside the appl
 
 .. literalinclude:: examples/DataSearches.xml
    :language: xml
+
+.. index::
+   single: DefaultProfile.xml; Example
 
 Profile configuration
 ---------------------
@@ -437,6 +446,9 @@ its control; a value of 1 selects the first choice and keeps it visible.
 .. raw:: latex
 
    \newpage
+
+.. index::
+   single: GNU Free Documentation License
 
 GNU Free Documentation License
 ==============================
